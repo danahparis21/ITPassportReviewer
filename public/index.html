@@ -9,28 +9,40 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ── Tokens ── */
+/* ── Tokens — Light mode (default) ── */
 :root{
+  --bg:#f4f5f9;--surface:#fff;--card:#fff;--card-h:#f0f2f8;
+  --bd:#dde1ee;--bd-b:#b8bfda;
+  --tx:#1a1d2e;--mut:#555c7a;--dim:#8890b0;
+  --pri:#4a60e8;--pri-glow:rgba(74,96,232,.1);
+  --ok:#1d8a42;--ok-bg:rgba(29,138,66,.09);--ok-bd:rgba(29,138,66,.3);
+  --bad:#c0192d;--bad-bg:rgba(192,25,45,.08);--bad-bd:rgba(192,25,45,.28);
+  --accent:#6d3fc9;
+  --r:16px;--rs:10px;--rp:99px;
+  --shadow:0 4px 24px rgba(0,0,0,.08);--shadow-s:0 1px 6px rgba(0,0,0,.07);
+  --font:'Inter',system-ui,sans-serif;
+  --t:.18s cubic-bezier(.4,0,.2,1);
+}
+/* ── Dark mode ── */
+[data-dark]{
   --bg:#0f1117;--surface:#1a1d27;--card:#1e2130;--card-h:#252840;
   --bd:#2d3148;--bd-b:#3d4268;
-  --tx:#e8eaf4;--mut:#7c82a8;--dim:#4a5080;
+  --tx:#e8eaf4;--mut:#9198bc;--dim:#4a5080;
   --pri:#6c7fff;--pri-glow:rgba(108,127,255,.18);
   --ok:#3ecf72;--ok-bg:rgba(62,207,114,.1);--ok-bd:rgba(62,207,114,.35);
   --bad:#ff6b8a;--bad-bg:rgba(255,107,138,.1);--bad-bd:rgba(255,107,138,.35);
   --accent:#a78bfa;
-  --r:16px;--rs:10px;--rp:99px;
   --shadow:0 8px 32px rgba(0,0,0,.4);--shadow-s:0 2px 8px rgba(0,0,0,.25);
-  --font:'Inter',system-ui,sans-serif;
-  --t:.18s cubic-bezier(.4,0,.2,1);
 }
 /* ── Reset ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font);font-size:15px;line-height:1.6;background:var(--bg);color:var(--tx);min-height:100dvh;-webkit-font-smoothing:antialiased}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 20% -10%,rgba(108,127,255,.12) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 110%,rgba(167,139,250,.08) 0%,transparent 60%);pointer-events:none;z-index:0}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 20% -10%,rgba(74,96,232,.06) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 110%,rgba(109,63,201,.04) 0%,transparent 60%);pointer-events:none;z-index:0}
+[data-dark] body::before{background:radial-gradient(ellipse 80% 60% at 20% -10%,rgba(108,127,255,.12) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 110%,rgba(167,139,250,.08) 0%,transparent 60%)}
 /* ── Layout ── */
 #app{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:24px 16px 80px}
 /* ── Type ── */
-h1{font-size:clamp(1.4rem,5vw,1.9rem);font-weight:800;letter-spacing:-.02em;background:linear-gradient(135deg,#fff 30%,var(--pri) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.25em}
+h1{font-size:clamp(1.4rem,5vw,1.9rem);font-weight:800;letter-spacing:-.02em;background:linear-gradient(135deg,var(--tx) 30%,var(--pri) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.25em}
 .subtitle{font-size:.9rem;color:var(--mut);margin-bottom:1.5rem}
 /* ── Cards ── */
 .card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:20px;margin-bottom:14px;box-shadow:var(--shadow-s);transition:border-color var(--t),box-shadow var(--t);animation:fadeUp .3s ease both}
@@ -65,17 +77,17 @@ button.sm{padding:7px 12px;font-size:.8rem}
 .opt:not(:disabled):hover{border-color:var(--pri);background:var(--pri-glow);transform:translateX(3px);box-shadow:-3px 0 0 var(--pri)}
 .opt:active:not(:disabled){transform:translateX(1px) scale(.99)}
 .opt .key{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;border-radius:8px;background:var(--bd);color:var(--mut);font-size:.78rem;font-weight:700;flex-shrink:0;margin-top:1px;transition:background var(--t),color var(--t)}
-.opt.ok{background:var(--ok-bg)!important;border-color:var(--ok-bd)!important;box-shadow:-3px 0 0 var(--ok)}
+.opt.ok{background:var(--ok-bg)!important;border-color:var(--ok-bd)!important;box-shadow:-3px 0 0 var(--ok);opacity:1!important}
 .opt.ok .key{background:var(--ok);color:#fff}
-.opt.bad{background:var(--bad-bg)!important;border-color:var(--bad-bd)!important;box-shadow:-3px 0 0 var(--bad)}
+.opt.bad{background:var(--bad-bg)!important;border-color:var(--bad-bd)!important;box-shadow:-3px 0 0 var(--bad);opacity:1!important}
 .opt.bad .key{background:var(--bad);color:#fff}
-.opt.neutral:disabled{opacity:.45}
+.opt.neutral:disabled{opacity:1}
 /* ── Explanation ── */
 .exp-wrap{margin-top:16px;animation:fadeUp .25s ease both}
 .result-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:var(--rp);font-size:.85rem;font-weight:700;margin-bottom:12px}
 .result-tag.ok{background:var(--ok-bg);color:var(--ok);border:1px solid var(--ok-bd)}
 .result-tag.bad{background:var(--bad-bg);color:var(--bad);border:1px solid var(--bad-bd)}
-.exp{white-space:pre-wrap;font-size:.9rem;line-height:1.7;color:var(--mut);border-left:3px solid var(--pri);padding:12px 16px;background:var(--pri-glow);border-radius:0 var(--rs) var(--rs) 0}
+.exp{white-space:pre-wrap;font-size:.9rem;line-height:1.7;color:var(--tx);border-left:3px solid var(--pri);padding:12px 16px;background:var(--pri-glow);border-radius:0 var(--rs) var(--rs) 0}
 .exp-loading{display:flex;align-items:center;gap:10px;color:var(--dim);font-size:.88rem;padding:14px 16px;background:var(--surface);border:1px solid var(--bd);border-radius:var(--rs)}
 .spinner{width:16px;height:16px;border:2px solid var(--bd);border-top-color:var(--pri);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -118,9 +130,13 @@ kbd{background:var(--surface);border:1px solid var(--bd);border-radius:5px;paddi
   button{padding:11px 14px}
   button.pri{width:100%;justify-content:center}
 }
+/* ── Theme toggle button ── */
+#theme-btn{position:fixed;top:14px;right:14px;z-index:99;background:var(--card);border:1px solid var(--bd);border-radius:var(--rp);padding:7px 13px;font-size:.82rem;font-weight:600;color:var(--mut);box-shadow:var(--shadow-s);cursor:pointer;transition:background var(--t),color var(--t)}
+#theme-btn:hover{background:var(--card-h);color:var(--tx)}
 </style>
 </head>
 <body>
+<button id="theme-btn" onclick="toggleTheme()" title="Toggle light/dark mode">🌙 Dark</button>
 <main id="app">
   <div class="exp-loading" style="justify-content:center;min-height:50vh">
     <div class="spinner"></div>
@@ -136,6 +152,21 @@ const fmt=t=>new Date(t).toLocaleString(undefined,{dateStyle:'medium',timeStyle:
 function load(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||{};}catch{return{};}}
 function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(DB));}catch{}}
 function ex(id){return DB[id]||(DB[id]={attempts:[],missed:[],expl:{}});}
+
+// ── Theme ──────────────────────────────────────────────────────────────────
+const THEME_KEY='itp_theme';
+function applyTheme(){
+  const dark=localStorage.getItem(THEME_KEY)==='dark';
+  document.documentElement.toggleAttribute('data-dark',dark);
+  const btn=document.getElementById('theme-btn');
+  if(btn)btn.textContent=dark?'☀ Light':'🌙 Dark';
+}
+function toggleTheme(){
+  const isDark=document.documentElement.hasAttribute('data-dark');
+  localStorage.setItem(THEME_KEY,isDark?'light':'dark');
+  applyTheme();
+}
+applyTheme();
 
 fetch('questions.json').then(r=>r.json()).then(d=>{EXAMS=d.exams;home();})
   .catch(()=>{app.innerHTML=`<div class="card"><b>⚠ Could not load questions.json</b></div>`;});
