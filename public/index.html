@@ -27,6 +27,9 @@
       --ok: #1d8a42;
       --ok-bg: rgba(29, 138, 66, .09);
       --ok-bd: rgba(29, 138, 66, .3);
+      --warn: #c27803;
+      --warn-bg: rgba(194, 120, 3, .1);
+      --warn-bd: rgba(194, 120, 3, .3);
       --bad: #c0192d;
       --bad-bg: rgba(192, 25, 45, .08);
       --bad-bd: rgba(192, 25, 45, .28);
@@ -56,6 +59,9 @@
       --ok: #3ecf72;
       --ok-bg: rgba(62, 207, 114, .1);
       --ok-bd: rgba(62, 207, 114, .35);
+      --warn: #f59e0b;
+      --warn-bg: rgba(245, 158, 11, .12);
+      --warn-bd: rgba(245, 158, 11, .35);
       --bad: #ff6b8a;
       --bad-bg: rgba(255, 107, 138, .1);
       --bad-bd: rgba(255, 107, 138, .35);
@@ -110,6 +116,17 @@
       align-items: center;
       z-index: 90;
       pointer-events: none;
+      transition: max-width var(--t);
+    }
+
+    .top-nav.exam-nav {
+      max-width: 1080px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .nav-pill {
@@ -152,6 +169,308 @@
       max-width: 720px;
       margin: 0 auto;
       padding: 68px 16px 80px;
+      transition: max-width var(--t);
+    }
+
+    #app.exam-mode {
+      max-width: 1080px;
+    }
+
+    /* ── Exam 2-Column Grid (Desktop) ── */
+    .exam-container {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 350px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .exam-main {
+      min-width: 0;
+    }
+
+    /* ── Live Progress Dashboard (Sidebar) ── */
+    .exam-sidebar {
+      position: sticky;
+      top: 68px;
+      max-height: calc(100vh - 84px);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding-right: 4px;
+    }
+
+    .exam-sidebar::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .exam-sidebar::-webkit-scrollbar-thumb {
+      background: var(--bd);
+      border-radius: 4px;
+    }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2px;
+    }
+
+    .sidebar-title {
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--mut);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .mobile-close-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--mut);
+      cursor: pointer;
+      padding: 4px 8px;
+      box-shadow: none;
+    }
+
+    /* ── Dashboard Cards ── */
+    .dash-card {
+      background: var(--card);
+      border: 1px solid var(--bd);
+      border-radius: var(--r);
+      padding: 16px;
+      box-shadow: var(--shadow-s);
+    }
+
+    /* ── Pass/Fail Prediction Card ── */
+    .pred-card {
+      border: 1.5px solid var(--bd);
+      transition: border-color var(--t), background var(--t);
+    }
+
+    .pred-card.passing {
+      border-color: var(--ok-bd);
+      background: linear-gradient(145deg, var(--ok-bg), var(--card));
+    }
+
+    .pred-card.warning {
+      border-color: var(--warn-bd);
+      background: linear-gradient(145deg, var(--warn-bg), var(--card));
+    }
+
+    .pred-card.failing {
+      border-color: var(--bad-bd);
+      background: linear-gradient(145deg, var(--bad-bg), var(--card));
+    }
+
+    .pred-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .88rem;
+      font-weight: 800;
+      letter-spacing: .02em;
+      margin-bottom: 6px;
+    }
+
+    .pred-status.ok {
+      color: var(--ok);
+    }
+
+    .pred-status.warn {
+      color: var(--warn);
+    }
+
+    .pred-status.bad {
+      color: var(--bad);
+    }
+
+    .pred-score {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      margin-bottom: 4px;
+    }
+
+    .pred-desc {
+      font-size: .8rem;
+      color: var(--mut);
+      line-height: 1.45;
+    }
+
+    /* ── Stats Grid ── */
+    .stats-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .stat-pill {
+      background: var(--surface);
+      border: 1px solid var(--bd);
+      border-radius: var(--rs);
+      padding: 8px 6px;
+      text-align: center;
+    }
+
+    .stat-pill.ok {
+      border-color: var(--ok-bd);
+    }
+
+    .stat-pill.bad {
+      border-color: var(--bad-bd);
+    }
+
+    .stat-pill .s-num {
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .stat-pill.ok .s-num {
+      color: var(--ok);
+    }
+
+    .stat-pill.bad .s-num {
+      color: var(--bad);
+    }
+
+    .stat-pill .s-lbl {
+      font-size: .68rem;
+      font-weight: 600;
+      color: var(--mut);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    /* ── Wrong Questions List ── */
+    .wrong-list-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+      max-height: 110px;
+      overflow-y: auto;
+    }
+
+    .chip.clickable {
+      cursor: pointer;
+      transition: transform var(--t);
+    }
+
+    .chip.clickable:hover {
+      transform: scale(1.08);
+    }
+
+    /* ── 100-Question Grid Map ── */
+    .q-grid-wrap {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 5px;
+      margin-top: 10px;
+      max-height: 240px;
+      overflow-y: auto;
+      padding-right: 2px;
+    }
+
+    .q-tile {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      border: 1px solid var(--bd);
+      background: var(--surface);
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--mut);
+      cursor: pointer;
+      transition: transform var(--t), border-color var(--t), background var(--t);
+      user-select: none;
+    }
+
+    .q-tile:hover {
+      transform: scale(1.15);
+      z-index: 2;
+    }
+
+    .q-tile.ok {
+      background: var(--ok);
+      color: #fff;
+      border-color: var(--ok);
+    }
+
+    .q-tile.bad {
+      background: var(--bad);
+      color: #fff;
+      border-color: var(--bad);
+    }
+
+    .q-tile.current {
+      border: 2px solid var(--pri);
+      color: var(--pri);
+      box-shadow: 0 0 8px var(--pri-glow);
+      font-weight: 800;
+    }
+
+    .q-tile.current.ok {
+      background: var(--ok);
+      border-color: #fff;
+      color: #fff;
+    }
+
+    .q-tile.current.bad {
+      background: var(--bad);
+      border-color: #fff;
+      color: #fff;
+    }
+
+    .q-legend {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .73rem;
+      color: var(--mut);
+      margin-top: 8px;
+    }
+
+    .dot-legend {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 3px;
+    }
+
+    .dot-legend.ok {
+      background: var(--ok);
+    }
+
+    .dot-legend.bad {
+      background: var(--bad);
+    }
+
+    .dot-legend.cur {
+      border: 2px solid var(--pri);
+    }
+
+    /* ── Mobile Drawer Backdrop ── */
+    .sidebar-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .5);
+      backdrop-filter: blur(2px);
+      z-index: 98;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--t);
+    }
+
+    .sidebar-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     /* ── Type ── */
@@ -810,7 +1129,45 @@
       color: var(--dim);
     }
 
-    /* ── Mobile ── */
+    /* ── Responsive & Mobile Drawer ── */
+    #mobile-stats-btn {
+      display: none;
+    }
+
+    @media(max-width: 959px) {
+      .exam-container {
+        display: block;
+      }
+
+      #mobile-stats-btn {
+        display: inline-flex;
+      }
+
+      .mobile-close-btn {
+        display: block;
+      }
+
+      .exam-sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 330px;
+        max-width: 86vw;
+        max-height: 100vh;
+        background: var(--card);
+        z-index: 105;
+        padding: 20px 16px 40px;
+        box-shadow: -6px 0 28px rgba(0, 0, 0, .28);
+        transform: translateX(105%);
+        transition: transform .25s cubic-bezier(.4, 0, .2, 1);
+      }
+
+      .exam-sidebar.mobile-open {
+        transform: translateX(0);
+      }
+    }
+
     @media(max-width:480px) {
       #app {
         padding: 60px 12px 72px;
@@ -841,15 +1198,25 @@
 </head>
 
 <body>
-  <header class="top-nav">
-    <button id="session-btn" class="nav-pill" onclick="openSessionModal()" title="Manage Study Session">
-      <span class="dot-active"></span>
-      <span id="session-label">🔑 Session</span>
-    </button>
-    <button id="theme-btn" class="nav-pill" onclick="toggleTheme()" title="Toggle light/dark mode">
-      🌙 Dark
-    </button>
+  <header id="top-nav" class="top-nav">
+    <div class="nav-actions">
+      <button id="session-btn" class="nav-pill" onclick="openSessionModal()" title="Manage Study Session">
+        <span class="dot-active"></span>
+        <span id="session-label">🔑 Session</span>
+      </button>
+      <button id="mobile-stats-btn" class="nav-pill" onclick="toggleSidebar(true)" title="View Progress Dashboard">
+        📊 Stats
+      </button>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-btn" class="nav-pill" onclick="toggleTheme()" title="Toggle light/dark mode">
+        🌙 Dark
+      </button>
+    </div>
   </header>
+
+  <!-- Mobile Sidebar Backdrop -->
+  <div id="sidebar-backdrop" class="sidebar-backdrop" onclick="toggleSidebar(false)"></div>
 
   <main id="app">
     <div class="exp-loading" style="justify-content:center;min-height:50vh">
@@ -897,6 +1264,7 @@
     const MEM_CACHE = { short: {}, detailed: {} };
 
     const app = document.getElementById('app');
+    const topNav = document.getElementById('top-nav');
     const esc = t => String(t).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
     const fmt = t => new Date(t).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
 
@@ -944,7 +1312,6 @@
       localStorage.setItem(ACTIVE_KEY_STORE, k);
       addRecentKey(k);
       updateSessionNav();
-      // Optional async cloud sync from Supabase
       syncFromCloud(k);
       return data;
     }
@@ -955,7 +1322,6 @@
       try {
         localStorage.setItem(storageKey, JSON.stringify(sessionData));
       } catch (_) { }
-      // Optional async cloud save to Supabase
       syncToCloud(currentKey, sessionData);
     }
 
@@ -988,14 +1354,13 @@
       }
     }
 
-    // ── Cloud Sync (Supabase integration if backend configured) ────────────────
+    // ── Cloud Sync ────────────────────────────────────────────────────────────
     async function syncFromCloud(key) {
       try {
         const r = await fetch(`/api/session?key=${encodeURIComponent(key)}`);
         if (!r.ok) return;
         const res = await r.json();
         if (res.cloud && res.found && res.data) {
-          // If cloud has newer or matching data, merge
           sessionData = { ...sessionData, ...res.data };
           localStorage.setItem(getSessionStorageKey(key), JSON.stringify(sessionData));
           if (!S) home();
@@ -1016,15 +1381,12 @@
     // ── AI Explanation Caching & Storage ──────────────────────────────────────
     function getCachedExpl(examId, qNum, mode) {
       const key = `${examId}_${qNum}`;
-      // 1. In-memory
       if (MEM_CACHE[mode]?.[key]) return MEM_CACHE[mode][key];
-      // 2. LocalStorage global cache (persists across sessions & restarts)
       const globalTxt = localStorage.getItem(`itp_expl_${mode}_${key}`);
       if (globalTxt) {
         MEM_CACHE[mode][key] = globalTxt;
         return globalTxt;
       }
-      // 3. Current session cache
       const ed = examData(examId);
       const sessTxt = mode === 'detailed' ? ed.expl2?.[qNum] : ed.explS?.[qNum];
       if (sessTxt) {
@@ -1065,6 +1427,20 @@
     }
     applyTheme();
 
+    // ── Sidebar Drawer Toggle (Mobile) ─────────────────────────────────────────
+    function toggleSidebar(open) {
+      const sb = document.getElementById('exam-sidebar');
+      const bd = document.getElementById('sidebar-backdrop');
+      if (!sb || !bd) return;
+      if (open) {
+        sb.classList.add('mobile-open');
+        bd.classList.add('active');
+      } else {
+        sb.classList.remove('mobile-open');
+        bd.classList.remove('active');
+      }
+    }
+
     // ── Session Key Modal Logic ────────────────────────────────────────────────
     function openSessionModal() {
       const modal = document.getElementById('session-modal');
@@ -1076,7 +1452,6 @@
       input.value = currentKey || '';
       closeBtn.style.display = currentKey ? 'inline-block' : 'none';
 
-      // Load recent keys
       let recents = [];
       try { recents = JSON.parse(localStorage.getItem(RECENT_KEYS_STORE)) || []; } catch (_) { }
       if (recents.length > 0) {
@@ -1154,6 +1529,11 @@
     // ── Home View ──────────────────────────────────────────────────────────────
     function home() {
       S = null;
+      app.classList.remove('exam-mode');
+      topNav.classList.remove('exam-nav');
+      document.getElementById('mobile-stats-btn').style.display = 'none';
+      toggleSidebar(false);
+
       if (!currentKey) {
         openSessionModal();
         return;
@@ -1298,7 +1678,158 @@
       saveSessionData();
     }
 
+    function jumpTo(idx) {
+      if (!S || idx < 0 || idx >= S.list.length) return;
+      S.i = idx;
+      S.showPage = false;
+      saveCurrentExamProgress();
+      toggleSidebar(false);
+      show();
+    }
+
+    // ── Build Progress Dashboard Markup ────────────────────────────────────────
+    function buildProgressDashboard() {
+      if (!S) return '';
+      const totalQ = S.list.length;
+      const answeredKeys = Object.keys(S.answers);
+      const answeredCount = answeredKeys.length;
+      const pctDone = Math.round((answeredCount / totalQ) * 100);
+
+      // Calculate accuracy & wrong questions
+      const wrongList = [];
+      let correctCount = 0;
+
+      S.list.forEach((q, idx) => {
+        const picked = S.answers[q.n];
+        if (picked != null) {
+          if (picked === q.answer) {
+            correctCount++;
+          } else {
+            wrongList.push({ qNum: q.n, idx });
+          }
+        }
+      });
+
+      const wrongCount = wrongList.length;
+      const accuracy = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
+      const projectedScore = Math.round((accuracy / 100) * 1000);
+
+      // Pass / Fail Prediction
+      let predClass = 'passing', predStatus = 'ok', predTitle = '🎉 ON TRACK TO PASS', predDesc = '';
+      if (answeredCount < 3) {
+        predClass = '';
+        predStatus = 'warn';
+        predTitle = '🎯 IN PROGRESS';
+        predDesc = 'Answer at least 3 questions to unlock your pass/fail projection.';
+      } else if (accuracy >= 70) {
+        predClass = 'passing';
+        predStatus = 'ok';
+        predTitle = '🎉 ON TRACK TO PASS!';
+        predDesc = `Current accuracy: <b>${accuracy}%</b>. Projected score: <b>${projectedScore} / 1000</b> (Passing cutoff: 600 pts / 60%). You're in great shape!`;
+      } else if (accuracy >= 60) {
+        predClass = 'warning';
+        predStatus = 'warn';
+        predTitle = '⚖️ PASSING (NEAR CUTOFF)';
+        predDesc = `Current accuracy: <b>${accuracy}%</b>. Projected: <b>${projectedScore} / 1000</b>. You are right at the 600-point cutoff—keep focus on wrong items!`;
+      } else {
+        predClass = 'failing';
+        predStatus = 'bad';
+        predTitle = '⚠️ CURRENTLY BELOW PASSING';
+        predDesc = `Current accuracy: <b>${accuracy}%</b>. Projected: <b>${projectedScore} / 1000</b>. You need <b>600 points (60%)</b> to pass. Review explanations for missed questions!`;
+      }
+
+      // Mobile button update
+      const mobileStatsBtn = document.getElementById('mobile-stats-btn');
+      if (mobileStatsBtn) {
+        mobileStatsBtn.style.display = 'inline-flex';
+        mobileStatsBtn.innerHTML = answeredCount > 0
+          ? `📊 ${correctCount}/${answeredCount} (${accuracy}% · ${accuracy >= 60 ? 'Pass' : 'Review'})`
+          : '📊 Stats';
+      }
+
+      return `
+    <aside id="exam-sidebar" class="exam-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">📊 Live Progress Dashboard</div>
+        <button class="mobile-close-btn" onclick="toggleSidebar(false)" title="Close dashboard">✕</button>
+      </div>
+
+      <!-- Pass/Fail Status -->
+      <div class="dash-card pred-card ${predClass}">
+        <div class="pred-status ${predStatus}">${predTitle}</div>
+        <div class="pred-score">${answeredCount > 0 ? accuracy + '%' : '--'} <span style="font-size:.9rem;font-weight:600;color:var(--mut)">accuracy</span></div>
+        <div class="pred-desc">${predDesc}</div>
+      </div>
+
+      <!-- Completion Stats -->
+      <div class="dash-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:.82rem;font-weight:700">
+          <span>Completion: ${pctDone}%</span>
+          <span style="color:var(--mut)">${answeredCount} / ${totalQ}</span>
+        </div>
+        <div class="bar" style="margin:8px 0 10px"><div class="bar-fill" style="width:${pctDone}%"></div></div>
+
+        <div class="stats-3col">
+          <div class="stat-pill ok">
+            <div class="s-num">${correctCount}</div>
+            <div class="s-lbl">Correct</div>
+          </div>
+          <div class="stat-pill bad">
+            <div class="s-num">${wrongCount}</div>
+            <div class="s-lbl">Wrong</div>
+          </div>
+          <div class="stat-pill">
+            <div class="s-num">${totalQ - answeredCount}</div>
+            <div class="s-lbl">Left</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wrong Questions Tracker -->
+      <div class="dash-card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:.82rem;font-weight:700;color:var(--tx)">❌ Missed Questions (${wrongCount})</span>
+          <span style="font-size:.7rem;color:var(--dim)">Click to review</span>
+        </div>
+        ${wrongList.length === 0
+          ? `<div style="font-size:.82rem;color:var(--ok);margin-top:8px;font-weight:600">✓ No mistakes yet! Clean sheet.</div>`
+          : `<div class="wrong-list-wrap">
+              ${wrongList.map(w => `<span class="chip bad clickable" onclick="jumpTo(${w.idx})" title="Review Question ${w.qNum}">Q${w.qNum} ✗</span>`).join('')}
+             </div>`
+        }
+      </div>
+
+      <!-- 100-Question Map Grid -->
+      <div class="dash-card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:.82rem;font-weight:700;color:var(--tx)">Question Map (${totalQ})</span>
+          <span style="font-size:.7rem;color:var(--dim)">Tap any Q</span>
+        </div>
+        <div class="q-grid-wrap">
+          ${S.list.map((q, idx) => {
+            const picked = S.answers[q.n];
+            const isCur = idx === S.i;
+            let cls = isCur ? 'current ' : '';
+            if (picked != null) {
+              cls += (picked === q.answer ? 'ok' : 'bad');
+            }
+            return `<div class="q-tile ${cls}" onclick="jumpTo(${idx})" title="Go to Question ${q.n}">${q.n}</div>`;
+          }).join('')}
+        </div>
+        <div class="q-legend">
+          <span><span class="dot-legend ok"></span> Correct</span>
+          <span><span class="dot-legend bad"></span> Wrong</span>
+          <span><span class="dot-legend cur"></span> Current</span>
+        </div>
+      </div>
+    </aside>`;
+    }
+
+    // ── Show Question & Exam Layout ────────────────────────────────────────────
     function show() {
+      app.classList.add('exam-mode');
+      topNav.classList.add('exam-nav');
+
       const q = S.list[S.i], picked = S.answers[q.n], done = picked != null;
       const keys = Object.keys(q.options);
       const pct = ((S.i + (done ? 1 : 0)) / S.list.length * 100).toFixed(1);
@@ -1306,47 +1837,55 @@
       const modeLabel = S.mode === 'retry' ? 'Retry missed' : 'Full exam';
 
       app.innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-      <button class="ghost sm" onclick="home()" title="Return to home menu (progress is automatically saved)">← Menu (Saved)</button>
-      <span class="badge cached">🔑 ${esc(currentKey)}</span>
-    </div>
-
-    <div class="prog-hdr">
-      <span class="prog-label">${modeLabel}</span>
-      <span class="prog-count">Question ${S.i + 1} / ${S.list.length}</span>
-    </div>
-    <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
-
-    <div class="card">
-      <div class="q-num">Question ${q.n}</div>
-      <div class="stem">${esc(q.stem)}</div>
-      ${keys.map(k => {
-        let cls = done ? (k === q.answer ? 'ok' : (k === picked ? 'bad' : 'neutral')) : '';
-        return `<button class="opt ${cls}" ${done ? 'disabled' : ''} onclick="pick('${k}')"><span class="key">${k}</span><span>${esc(q.options[k])}</span></button>`;
-      }).join('')}
-
-      <button class="ghost sm" style="margin-top:10px" onclick="S.showPage=!S.showPage;saveCurrentExamProgress();show()">
-        ${fig ? '🔼 Hide' : '📄 View'} original exam page
-      </button>
-      ${fig ? `<img class="pg" src="pages/p-${String(q.page).padStart(2, '0')}.jpg" alt="Exam page ${q.page}">` : ''}
-
-      ${done ? `
-        <div class="exp-wrap">
-          <div class="result-tag ${picked === q.answer ? 'ok' : 'bad'}">
-            ${picked === q.answer ? '✓ Correct!' : '✗ Wrong — Answer is ' + q.answer.toUpperCase()}
-          </div>
-          <div class="exp-header-row">
-            <span style="font-size:.78rem;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.05em">Tutor Explanation</span>
-            <span id="exp-badge"></span>
-          </div>
-          <div id="exp" class="exp-loading"><div class="spinner"></div><span>Getting explanation…</span></div>
-          <div id="expd" style="margin-top:14px"></div>
+    <div class="exam-container">
+      <!-- Main Question Column -->
+      <div class="exam-main">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <button class="ghost sm" onclick="home()" title="Return to home menu (progress is automatically saved)">← Menu (Saved)</button>
+          <span class="badge cached">🔑 ${esc(currentKey)}</span>
         </div>
-        <div class="next-row">
-          <button class="pri" onclick="next()">${S.i + 1 < S.list.length ? 'Next →' : 'Finish ✓'}</button>
+
+        <div class="prog-hdr">
+          <span class="prog-label">${modeLabel}</span>
+          <span class="prog-count">Question ${S.i + 1} / ${S.list.length}</span>
         </div>
-        <p class="hint">Press <kbd>Enter</kbd> or <kbd>→</kbd> to continue</p>
-      `: `<p class="hint">Press <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd> <kbd>D</kbd> to answer</p>`}
+        <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
+
+        <div class="card">
+          <div class="q-num">Question ${q.n}</div>
+          <div class="stem">${esc(q.stem)}</div>
+          ${keys.map(k => {
+            let cls = done ? (k === q.answer ? 'ok' : (k === picked ? 'bad' : 'neutral')) : '';
+            return `<button class="opt ${cls}" ${done ? 'disabled' : ''} onclick="pick('${k}')"><span class="key">${k}</span><span>${esc(q.options[k])}</span></button>`;
+          }).join('')}
+
+          <button class="ghost sm" style="margin-top:10px" onclick="S.showPage=!S.showPage;saveCurrentExamProgress();show()">
+            ${fig ? '🔼 Hide' : '📄 View'} original exam page
+          </button>
+          ${fig ? `<img class="pg" src="pages/p-${String(q.page).padStart(2, '0')}.jpg" alt="Exam page ${q.page}">` : ''}
+
+          ${done ? `
+            <div class="exp-wrap">
+              <div class="result-tag ${picked === q.answer ? 'ok' : 'bad'}">
+                ${picked === q.answer ? '✓ Correct!' : '✗ Wrong — Answer is ' + q.answer.toUpperCase()}
+              </div>
+              <div class="exp-header-row">
+                <span style="font-size:.78rem;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.05em">Tutor Explanation</span>
+                <span id="exp-badge"></span>
+              </div>
+              <div id="exp" class="exp-loading"><div class="spinner"></div><span>Getting explanation…</span></div>
+              <div id="expd" style="margin-top:14px"></div>
+            </div>
+            <div class="next-row">
+              <button class="pri" onclick="next()">${S.i + 1 < S.list.length ? 'Next →' : 'Finish ✓'}</button>
+            </div>
+            <p class="hint">Press <kbd>Enter</kbd> or <kbd>→</kbd> to continue</p>
+          `: `<p class="hint">Press <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd> <kbd>D</kbd> to answer</p>`}
+        </div>
+      </div>
+
+      <!-- Right Column: Live Progress Dashboard -->
+      ${buildProgressDashboard()}
     </div>`;
 
       if (done) explain(q);
@@ -1434,7 +1973,6 @@
       }
     }
 
-    // Detailed explanation: if already generated, show it directly. If not, show button.
     function detArea(q) {
       const el = document.getElementById('expd');
       if (!el) return;
@@ -1456,7 +1994,6 @@
         return;
       }
 
-      // If not yet generated, provide button to generate once
       el.innerHTML = `<button class="ghost" onclick="detailed()">✨ Detailed explanation (like I'm 5)</button>`;
     }
 
@@ -1494,6 +2031,11 @@
 
     // ── Finish Exam ────────────────────────────────────────────────────────────
     function finish() {
+      app.classList.remove('exam-mode');
+      topNav.classList.remove('exam-nav');
+      document.getElementById('mobile-stats-btn').style.display = 'none';
+      toggleSidebar(false);
+
       const d = examData(S.id);
       const wrong = S.list.filter(q => S.answers[q.n] !== q.answer).map(q => q.n);
       const total = S.list.length, correct = total - wrong.length;
@@ -1502,7 +2044,6 @@
       d.attempts.push({ t: Date.now(), mode: S.mode, total, correct, wrong });
       d.missed = S.mode === 'full' ? wrong : d.missed.filter(n => wrong.includes(n));
 
-      // Clear in-progress since completed
       if (sessionData) {
         sessionData.inProgress = null;
       }
@@ -1523,6 +2064,10 @@
     }
 
     function showHistory(id) {
+      app.classList.remove('exam-mode');
+      topNav.classList.remove('exam-nav');
+      document.getElementById('mobile-stats-btn').style.display = 'none';
+
       const exam = EXAMS.find(x => x.id === id), d = examData(id);
       app.innerHTML = `
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
