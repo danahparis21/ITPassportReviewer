@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Interactive IT Passport (ITPEC/IPA) exam reviewer. Click answers, get instant AI explanations, track your progress.">
+<title>IT Passport Reviewer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ── Tokens ── */
+:root{
+  --bg:#0f1117;--surface:#1a1d27;--card:#1e2130;--card-h:#252840;
+  --bd:#2d3148;--bd-b:#3d4268;
+  --tx:#e8eaf4;--mut:#7c82a8;--dim:#4a5080;
+  --pri:#6c7fff;--pri-glow:rgba(108,127,255,.18);
+  --ok:#3ecf72;--ok-bg:rgba(62,207,114,.1);--ok-bd:rgba(62,207,114,.35);
+  --bad:#ff6b8a;--bad-bg:rgba(255,107,138,.1);--bad-bd:rgba(255,107,138,.35);
+  --accent:#a78bfa;
+  --r:16px;--rs:10px;--rp:99px;
+  --shadow:0 8px 32px rgba(0,0,0,.4);--shadow-s:0 2px 8px rgba(0,0,0,.25);
+  --font:'Inter',system-ui,sans-serif;
+  --t:.18s cubic-bezier(.4,0,.2,1);
+}
+/* ── Reset ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);font-size:15px;line-height:1.6;background:var(--bg);color:var(--tx);min-height:100dvh;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 20% -10%,rgba(108,127,255,.12) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 110%,rgba(167,139,250,.08) 0%,transparent 60%);pointer-events:none;z-index:0}
+/* ── Layout ── */
+#app{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:24px 16px 80px}
+/* ── Type ── */
+h1{font-size:clamp(1.4rem,5vw,1.9rem);font-weight:800;letter-spacing:-.02em;background:linear-gradient(135deg,#fff 30%,var(--pri) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.25em}
+.subtitle{font-size:.9rem;color:var(--mut);margin-bottom:1.5rem}
+/* ── Cards ── */
+.card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:20px;margin-bottom:14px;box-shadow:var(--shadow-s);transition:border-color var(--t),box-shadow var(--t);animation:fadeUp .3s ease both}
+.card:hover{border-color:var(--bd-b)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+/* ── Badge ── */
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:var(--rp);font-size:.78rem;font-weight:600;background:var(--surface);border:1px solid var(--bd);color:var(--mut)}
+.badge.ok{background:var(--ok-bg);border-color:var(--ok-bd);color:var(--ok)}
+.badge.bad{background:var(--bad-bg);border-color:var(--bad-bd);color:var(--bad)}
+/* ── Buttons ── */
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{font:600 .88rem/1 var(--font);cursor:pointer;border-radius:var(--rs);padding:10px 16px;border:1px solid var(--bd);background:var(--surface);color:var(--tx);transition:background var(--t),border-color var(--t),transform var(--t),box-shadow var(--t);white-space:nowrap;-webkit-tap-highlight-color:transparent}
+button:hover:not(:disabled){background:var(--card-h);border-color:var(--bd-b)}
+button:active:not(:disabled){transform:scale(.97)}
+button:disabled{opacity:.38;cursor:not-allowed}
+button.pri{background:var(--pri);border-color:var(--pri);color:#fff;box-shadow:0 4px 18px rgba(108,127,255,.35)}
+button.pri:hover:not(:disabled){background:#7d8fff;box-shadow:0 6px 22px rgba(108,127,255,.5)}
+button.ghost{background:transparent;border-color:transparent;color:var(--mut);padding:8px 10px}
+button.ghost:hover:not(:disabled){background:var(--surface);color:var(--tx);border-color:var(--bd)}
+button.sm{padding:7px 12px;font-size:.8rem}
+/* ── Progress ── */
+.prog-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.prog-label{font-size:.82rem;color:var(--mut);font-weight:500}
+.prog-count{font-size:.82rem;color:var(--mut);font-weight:600}
+.bar{height:5px;background:var(--bd);border-radius:var(--rp);overflow:hidden;margin-bottom:16px}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--pri),var(--accent));border-radius:var(--rp);transition:width .4s cubic-bezier(.4,0,.2,1)}
+/* ── Q stem ── */
+.q-num{font-size:.8rem;font-weight:700;color:var(--pri);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.stem{white-space:pre-wrap;font-size:.97rem;line-height:1.65;color:var(--tx);margin-bottom:18px}
+/* ── Options ── */
+.opt{display:flex;align-items:flex-start;gap:10px;width:100%;text-align:left;margin-bottom:9px;padding:13px 16px;white-space:pre-wrap;font-size:.93rem;font-weight:500;line-height:1.5;border-radius:var(--rs);border:1.5px solid var(--bd);background:var(--surface);color:var(--tx);transition:background var(--t),border-color var(--t),transform var(--t),box-shadow var(--t)}
+.opt:not(:disabled):hover{border-color:var(--pri);background:var(--pri-glow);transform:translateX(3px);box-shadow:-3px 0 0 var(--pri)}
+.opt:active:not(:disabled){transform:translateX(1px) scale(.99)}
+.opt .key{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;border-radius:8px;background:var(--bd);color:var(--mut);font-size:.78rem;font-weight:700;flex-shrink:0;margin-top:1px;transition:background var(--t),color var(--t)}
+.opt.ok{background:var(--ok-bg)!important;border-color:var(--ok-bd)!important;box-shadow:-3px 0 0 var(--ok)}
+.opt.ok .key{background:var(--ok);color:#fff}
+.opt.bad{background:var(--bad-bg)!important;border-color:var(--bad-bd)!important;box-shadow:-3px 0 0 var(--bad)}
+.opt.bad .key{background:var(--bad);color:#fff}
+.opt.neutral:disabled{opacity:.45}
+/* ── Explanation ── */
+.exp-wrap{margin-top:16px;animation:fadeUp .25s ease both}
+.result-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:var(--rp);font-size:.85rem;font-weight:700;margin-bottom:12px}
+.result-tag.ok{background:var(--ok-bg);color:var(--ok);border:1px solid var(--ok-bd)}
+.result-tag.bad{background:var(--bad-bg);color:var(--bad);border:1px solid var(--bad-bd)}
+.exp{white-space:pre-wrap;font-size:.9rem;line-height:1.7;color:var(--mut);border-left:3px solid var(--pri);padding:12px 16px;background:var(--pri-glow);border-radius:0 var(--rs) var(--rs) 0}
+.exp-loading{display:flex;align-items:center;gap:10px;color:var(--dim);font-size:.88rem;padding:14px 16px;background:var(--surface);border:1px solid var(--bd);border-radius:var(--rs)}
+.spinner{width:16px;height:16px;border:2px solid var(--bd);border-top-color:var(--pri);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+.api-notice{font-size:.82rem;color:var(--mut);background:var(--surface);border:1px solid var(--bd);border-radius:var(--rs);padding:10px 14px;margin-top:8px;display:flex;align-items:flex-start;gap:8px}
+/* ── Image ── */
+img.pg{max-width:100%;border:1px solid var(--bd);border-radius:var(--rs);margin-top:8px;animation:fadeUp .25s ease both}
+/* ── Score screen ── */
+.score-card{text-align:center;padding:40px 20px}
+.score-emoji{font-size:2.8rem;margin-bottom:12px}
+.score-num{font-size:3.5rem;font-weight:800;letter-spacing:-.03em}
+.score-num .slash{color:var(--dim);font-weight:400}
+.score-pct{font-size:1.1rem;color:var(--mut);font-weight:600;margin:6px 0 20px}
+/* ── Chips ── */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 20px}
+.chip{padding:3px 10px;border-radius:var(--rp);font-size:.78rem;font-weight:700}
+.chip.bad{background:var(--bad-bg);color:var(--bad);border:1px solid var(--bad-bd)}
+/* ── History ── */
+.hist-score{font-weight:700;font-size:1.05rem}
+.hist-meta{font-size:.8rem;color:var(--mut);margin-top:3px}
+.hist-missed{font-size:.8rem;color:var(--bad);margin-top:4px}
+/* ── Misc ── */
+.home-logo{font-size:2rem;margin-bottom:6px}
+hr.div{border:none;border-top:1px solid var(--bd);margin:20px 0}
+.data-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:6px}
+input[type=file]{display:none}
+.file-label{cursor:pointer;padding:9px 14px;border-radius:var(--rs);border:1px solid var(--bd);background:var(--surface);color:var(--mut);font:600 .88rem var(--font);transition:background var(--t),color var(--t)}
+.file-label:hover{background:var(--card-h);color:var(--tx)}
+.hint{font-size:.76rem;color:var(--dim);text-align:center;margin-top:14px}
+kbd{background:var(--surface);border:1px solid var(--bd);border-radius:5px;padding:1px 5px;font-size:.72rem;font-family:monospace}
+.next-row{display:flex;justify-content:flex-end;margin-top:18px;gap:8px}
+.exam-title{font-size:1rem;font-weight:700;margin-bottom:6px}
+.exam-meta{font-size:.82rem;color:var(--mut);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.dot{color:var(--dim)}
+/* ── Mobile ── */
+@media(max-width:480px){
+  #app{padding:16px 12px 72px}
+  .card{padding:16px}
+  .opt{padding:12px 13px}
+  .score-num{font-size:2.8rem}
+  button{padding:11px 14px}
+  button.pri{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+<main id="app">
+  <div class="exp-loading" style="justify-content:center;min-height:50vh">
+    <div class="spinner"></div>
+    <span>Loading questions…</span>
+  </div>
+</main>
+<script>
+const STORAGE_KEY='itp_reviewer_v1';
+let EXAMS=[],DB=load(),S=null;
+const app=document.getElementById('app');
+const esc=t=>String(t).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const fmt=t=>new Date(t).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'});
+function load(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||{};}catch{return{};}}
+function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(DB));}catch{}}
+function ex(id){return DB[id]||(DB[id]={attempts:[],missed:[],expl:{}});}
+
+fetch('questions.json').then(r=>r.json()).then(d=>{EXAMS=d.exams;home();})
+  .catch(()=>{app.innerHTML=`<div class="card"><b>⚠ Could not load questions.json</b></div>`;});
+
+document.addEventListener('keydown',e=>{
+  if(!S)return;
+  const q=S.list[S.i],picked=S.answers[q.n],keys=Object.keys(q.options);
+  if(picked==null){
+    const idx='abcd'.indexOf(e.key.toLowerCase());
+    if(idx>=0&&idx<keys.length)pick(keys[idx]);
+  }else{
+    if(e.key==='Enter'||e.key==='ArrowRight')next();
+  }
+});
+
+function home(){
+  S=null;
+  app.innerHTML=`
+    <div style="margin-bottom:24px">
+      <div class="home-logo">📘</div>
+      <h1>IT Passport Reviewer</h1>
+      <p class="subtitle">ITPEC / IPA Japan &middot; Click answers, learn instantly</p>
+    </div>
+    ${EXAMS.map(e=>{
+      const d=ex(e.id),full=d.attempts.filter(a=>a.mode==='full');
+      const best=full.length?Math.max(...full.map(a=>a.correct)):null;
+      const last=d.attempts.at(-1);
+      const pct=best!=null?Math.round(best/e.questions.length*100):null;
+      const statusBadge=d.missed.length
+        ?`<span class="badge bad">⚠ ${d.missed.length} to master</span>`
+        :full.length?`<span class="badge ok">✓ All mastered</span>`:`<span class="badge">Not started</span>`;
+      return `<div class="card">
+        <div class="exam-title">${esc(e.title)}</div>
+        <div class="exam-meta">
+          <span>${e.questions.length} questions</span>
+          ${best!=null?`<span class="dot">·</span><span>${pct}% best</span>`:''}
+          ${last?`<span class="dot">·</span><span>Last: ${last.correct}/${last.total}</span>`:''}
+          ${statusBadge}
+        </div>
+        <div class="btn-row">
+          <button class="pri" onclick="start('${e.id}','full')">▶ Start full exam</button>
+          <button ${d.missed.length?'':'disabled'} onclick="start('${e.id}','retry')">Retry missed (${d.missed.length})</button>
+          <button ${d.attempts.length?'':'disabled'} onclick="showHistory('${e.id}')">History</button>
+        </div>
+      </div>`;
+    }).join('')}
+    <hr class="div">
+    <div class="data-row">
+      <button class="sm" onclick="backup()">📤 Export progress</button>
+      <label class="file-label sm" for="restore-file">📥 Import progress</label>
+      <input type="file" id="restore-file" accept=".json" onchange="restore(this)">
+    </div>`;
+}
+
+function start(id,mode){
+  const e=EXAMS.find(x=>x.id===id),d=ex(id);
+  const list=mode==='retry'?e.questions.filter(q=>d.missed.includes(q.n)):[...e.questions];
+  S={id,mode,list,i:0,answers:{},showPage:false};show();
+}
+
+function show(){
+  const q=S.list[S.i],picked=S.answers[q.n],done=picked!=null;
+  const keys=Object.keys(q.options);
+  const pct=((S.i+(done?1:0))/S.list.length*100).toFixed(1);
+  const fig=q.figure||S.showPage;
+  const modeLabel=S.mode==='retry'?'Retry missed':'Full exam';
+  app.innerHTML=`
+    <div class="prog-hdr">
+      <span class="prog-label">${modeLabel}</span>
+      <span class="prog-count">${S.i+1} / ${S.list.length}</span>
+    </div>
+    <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
+    <div class="card">
+      <div class="q-num">Question ${q.n}</div>
+      <div class="stem">${esc(q.stem)}</div>
+      ${keys.map(k=>{
+        let cls=done?(k===q.answer?'ok':(k===picked?'bad':'neutral')):'';
+        return `<button class="opt ${cls}" ${done?'disabled':''} onclick="pick('${k}')"><span class="key">${k}</span><span>${esc(q.options[k])}</span></button>`;
+      }).join('')}
+      <button class="ghost sm" style="margin-top:10px" onclick="S.showPage=!S.showPage;show()">
+        ${fig?'🔼 Hide':'📄 View'} original exam page
+      </button>
+      ${fig?`<img class="pg" src="pages/p-${String(q.page).padStart(2,'0')}.jpg" alt="Exam page ${q.page}">`:''}
+      ${done?`
+        <div class="exp-wrap">
+          <div class="result-tag ${picked===q.answer?'ok':'bad'}">
+            ${picked===q.answer?'✓ Correct!':'✗ Wrong — Answer is '+q.answer.toUpperCase()}
+          </div>
+          <div id="exp" class="exp-loading"><div class="spinner"></div><span>Getting AI explanation…</span></div>
+        </div>
+        <div class="next-row">
+          <button class="pri" onclick="next()">${S.i+1<S.list.length?'Next →':'Finish ✓'}</button>
+        </div>
+        <p class="hint">Press <kbd>Enter</kbd> or <kbd>→</kbd> to continue</p>
+      `:`<p class="hint">Press <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd> <kbd>D</kbd> to answer</p>`}
+    </div>`;
+  if(done)explain(q);
+}
+
+function pick(k){
+  const q=S.list[S.i];
+  if(S.answers[q.n]==null){S.answers[q.n]=k;show();}
+}
+
+function next(){
+  if(S.i+1<S.list.length){S.i++;show();}else{finish();}
+}
+
+async function explain(q){
+  const cache=ex(S.id).expl,box=document.getElementById('exp');
+  if(!box)return;
+  if(cache[q.n]){renderExp(box,cache[q.n]);return;}
+  try{
+    const r=await fetch('/api/explain',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({stem:q.stem,options:q.options,answer:q.answer})});
+    const data=await r.json();
+    if(!r.ok)throw new Error(data.error||`HTTP ${r.status}`);
+    cache[q.n]=data.explanation;save();
+    const b=document.getElementById('exp');
+    if(b&&S&&S.list[S.i].n===q.n)renderExp(b,data.explanation);
+  }catch(err){
+    const b=document.getElementById('exp');
+    if(!b)return;
+    const fallback=buildFallback(q);
+    b.outerHTML=`
+      <div class="api-notice">
+        <span>ℹ️</span>
+        <span>AI explanation unavailable locally. Deploy to Vercel with <code>GEMINI_API_KEY</code> to enable it.</span>
+      </div>
+      <div class="exp" style="margin-top:10px">${esc(fallback)}</div>`;
+  }
+}
+
+function renderExp(el,text){el.className='exp';el.textContent=text;}
+
+function buildFallback(q){
+  const ans=q.answer,ansText=q.options[ans]||'';
+  const wrongs=Object.entries(q.options).filter(([k])=>k!==ans).map(([k,v])=>`${k.toUpperCase()}) ${v}`).join('\n');
+  return `Correct: ${ans.toUpperCase()}) ${ansText}\n\nOther options:\n${wrongs}\n\n(Full AI explanation available after deploying with a Gemini API key.)`;
+}
+
+function finish(){
+  const d=ex(S.id);
+  const wrong=S.list.filter(q=>S.answers[q.n]!==q.answer).map(q=>q.n);
+  const total=S.list.length,correct=total-wrong.length;
+  const pct=Math.round(correct/total*100),perfect=wrong.length===0;
+  d.attempts.push({t:Date.now(),mode:S.mode,total,correct,wrong});
+  d.missed=S.mode==='full'?wrong:d.missed.filter(n=>wrong.includes(n));
+  save();
+  const id=S.id;S=null;
+  app.innerHTML=`
+    <div class="card score-card" style="animation:fadeUp .4s ease both">
+      <div class="score-emoji">${perfect?'🎉':pct>=70?'💪':'📖'}</div>
+      <div class="score-num">${correct}<span class="slash">/${total}</span></div>
+      <div class="score-pct">${pct}% &middot; ${perfect?'Perfect score!':pct>=70?'Good job!':'Keep studying!'}</div>
+      ${wrong.length?`<p style="font-size:.88rem;color:var(--mut);margin-bottom:8px">Missed questions:</p><div class="chips">${wrong.map(n=>`<span class="chip bad">Q${n}</span>`).join('')}</div>`:''}
+      <div class="btn-row" style="justify-content:center">
+        ${wrong.length?`<button class="pri" onclick="start('${id}','retry')">Retry ${wrong.length} missed</button>`:''}
+        <button onclick="home()">← Home</button>
+      </div>
+    </div>`;
+}
+
+function showHistory(id){
+  const exam=EXAMS.find(x=>x.id===id),d=ex(id);
+  app.innerHTML=`
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+      <button class="ghost" onclick="home()">← Back</button>
+      <h1 style="font-size:1.2rem;margin:0">History</h1>
+    </div>
+    <p style="font-size:.85rem;color:var(--mut);margin-bottom:14px">${esc(exam?.title||'')}</p>
+    ${d.attempts.length===0
+      ?`<div class="card" style="color:var(--mut);text-align:center;padding:40px">No attempts yet</div>`
+      :d.attempts.slice().reverse().map(a=>`
+        <div class="card">
+          <div class="hist-score">${a.correct}/${a.total} <span style="color:var(--mut);font-weight:400;font-size:.9rem">(${Math.round(a.correct/a.total*100)}%)</span></div>
+          <div class="hist-meta">${fmt(a.t)} &middot; <span class="badge">${a.mode}</span></div>
+          ${a.wrong?.length?`<div class="hist-missed">Missed: ${a.wrong.map(n=>'Q'+n).join(', ')}</div>`:`<div style="font-size:.8rem;color:var(--ok)">Perfect ✓</div>`}
+        </div>`).join('')}`;
+}
+
+function backup(){
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(DB)],{type:'application/json'}));
+  a.download='itpassport-progress.json';a.click();
+}
+function restore(el){
+  const f=el.files[0];if(!f)return;
+  f.text().then(t=>{try{DB=JSON.parse(t);save();home();}catch{alert('Invalid backup file');}});
+}
+</script>
+</body>
+</html>
