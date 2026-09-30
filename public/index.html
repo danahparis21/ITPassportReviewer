@@ -400,14 +400,41 @@
     }
 
     .exp {
-      white-space: pre-wrap;
-      font-size: .9rem;
-      line-height: 1.7;
-      color: var(--tx);
-      border-left: 3px solid var(--pri);
-      padding: 12px 16px;
-      background: var(--pri-glow);
-      border-radius: 0 var(--rs) var(--rs) 0
+      background: #fff;
+      color: #1c2333;
+      border: 1px solid #d9deea;
+      border-radius: 14px;
+      padding: 20px 22px;
+      font-size: 1.02rem;
+      line-height: 1.85;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .08)
+    }
+
+    .exp h4 {
+      margin: 18px 0 6px;
+      font-size: 1.05rem;
+      color: #2f4bc4;
+      border-bottom: 2px solid #e6e9f5;
+      padding-bottom: 4px
+    }
+
+    .exp h4:first-child {
+      margin-top: 0
+    }
+
+    .exp p {
+      margin: 0 0 10px
+    }
+
+    .exp b {
+      color: #111
+    }
+
+    .exp code {
+      background: #eef1fb;
+      padding: 1px 6px;
+      border-radius: 5px;
+      font-size: .95em
     }
 
     .exp-loading {
@@ -760,7 +787,7 @@
       const q = S.list[S.i], picked = S.answers[q.n], done = picked != null;
       const keys = Object.keys(q.options);
       const pct = ((S.i + (done ? 1 : 0)) / S.list.length * 100).toFixed(1);
-      const fig = q.figure || S.showPage;
+      const fig = S.showPage;
       const modeLabel = S.mode === 'retry' ? 'Retry missed' : 'Full exam';
       app.innerHTML = `
     <div class="prog-hdr">
@@ -784,7 +811,7 @@
           <div class="result-tag ${picked === q.answer ? 'ok' : 'bad'}">
             ${picked === q.answer ? '✓ Correct!' : '✗ Wrong — Answer is ' + q.answer.toUpperCase()}
           </div>
-          <div id="exp" class="exp-loading"><div class="spinner"></div><span>Getting AI explanation…</span></div>
+          <div id="exp" class="exp-loading"><div class="spinner"></div><span>Writing a detailed explanation…</span></div>
         </div>
         <div class="next-row">
           <button class="pri" onclick="next()">${S.i + 1 < S.list.length ? 'Next →' : 'Finish ✓'}</button>
@@ -801,11 +828,11 @@
     }
 
     function next() {
-      if (S.i + 1 < S.list.length) { S.i++; show(); } else { finish(); }
+      if (S.i + 1 < S.list.length) { S.i++; S.showPage = false; show(); } else { finish(); }
     }
 
     async function explain(q) {
-      const cache = ex(S.id).expl, box = document.getElementById('exp');
+      const dd = ex(S.id); dd.expl2 = dd.expl2 || {}; const cache = dd.expl2, box = document.getElementById('exp');
       if (!box) return;
       if (cache[q.n]) { renderExp(box, cache[q.n]); return; }
       try {
@@ -829,7 +856,13 @@
       }
     }
 
-    function renderExp(el, text) { el.className = 'exp'; el.textContent = text; }
+    function renderExp(el, text) {
+      el.className = 'exp';
+      el.innerHTML = esc(text).split(/\n{2,}|\n(?=## )/).map(p => p.trim()).filter(Boolean).map(p => {
+        p = p.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/`([^`]+)`/g, '<code>$1</code>');
+        return p.startsWith('## ') ? '<h4>' + p.slice(3).split('\n')[0] + '</h4>' + (p.split('\n').slice(1).join('\n').trim() ? '<p>' + p.split('\n').slice(1).join('<br>') + '</p>' : '') : '<p>' + p.replace(/\n/g, '<br>') + '</p>';
+      }).join('');
+    }
 
     function buildFallback(q) {
       const ans = q.answer, ansText = q.options[ans] || '';
