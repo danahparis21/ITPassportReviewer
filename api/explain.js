@@ -17,7 +17,7 @@ function providers() {
   return list.map(p => ({ ...p, base: p.base.replace(/\/+$/, '') }));
 }
 
-async function ask(p, system, user) {
+async function ask(p, system, user, maxTokens) {
   const ctl = new AbortController();
   const t = setTimeout(() => ctl.abort(), 25000);
   try {
@@ -26,7 +26,7 @@ async function ask(p, system, user) {
       signal: ctl.signal,
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${p.key}` },
       body: JSON.stringify({
-        model: p.model, temperature: 0.4, max_tokens: 3500,
+        model: p.model, temperature: 0.4, max_tokens: maxTokens,
         messages: [{ role: 'system', content: system }, { role: 'user', content: user }]
       })
     });
@@ -42,12 +42,13 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
   const provs = providers();
   if (!provs.length) return res.status(500).json({ error: 'No AI provider configured. Set AI_API_KEY, AI_BASE_URL, AI_MODEL in Vercel env vars.' });
-  const { stem, options, answer } = req.body || {};
+  const { stem, options, answer, mode } = req.body || {};
+  const detailed = mode === 'detailed';
   if (!stem || !options || !answer) return res.status(400).json({ error: 'Missing fields' });
 
   const opts = Object.entries(options).map(([k, v]) => `${k}) ${v}`).join('\n');
   const system = 'You are a warm, patient tutor helping a student fully master the IT Passport exam (ITPEC / IPA Japan). Explain like the student is 5 years old: very simple words, short sentences, everyday examples (food, toys, school, games). Never assume prior knowledge. Do not use tables.';
-  const user =
+  const userDetailed =
     `The official answer key says the correct answer is "${answer}". Treat it as true; never contradict it.
 
 Question:
@@ -73,10 +74,30 @@ One clear paragraph per wrong option: what that option actually is or means, and
 ## Remember it like this
 A short memorable trick, rhyme or mini-story, plus one similar exam-style tip.`;
 
+  const userShort =
+    `The official answer key says the correct answer is "${answer}". Treat it as true; never contradict it.
+
+Question:
+${stem}
+
+Options:
+${opts}
+
+Reply with EXACTLY these two sections and nothing else (no intro, no conclusion). Start each title with "## " on its own line. No other markdown.
+
+## Why ${answer}) is correct
+3 to 5 short numbered steps (1. 2. 3.) in very simple words. If there is a calculation, show the numbers.
+
+## Why the others are wrong
+One line per wrong option, in this form: "a) Name – one or two simple sentences: what it is, and why it does not fit this question."`;
+
+  const user = detailed ? userDetailed : userShort;
+  const maxTokens = detailed ? 3500 : 1500;
+
   const errors = [];
   for (const p of provs) {
     for (let attempt = 0; attempt < 2; attempt++) {
-      const r = await ask(p, system, user);
+      const r = await ask(p, system, user, maxTokens);
       if (r.ok && r.text.trim()) return res.status(200).json({ explanation: r.text.trim(), provider: p.name });
       const msg = r.ok ? 'empty response' : r.error;
       if (attempt === 1 || !(TEMP.includes(r.status) || r.status === 0 || r.ok)) { errors.push(`${p.name}: ${msg}`); break; }
