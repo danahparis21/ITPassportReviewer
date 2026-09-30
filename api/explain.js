@@ -5,10 +5,10 @@ export default async function handler(req, res) {
   if (!key) return res.status(500).json({ error: 'GEMINI_API_KEY is not set' });
   const { stem, options, answer } = req.body || {};
   if (!stem || !options || !answer) return res.status(400).json({ error: 'Missing fields' });
-  const model = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+  const model = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
   const opts = Object.entries(options).map(([k, v]) => `${k}) ${v}`).join('\n');
   const prompt =
-`You are a tutor for the IT Passport exam (ITPEC / IPA Japan).
+    `You are a tutor for the IT Passport exam (ITPEC / IPA Japan).
 The official answer key says the correct answer is "${answer}". Treat it as true; never contradict it.
 
 Question:
