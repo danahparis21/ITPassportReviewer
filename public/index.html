@@ -23,7 +23,7 @@
       --mut: #555c7a;
       --dim: #8890b0;
       --pri: #4a60e8;
-      --pri-glow: rgba(74, 96, 232, .1);
+      --pri-glow: rgba(74, 96, 232, .12);
       --ok: #1d8a42;
       --ok-bg: rgba(29, 138, 66, .09);
       --ok-bd: rgba(29, 138, 66, .3);
@@ -96,13 +96,62 @@
       background: radial-gradient(ellipse 80% 60% at 20% -10%, rgba(108, 127, 255, .12) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 80% 110%, rgba(167, 139, 250, .08) 0%, transparent 60%)
     }
 
+    /* ── Top Nav ── */
+    .top-nav {
+      position: fixed;
+      top: 12px;
+      left: 0;
+      right: 0;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 90;
+      pointer-events: none;
+    }
+
+    .nav-pill {
+      pointer-events: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--card);
+      border: 1px solid var(--bd);
+      border-radius: var(--rp);
+      padding: 7px 13px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--mut);
+      box-shadow: var(--shadow-s);
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: background var(--t), color var(--t), border-color var(--t), transform var(--t);
+    }
+
+    .nav-pill:hover {
+      background: var(--card-h);
+      color: var(--tx);
+      border-color: var(--bd-b);
+      transform: translateY(-1px);
+    }
+
+    .nav-pill .dot-active {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 8px var(--ok);
+    }
+
     /* ── Layout ── */
     #app {
       position: relative;
       z-index: 1;
       max-width: 720px;
       margin: 0 auto;
-      padding: 24px 16px 80px
+      padding: 68px 16px 80px;
     }
 
     /* ── Type ── */
@@ -151,290 +200,332 @@
       }
     }
 
-    /* ── Badge ── */
-    .badge {
+    /* ── In-Progress Banner ── */
+    .resume-card {
+      border: 2px solid var(--pri);
+      background: linear-gradient(to bottom, var(--surface), var(--card));
+      box-shadow: 0 6px 20px var(--pri-glow);
+    }
+
+    .resume-badge {
       display: inline-flex;
       align-items: center;
       gap: 5px;
+      background: var(--pri-glow);
+      color: var(--pri);
+      font-weight: 700;
+      font-size: .78rem;
       padding: 3px 10px;
+      border-radius: var(--rp);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 9px;
       border-radius: var(--rp);
       font-size: .78rem;
       font-weight: 600;
       background: var(--surface);
+      color: var(--mut);
       border: 1px solid var(--bd);
-      color: var(--mut)
     }
 
     .badge.ok {
       background: var(--ok-bg);
+      color: var(--ok);
       border-color: var(--ok-bd);
-      color: var(--ok)
     }
 
     .badge.bad {
       background: var(--bad-bg);
+      color: var(--bad);
       border-color: var(--bad-bd);
-      color: var(--bad)
+    }
+
+    .badge.cached {
+      background: rgba(74, 96, 232, .1);
+      color: var(--pri);
+      border-color: rgba(74, 96, 232, .25);
     }
 
     /* ── Buttons ── */
-    .btn-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      align-items: center
-    }
-
     button {
-      font: 600 .88rem/1 var(--font);
-      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
       border-radius: var(--rs);
-      padding: 10px 16px;
       border: 1px solid var(--bd);
       background: var(--surface);
       color: var(--tx);
+      font: 600 .9rem var(--font);
+      cursor: pointer;
+      box-shadow: var(--shadow-s);
       transition: background var(--t), border-color var(--t), transform var(--t), box-shadow var(--t);
-      white-space: nowrap;
-      -webkit-tap-highlight-color: transparent
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     button:hover:not(:disabled) {
       background: var(--card-h);
-      border-color: var(--bd-b)
+      border-color: var(--bd-b);
+      transform: translateY(-1px);
     }
 
     button:active:not(:disabled) {
-      transform: scale(.97)
+      transform: translateY(0);
     }
 
     button:disabled {
-      opacity: .38;
-      cursor: not-allowed
+      opacity: .4;
+      cursor: not-allowed;
+      box-shadow: none;
     }
 
     button.pri {
       background: var(--pri);
-      border-color: var(--pri);
+      border-color: transparent;
       color: #fff;
-      box-shadow: 0 4px 18px rgba(108, 127, 255, .35)
+      box-shadow: 0 2px 10px var(--pri-glow);
     }
 
     button.pri:hover:not(:disabled) {
-      background: #7d8fff;
-      box-shadow: 0 6px 22px rgba(108, 127, 255, .5)
+      background: #394fd4;
+      box-shadow: 0 4px 16px var(--pri-glow);
+    }
+
+    [data-dark] button.pri:hover:not(:disabled) {
+      background: #5b6fff;
     }
 
     button.ghost {
       background: transparent;
       border-color: transparent;
+      box-shadow: none;
       color: var(--mut);
-      padding: 8px 10px
     }
 
     button.ghost:hover:not(:disabled) {
-      background: var(--surface);
+      background: var(--card-h);
       color: var(--tx);
-      border-color: var(--bd)
     }
 
     button.sm {
-      padding: 7px 12px;
-      font-size: .8rem
+      padding: 6px 12px;
+      font-size: .8rem;
+      border-radius: 8px;
     }
 
-    /* ── Progress ── */
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* ── Progress bar ── */
     .prog-hdr {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px
-    }
-
-    .prog-label {
-      font-size: .82rem;
+      margin-bottom: 8px;
+      font-size: .83rem;
+      font-weight: 600;
       color: var(--mut);
-      font-weight: 500
-    }
-
-    .prog-count {
-      font-size: .82rem;
-      color: var(--mut);
-      font-weight: 600
     }
 
     .bar {
-      height: 5px;
+      height: 7px;
       background: var(--bd);
       border-radius: var(--rp);
       overflow: hidden;
-      margin-bottom: 16px
+      margin-bottom: 16px;
     }
 
     .bar-fill {
       height: 100%;
       background: linear-gradient(90deg, var(--pri), var(--accent));
       border-radius: var(--rp);
-      transition: width .4s cubic-bezier(.4, 0, .2, 1)
+      transition: width .35s ease;
     }
 
-    /* ── Q stem ── */
+    /* ── Question & Options ── */
     .q-num {
-      font-size: .8rem;
+      font-size: .78rem;
       font-weight: 700;
       color: var(--pri);
-      letter-spacing: .06em;
       text-transform: uppercase;
-      margin-bottom: 8px
+      letter-spacing: .06em;
+      margin-bottom: 6px;
     }
 
     .stem {
-      white-space: pre-wrap;
-      font-size: .97rem;
+      font-size: 1.02rem;
+      font-weight: 600;
       line-height: 1.65;
-      color: var(--tx);
-      margin-bottom: 18px
+      margin-bottom: 18px;
+      white-space: pre-wrap;
     }
 
-    /* ── Options ── */
     .opt {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
+      gap: 12px;
       width: 100%;
       text-align: left;
-      margin-bottom: 9px;
       padding: 13px 16px;
-      white-space: pre-wrap;
-      font-size: .93rem;
-      font-weight: 500;
-      line-height: 1.5;
       border-radius: var(--rs);
       border: 1.5px solid var(--bd);
       background: var(--surface);
       color: var(--tx);
-      transition: background var(--t), border-color var(--t), transform var(--t), box-shadow var(--t)
+      font: 500 .93rem/1.55 var(--font);
+      margin-bottom: 9px;
+      cursor: pointer;
+      box-shadow: none;
+      transition: background var(--t), border-color var(--t), transform var(--t);
     }
 
-    .opt:not(:disabled):hover {
+    .opt:hover:not(:disabled) {
       border-color: var(--pri);
       background: var(--pri-glow);
-      transform: translateX(3px);
-      box-shadow: -3px 0 0 var(--pri)
-    }
-
-    .opt:active:not(:disabled) {
-      transform: translateX(1px) scale(.99)
+      transform: translateX(2px);
     }
 
     .opt .key {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 26px;
+      width: 26px;
       height: 26px;
-      border-radius: 8px;
-      background: var(--bd);
-      color: var(--mut);
-      font-size: .78rem;
+      border-radius: 6px;
+      background: var(--card-h);
+      border: 1px solid var(--bd);
       font-weight: 700;
+      font-size: .78rem;
+      color: var(--mut);
       flex-shrink: 0;
-      margin-top: 1px;
-      transition: background var(--t), color var(--t)
+      text-transform: uppercase;
     }
 
     .opt.ok {
-      background: var(--ok-bg) !important;
-      border-color: var(--ok-bd) !important;
-      box-shadow: -3px 0 0 var(--ok);
-      opacity: 1 !important
+      border-color: var(--ok);
+      background: var(--ok-bg);
+      color: var(--tx);
+      opacity: 1 !important;
     }
 
     .opt.ok .key {
       background: var(--ok);
-      color: #fff
+      color: #fff;
+      border-color: var(--ok);
     }
 
     .opt.bad {
-      background: var(--bad-bg) !important;
-      border-color: var(--bad-bd) !important;
-      box-shadow: -3px 0 0 var(--bad);
-      opacity: 1 !important
+      border-color: var(--bad);
+      background: var(--bad-bg);
+      color: var(--tx);
+      opacity: 1 !important;
     }
 
     .opt.bad .key {
       background: var(--bad);
-      color: #fff
+      color: #fff;
+      border-color: var(--bad);
     }
 
-    .opt.neutral:disabled {
-      opacity: 1
+    .opt.neutral {
+      opacity: .75;
     }
 
-    /* ── Explanation ── */
+    /* ── Exam figure / page ── */
+    img.pg {
+      width: 100%;
+      border-radius: var(--rs);
+      border: 1px solid var(--bd);
+      margin: 12px 0;
+      display: block;
+      box-shadow: var(--shadow-s);
+    }
+
+    /* ── Explanation Area ── */
     .exp-wrap {
-      margin-top: 16px;
-      animation: fadeUp .25s ease both
+      margin-top: 18px;
+      animation: fadeUp .25s ease both;
     }
 
     .result-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border-radius: var(--rp);
-      font-size: .85rem;
       font-weight: 700;
-      margin-bottom: 12px
+      font-size: .95rem;
+      padding: 9px 14px;
+      border-radius: var(--rs);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .result-tag.ok {
       background: var(--ok-bg);
       color: var(--ok);
-      border: 1px solid var(--ok-bd)
+      border: 1px solid var(--ok-bd);
     }
 
     .result-tag.bad {
       background: var(--bad-bg);
       color: var(--bad);
-      border: 1px solid var(--bad-bd)
+      border: 1px solid var(--bad-bd);
+    }
+
+    .exp-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
     }
 
     .exp {
-      background: #fff;
-      color: #1c2333;
-      border: 1px solid #d9deea;
+      background: var(--surface);
+      color: var(--tx);
+      border: 1px solid var(--bd);
       border-radius: 14px;
-      padding: 20px 22px;
-      font-size: 1.02rem;
-      line-height: 1.85;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, .08)
+      padding: 18px 20px;
+      font-size: .98rem;
+      line-height: 1.8;
+      box-shadow: var(--shadow-s);
     }
 
     .exp h4 {
-      margin: 18px 0 6px;
-      font-size: 1.05rem;
-      color: #2f4bc4;
-      border-bottom: 2px solid #e6e9f5;
-      padding-bottom: 4px
+      margin: 14px 0 6px;
+      font-size: 1rem;
+      color: var(--pri);
+      border-bottom: 1px solid var(--bd);
+      padding-bottom: 4px;
     }
 
     .exp h4:first-child {
-      margin-top: 0
+      margin-top: 0;
     }
 
     .exp p {
-      margin: 0 0 10px
+      margin: 0 0 8px;
     }
 
     .exp b {
-      color: #111
+      color: var(--tx);
+      font-weight: 700;
     }
 
     .exp code {
-      background: #eef1fb;
+      background: var(--card-h);
       padding: 1px 6px;
       border-radius: 5px;
-      font-size: .95em
+      font-size: .9em;
+      border: 1px solid var(--bd);
     }
 
     .exp-loading {
@@ -446,7 +537,7 @@
       padding: 14px 16px;
       background: var(--surface);
       border: 1px solid var(--bd);
-      border-radius: var(--rs)
+      border-radius: var(--rs);
     }
 
     .spinner {
@@ -456,115 +547,196 @@
       border-top-color: var(--pri);
       border-radius: 50%;
       animation: spin .7s linear infinite;
-      flex-shrink: 0
+      flex-shrink: 0;
     }
 
     @keyframes spin {
       to {
-        transform: rotate(360deg)
+        transform: rotate(360deg);
       }
     }
 
     .api-notice {
-      font-size: .82rem;
-      color: var(--mut);
-      background: var(--surface);
-      border: 1px solid var(--bd);
-      border-radius: var(--rs);
-      padding: 10px 14px;
-      margin-top: 8px;
       display: flex;
-      align-items: flex-start;
-      gap: 8px
-    }
-
-    /* ── Image ── */
-    img.pg {
-      max-width: 100%;
-      border: 1px solid var(--bd);
+      align-items: center;
+      gap: 8px;
+      font-size: .82rem;
+      color: var(--bad);
+      padding: 10px 14px;
+      background: var(--bad-bg);
+      border: 1px solid var(--bad-bd);
       border-radius: var(--rs);
-      margin-top: 8px;
-      animation: fadeUp .25s ease both
+      margin-top: 10px;
     }
 
-    /* ── Score screen ── */
+    /* ── Score / Finish ── */
     .score-card {
       text-align: center;
-      padding: 40px 20px
+      padding: 36px 20px;
     }
 
     .score-emoji {
-      font-size: 2.8rem;
-      margin-bottom: 12px
+      font-size: 3rem;
+      margin-bottom: 8px;
     }
 
     .score-num {
       font-size: 3.5rem;
       font-weight: 800;
-      letter-spacing: -.03em
+      letter-spacing: -.03em;
     }
 
     .score-num .slash {
       color: var(--dim);
-      font-weight: 400
+      font-weight: 400;
     }
 
     .score-pct {
       font-size: 1.1rem;
       color: var(--mut);
       font-weight: 600;
-      margin: 6px 0 20px
+      margin: 6px 0 20px;
     }
 
-    /* ── Chips ── */
     .chips {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin: 10px 0 20px
+      margin: 10px 0 20px;
+      justify-content: center;
     }
 
     .chip {
       padding: 3px 10px;
       border-radius: var(--rp);
       font-size: .78rem;
-      font-weight: 700
+      font-weight: 700;
     }
 
     .chip.bad {
       background: var(--bad-bg);
       color: var(--bad);
-      border: 1px solid var(--bad-bd)
+      border: 1px solid var(--bad-bd);
     }
 
     /* ── History ── */
     .hist-score {
       font-weight: 700;
-      font-size: 1.05rem
+      font-size: 1.05rem;
     }
 
     .hist-meta {
       font-size: .8rem;
       color: var(--mut);
-      margin-top: 3px
+      margin-top: 3px;
     }
 
     .hist-missed {
       font-size: .8rem;
       color: var(--bad);
-      margin-top: 4px
+      margin-top: 4px;
+    }
+
+    /* ── Modal (Session Key) ── */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .55);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      animation: fadeIn .2s ease;
+    }
+
+    .modal-card {
+      background: var(--card);
+      border: 1px solid var(--bd);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      max-width: 440px;
+      width: 100%;
+      padding: 24px;
+      animation: scaleUp .22s cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes scaleUp {
+      from {
+        opacity: 0;
+        transform: scale(.92);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .input-box {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: var(--rs);
+      border: 1.5px solid var(--bd);
+      background: var(--surface);
+      color: var(--tx);
+      font: 600 1rem var(--font);
+      outline: none;
+      margin: 12px 0 16px;
+      transition: border-color var(--t);
+    }
+
+    .input-box:focus {
+      border-color: var(--pri);
+      box-shadow: 0 0 0 3px var(--pri-glow);
+    }
+
+    .recent-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0 16px;
+    }
+
+    .recent-chip {
+      background: var(--surface);
+      border: 1px solid var(--bd);
+      border-radius: var(--rp);
+      padding: 4px 10px;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--mut);
+      cursor: pointer;
+      transition: background var(--t), color var(--t);
+    }
+
+    .recent-chip:hover {
+      background: var(--card-h);
+      color: var(--tx);
+      border-color: var(--bd-b);
     }
 
     /* ── Misc ── */
     .home-logo {
       font-size: 2rem;
-      margin-bottom: 6px
+      margin-bottom: 6px;
     }
 
     hr.div {
       border: none;
       border-top: 1px solid var(--bd);
-      margin: 20px 0
+      margin: 20px 0;
     }
 
     .data-row {
@@ -572,11 +744,11 @@
       gap: 8px;
       flex-wrap: wrap;
       align-items: center;
-      margin-top: 6px
+      margin-top: 6px;
     }
 
     input[type=file] {
-      display: none
+      display: none;
     }
 
     .file-label {
@@ -587,19 +759,19 @@
       background: var(--surface);
       color: var(--mut);
       font: 600 .88rem var(--font);
-      transition: background var(--t), color var(--t)
+      transition: background var(--t), color var(--t);
     }
 
     .file-label:hover {
       background: var(--card-h);
-      color: var(--tx)
+      color: var(--tx);
     }
 
     .hint {
       font-size: .76rem;
       color: var(--dim);
       text-align: center;
-      margin-top: 14px
+      margin-top: 14px;
     }
 
     kbd {
@@ -608,20 +780,20 @@
       border-radius: 5px;
       padding: 1px 5px;
       font-size: .72rem;
-      font-family: monospace
+      font-family: monospace;
     }
 
     .next-row {
       display: flex;
       justify-content: flex-end;
       margin-top: 18px;
-      gap: 8px
+      gap: 8px;
     }
 
     .exam-title {
       font-size: 1rem;
       font-weight: 700;
-      margin-bottom: 6px
+      margin-bottom: 6px;
     }
 
     .exam-meta {
@@ -631,83 +803,252 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      align-items: center
+      align-items: center;
     }
 
     .dot {
-      color: var(--dim)
+      color: var(--dim);
     }
 
     /* ── Mobile ── */
     @media(max-width:480px) {
       #app {
-        padding: 16px 12px 72px
+        padding: 60px 12px 72px;
       }
 
       .card {
-        padding: 16px
+        padding: 16px;
       }
 
       .opt {
-        padding: 12px 13px
+        padding: 12px 13px;
       }
 
       .score-num {
-        font-size: 2.8rem
+        font-size: 2.8rem;
       }
 
       button {
-        padding: 11px 14px
+        padding: 11px 14px;
       }
 
       button.pri {
         width: 100%;
-        justify-content: center
+        justify-content: center;
       }
-    }
-
-    /* ── Theme toggle button ── */
-    #theme-btn {
-      position: fixed;
-      top: 14px;
-      right: 14px;
-      z-index: 99;
-      background: var(--card);
-      border: 1px solid var(--bd);
-      border-radius: var(--rp);
-      padding: 7px 13px;
-      font-size: .82rem;
-      font-weight: 600;
-      color: var(--mut);
-      box-shadow: var(--shadow-s);
-      cursor: pointer;
-      transition: background var(--t), color var(--t)
-    }
-
-    #theme-btn:hover {
-      background: var(--card-h);
-      color: var(--tx)
     }
   </style>
 </head>
 
 <body>
-  <button id="theme-btn" onclick="toggleTheme()" title="Toggle light/dark mode">🌙 Dark</button>
+  <header class="top-nav">
+    <button id="session-btn" class="nav-pill" onclick="openSessionModal()" title="Manage Study Session">
+      <span class="dot-active"></span>
+      <span id="session-label">🔑 Session</span>
+    </button>
+    <button id="theme-btn" class="nav-pill" onclick="toggleTheme()" title="Toggle light/dark mode">
+      🌙 Dark
+    </button>
+  </header>
+
   <main id="app">
     <div class="exp-loading" style="justify-content:center;min-height:50vh">
       <div class="spinner"></div>
-      <span>Loading questions…</span>
+      <span>Loading reviewer…</span>
     </div>
   </main>
+
+  <!-- Session Key Modal Dialog -->
+  <div id="session-modal" class="modal-backdrop" style="display:none">
+    <div class="modal-card">
+      <div style="font-size:1.8rem;margin-bottom:6px">🔑</div>
+      <h2 style="font-size:1.25rem;font-weight:800;margin-bottom:6px">Study Session Key</h2>
+      <p style="font-size:.86rem;color:var(--mut);line-height:1.5">
+        Enter a memorable key (e.g. <b>danah-review</b> or your nickname). Whenever you return or restart, your exam
+        position, answers, and AI explanations are restored!
+      </p>
+
+      <input type="text" id="session-input" class="input-box" placeholder="e.g. my-pass-2026"
+        onkeydown="if(event.key==='Enter') saveSessionModal()">
+
+      <div id="recent-sessions-wrap" style="display:none">
+        <div style="font-size:.76rem;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:.04em">Recent on this device:</div>
+        <div id="recent-sessions" class="recent-chips"></div>
+      </div>
+
+      <div class="btn-row" style="margin-top:14px">
+        <button class="pri" style="flex:1" onclick="saveSessionModal()">Start / Load Session</button>
+        <button class="ghost" onclick="suggestRandomKey()" title="Generate a memorable random key">🎲 Suggest</button>
+      </div>
+
+      <div style="margin-top:12px;text-align:center">
+        <button id="session-close-btn" class="ghost sm" onclick="closeSessionModal()" style="display:none">Cancel</button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    const STORAGE_KEY = 'itp_reviewer_v1';
-    let EXAMS = [], DB = load(), S = null;
+    // ── Global State ───────────────────────────────────────────────────────────
+    const ACTIVE_KEY_STORE = 'itp_active_key';
+    const RECENT_KEYS_STORE = 'itp_recent_keys';
+    let EXAMS = [], S = null;
+    let currentKey = localStorage.getItem(ACTIVE_KEY_STORE) || '';
+    let sessionData = null; // { key, inProgress, exams: { [examId]: { attempts, missed, explS, expl2 } } }
+    const MEM_CACHE = { short: {}, detailed: {} };
+
     const app = document.getElementById('app');
     const esc = t => String(t).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
     const fmt = t => new Date(t).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
-    function load() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; } }
-    function save() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(DB)); } catch { } }
-    function ex(id) { return DB[id] || (DB[id] = { attempts: [], missed: [], expl: {} }); }
+
+    // ── One-time Migration from legacy itp_reviewer_v1 ─────────────────────────
+    (function migrateLegacy() {
+      try {
+        const leg = JSON.parse(localStorage.getItem('itp_reviewer_v1'));
+        if (leg && typeof leg === 'object') {
+          for (const [examId, ex] of Object.entries(leg)) {
+            if (ex.explS) {
+              for (const [qn, txt] of Object.entries(ex.explS)) {
+                if (txt && !localStorage.getItem(`itp_expl_short_${examId}_${qn}`)) {
+                  localStorage.setItem(`itp_expl_short_${examId}_${qn}`, txt);
+                }
+              }
+            }
+            if (ex.expl2) {
+              for (const [qn, txt] of Object.entries(ex.expl2)) {
+                if (txt && !localStorage.getItem(`itp_expl_detailed_${examId}_${qn}`)) {
+                  localStorage.setItem(`itp_expl_detailed_${examId}_${qn}`, txt);
+                }
+              }
+            }
+          }
+        }
+      } catch (_) { }
+    })();
+
+    // ── Session Storage System ────────────────────────────────────────────────
+    function getSessionStorageKey(key) {
+      return 'itp_session_' + encodeURIComponent(key.trim().toLowerCase());
+    }
+
+    function initSession(key) {
+      const k = key.trim().toLowerCase();
+      const storageKey = getSessionStorageKey(k);
+      let data = null;
+      try { data = JSON.parse(localStorage.getItem(storageKey)); } catch (_) { }
+      if (!data) {
+        data = { key: k, inProgress: null, exams: {} };
+      }
+      data.exams = data.exams || {};
+      sessionData = data;
+      currentKey = k;
+      localStorage.setItem(ACTIVE_KEY_STORE, k);
+      addRecentKey(k);
+      updateSessionNav();
+      // Optional async cloud sync from Supabase
+      syncFromCloud(k);
+      return data;
+    }
+
+    function saveSessionData() {
+      if (!sessionData || !currentKey) return;
+      const storageKey = getSessionStorageKey(currentKey);
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(sessionData));
+      } catch (_) { }
+      // Optional async cloud save to Supabase
+      syncToCloud(currentKey, sessionData);
+    }
+
+    function examData(id) {
+      if (!sessionData) initSession(currentKey || 'default');
+      sessionData.exams = sessionData.exams || {};
+      if (!sessionData.exams[id]) {
+        sessionData.exams[id] = { attempts: [], missed: [], explS: {}, expl2: {} };
+      }
+      const ed = sessionData.exams[id];
+      ed.attempts = ed.attempts || [];
+      ed.missed = ed.missed || [];
+      ed.explS = ed.explS || {};
+      ed.expl2 = ed.expl2 || {};
+      return ed;
+    }
+
+    function addRecentKey(k) {
+      try {
+        let recents = JSON.parse(localStorage.getItem(RECENT_KEYS_STORE)) || [];
+        recents = [k, ...recents.filter(x => x !== k)].slice(0, 6);
+        localStorage.setItem(RECENT_KEYS_STORE, JSON.stringify(recents));
+      } catch (_) { }
+    }
+
+    function updateSessionNav() {
+      const label = document.getElementById('session-label');
+      if (label) {
+        label.textContent = currentKey ? `🔑 ${currentKey}` : '🔑 Set Key';
+      }
+    }
+
+    // ── Cloud Sync (Supabase integration if backend configured) ────────────────
+    async function syncFromCloud(key) {
+      try {
+        const r = await fetch(`/api/session?key=${encodeURIComponent(key)}`);
+        if (!r.ok) return;
+        const res = await r.json();
+        if (res.cloud && res.found && res.data) {
+          // If cloud has newer or matching data, merge
+          sessionData = { ...sessionData, ...res.data };
+          localStorage.setItem(getSessionStorageKey(key), JSON.stringify(sessionData));
+          if (!S) home();
+        }
+      } catch (_) { }
+    }
+
+    async function syncToCloud(key, data) {
+      try {
+        fetch('/api/session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key, data })
+        }).catch(() => { });
+      } catch (_) { }
+    }
+
+    // ── AI Explanation Caching & Storage ──────────────────────────────────────
+    function getCachedExpl(examId, qNum, mode) {
+      const key = `${examId}_${qNum}`;
+      // 1. In-memory
+      if (MEM_CACHE[mode]?.[key]) return MEM_CACHE[mode][key];
+      // 2. LocalStorage global cache (persists across sessions & restarts)
+      const globalTxt = localStorage.getItem(`itp_expl_${mode}_${key}`);
+      if (globalTxt) {
+        MEM_CACHE[mode][key] = globalTxt;
+        return globalTxt;
+      }
+      // 3. Current session cache
+      const ed = examData(examId);
+      const sessTxt = mode === 'detailed' ? ed.expl2?.[qNum] : ed.explS?.[qNum];
+      if (sessTxt) {
+        MEM_CACHE[mode][key] = sessTxt;
+        return sessTxt;
+      }
+      return null;
+    }
+
+    function setCachedExpl(examId, qNum, mode, text) {
+      if (!text) return;
+      const key = `${examId}_${qNum}`;
+      MEM_CACHE[mode][key] = text;
+      try {
+        localStorage.setItem(`itp_expl_${mode}_${key}`, text);
+      } catch (_) { }
+      const ed = examData(examId);
+      if (mode === 'detailed') {
+        ed.expl2[qNum] = text;
+      } else {
+        ed.explS[qNum] = text;
+      }
+      saveSessionData();
+    }
 
     // ── Theme ──────────────────────────────────────────────────────────────────
     const THEME_KEY = 'itp_theme';
@@ -724,10 +1065,82 @@
     }
     applyTheme();
 
-    fetch('questions.json').then(r => r.json()).then(d => { EXAMS = d.exams; home(); })
-      .catch(() => { app.innerHTML = `<div class="card"><b>⚠ Could not load questions.json</b></div>`; });
+    // ── Session Key Modal Logic ────────────────────────────────────────────────
+    function openSessionModal() {
+      const modal = document.getElementById('session-modal');
+      const input = document.getElementById('session-input');
+      const closeBtn = document.getElementById('session-close-btn');
+      const recentWrap = document.getElementById('recent-sessions-wrap');
+      const recentContainer = document.getElementById('recent-sessions');
 
+      input.value = currentKey || '';
+      closeBtn.style.display = currentKey ? 'inline-block' : 'none';
+
+      // Load recent keys
+      let recents = [];
+      try { recents = JSON.parse(localStorage.getItem(RECENT_KEYS_STORE)) || []; } catch (_) { }
+      if (recents.length > 0) {
+        recentWrap.style.display = 'block';
+        recentContainer.innerHTML = recents.map(k =>
+          `<span class="recent-chip" onclick="selectRecentKey('${esc(k)}')">${esc(k)}</span>`
+        ).join('');
+      } else {
+        recentWrap.style.display = 'none';
+      }
+
+      modal.style.display = 'flex';
+      setTimeout(() => input.focus(), 50);
+    }
+
+    function closeSessionModal() {
+      if (!currentKey) return;
+      document.getElementById('session-modal').style.display = 'none';
+    }
+
+    function selectRecentKey(k) {
+      document.getElementById('session-input').value = k;
+      saveSessionModal();
+    }
+
+    function suggestRandomKey() {
+      const adjectives = ['swift', 'sharp', 'bright', 'cyber', 'quiet', 'zen', 'smart', 'lucky', 'cool', 'alpha', 'nova'];
+      const nouns = ['owl', 'falcon', 'tiger', 'ninja', 'phoenix', 'lynx', 'wolf', 'rocket', 'pilot', 'coder', 'seeker'];
+      const num = Math.floor(Math.random() * 89 + 10);
+      const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
+      const noun = nouns[Math.floor(Math.random() * nouns.length)];
+      document.getElementById('session-input').value = `${adj}-${noun}-${num}`;
+    }
+
+    function saveSessionModal() {
+      const val = document.getElementById('session-input').value.trim();
+      if (!val) {
+        alert('Please enter a session key, or click "🎲 Suggest" to generate one.');
+        return;
+      }
+      initSession(val);
+      document.getElementById('session-modal').style.display = 'none';
+      home();
+    }
+
+    // ── Load Questions ────────────────────────────────────────────────────────
+    fetch('questions.json')
+      .then(r => r.json())
+      .then(d => {
+        EXAMS = d.exams;
+        if (!currentKey) {
+          openSessionModal();
+        } else {
+          initSession(currentKey);
+          home();
+        }
+      })
+      .catch(() => {
+        app.innerHTML = `<div class="card"><b>⚠ Could not load questions.json</b></div>`;
+      });
+
+    // ── Keyboard Shortcuts ─────────────────────────────────────────────────────
     document.addEventListener('keydown', e => {
+      if (document.getElementById('session-modal').style.display === 'flex') return;
       if (!S) return;
       const q = S.list[S.i], picked = S.answers[q.n], keys = Object.keys(q.options);
       if (picked == null) {
@@ -738,23 +1151,68 @@
       }
     });
 
+    // ── Home View ──────────────────────────────────────────────────────────────
     function home() {
       S = null;
+      if (!currentKey) {
+        openSessionModal();
+        return;
+      }
+      updateSessionNav();
+
+      const inProg = sessionData?.inProgress;
+      const inProgExam = inProg ? EXAMS.find(x => x.id === inProg.examId) : null;
+
+      let inProgressHtml = '';
+      if (inProg && inProgExam) {
+        const totalQ = inProg.listLength || inProgExam.questions.length;
+        const currentQNum = (inProg.i || 0) + 1;
+        const answeredCount = Object.keys(inProg.answers || {}).length;
+        const pct = Math.round((currentQNum / totalQ) * 100);
+
+        inProgressHtml = `
+      <div class="card resume-card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div>
+            <span class="resume-badge">⚡ In-Progress Exam</span>
+            <div class="exam-title" style="margin-top:6px;font-size:1.05rem">${esc(inProgExam.title)}</div>
+            <div class="exam-meta">
+              <span>Question ${currentQNum} of ${totalQ}</span>
+              <span class="dot">·</span>
+              <span>${answeredCount} answered</span>
+              <span class="dot">·</span>
+              <span style="color:var(--ok);font-weight:600">Auto-saved to "${esc(currentKey)}"</span>
+            </div>
+          </div>
+        </div>
+        <div class="bar" style="margin:10px 0 16px"><div class="bar-fill" style="width:${pct}%"></div></div>
+        <div class="btn-row">
+          <button class="pri" onclick="resumeExam()">▶ Resume Question ${currentQNum}</button>
+          <button class="ghost sm" onclick="discardInProgress()">Start over</button>
+        </div>
+      </div>`;
+      }
+
       app.innerHTML = `
     <div style="margin-bottom:24px">
       <div class="home-logo">📘</div>
       <h1>IT Passport Reviewer</h1>
       <p class="subtitle">ITPEC / IPA Japan &middot; Click answers, learn instantly</p>
     </div>
+
+    ${inProgressHtml}
+
     ${EXAMS.map(e => {
-        const d = ex(e.id), full = d.attempts.filter(a => a.mode === 'full');
+        const d = examData(e.id);
+        const full = d.attempts.filter(a => a.mode === 'full');
         const best = full.length ? Math.max(...full.map(a => a.correct)) : null;
         const last = d.attempts.at(-1);
         const pct = best != null ? Math.round(best / e.questions.length * 100) : null;
         const statusBadge = d.missed.length
           ? `<span class="badge bad">⚠ ${d.missed.length} to master</span>`
           : full.length ? `<span class="badge ok">✓ All mastered</span>` : `<span class="badge">Not started</span>`;
-        return `<div class="card">
+        return `
+      <div class="card">
         <div class="exam-title">${esc(e.title)}</div>
         <div class="exam-meta">
           <span>${e.questions.length} questions</span>
@@ -769,18 +1227,75 @@
         </div>
       </div>`;
       }).join('')}
+
     <hr class="div">
-    <div class="data-row">
-      <button class="sm" onclick="backup()">📤 Export progress</button>
-      <label class="file-label sm" for="restore-file">📥 Import progress</label>
-      <input type="file" id="restore-file" accept=".json" onchange="restore(this)">
+    <div class="data-row" style="justify-content:space-between">
+      <div style="font-size:.82rem;color:var(--mut)">
+        Active Key: <b>${esc(currentKey)}</b> &middot; <a href="javascript:void(0)" onclick="openSessionModal()" style="color:var(--pri);font-weight:600">Switch session</a>
+      </div>
+      <div class="btn-row">
+        <button class="ghost sm" onclick="backup()">Export file</button>
+        <label class="file-label sm" for="restore-file">Import file</label>
+        <input type="file" id="restore-file" accept=".json" onchange="restore(this)">
+      </div>
     </div>`;
     }
 
+    // ── Exam Logic ─────────────────────────────────────────────────────────────
     function start(id, mode) {
-      const e = EXAMS.find(x => x.id === id), d = ex(id);
+      if (sessionData?.inProgress && sessionData.inProgress.examId === id) {
+        if (!confirm('You already have an exam in progress for this exam. Do you want to overwrite it and start from Question 1?')) {
+          resumeExam();
+          return;
+        }
+      }
+      const e = EXAMS.find(x => x.id === id), d = examData(id);
       const list = mode === 'retry' ? e.questions.filter(q => d.missed.includes(q.n)) : [...e.questions];
-      S = { id, mode, list, i: 0, answers: {}, showPage: false }; show();
+      S = { id, mode, list, i: 0, answers: {}, showPage: false };
+      saveCurrentExamProgress();
+      show();
+    }
+
+    function resumeExam() {
+      const inProg = sessionData?.inProgress;
+      if (!inProg) return;
+      const e = EXAMS.find(x => x.id === inProg.examId);
+      if (!e) return;
+      const d = examData(inProg.examId);
+      const list = inProg.mode === 'retry' ? e.questions.filter(q => d.missed.includes(q.n)) : [...e.questions];
+      S = {
+        id: inProg.examId,
+        mode: inProg.mode,
+        list,
+        i: Math.min(inProg.i || 0, list.length - 1),
+        answers: inProg.answers || {},
+        showPage: inProg.showPage || false
+      };
+      show();
+    }
+
+    function discardInProgress() {
+      if (confirm('Discard this in-progress exam?')) {
+        if (sessionData) {
+          sessionData.inProgress = null;
+          saveSessionData();
+        }
+        home();
+      }
+    }
+
+    function saveCurrentExamProgress() {
+      if (!S || !sessionData) return;
+      sessionData.inProgress = {
+        examId: S.id,
+        mode: S.mode,
+        i: S.i,
+        answers: S.answers,
+        listLength: S.list.length,
+        showPage: S.showPage,
+        updatedAt: Date.now()
+      };
+      saveSessionData();
     }
 
     function show() {
@@ -789,12 +1304,19 @@
       const pct = ((S.i + (done ? 1 : 0)) / S.list.length * 100).toFixed(1);
       const fig = S.showPage;
       const modeLabel = S.mode === 'retry' ? 'Retry missed' : 'Full exam';
+
       app.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <button class="ghost sm" onclick="home()" title="Return to home menu (progress is automatically saved)">← Menu (Saved)</button>
+      <span class="badge cached">🔑 ${esc(currentKey)}</span>
+    </div>
+
     <div class="prog-hdr">
       <span class="prog-label">${modeLabel}</span>
-      <span class="prog-count">${S.i + 1} / ${S.list.length}</span>
+      <span class="prog-count">Question ${S.i + 1} / ${S.list.length}</span>
     </div>
     <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
+
     <div class="card">
       <div class="q-num">Question ${q.n}</div>
       <div class="stem">${esc(q.stem)}</div>
@@ -802,17 +1324,23 @@
         let cls = done ? (k === q.answer ? 'ok' : (k === picked ? 'bad' : 'neutral')) : '';
         return `<button class="opt ${cls}" ${done ? 'disabled' : ''} onclick="pick('${k}')"><span class="key">${k}</span><span>${esc(q.options[k])}</span></button>`;
       }).join('')}
-      <button class="ghost sm" style="margin-top:10px" onclick="S.showPage=!S.showPage;show()">
+
+      <button class="ghost sm" style="margin-top:10px" onclick="S.showPage=!S.showPage;saveCurrentExamProgress();show()">
         ${fig ? '🔼 Hide' : '📄 View'} original exam page
       </button>
       ${fig ? `<img class="pg" src="pages/p-${String(q.page).padStart(2, '0')}.jpg" alt="Exam page ${q.page}">` : ''}
+
       ${done ? `
         <div class="exp-wrap">
           <div class="result-tag ${picked === q.answer ? 'ok' : 'bad'}">
             ${picked === q.answer ? '✓ Correct!' : '✗ Wrong — Answer is ' + q.answer.toUpperCase()}
           </div>
+          <div class="exp-header-row">
+            <span style="font-size:.78rem;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.05em">Tutor Explanation</span>
+            <span id="exp-badge"></span>
+          </div>
           <div id="exp" class="exp-loading"><div class="spinner"></div><span>Getting explanation…</span></div>
-          <div id="expd" style="margin-top:12px"></div>
+          <div id="expd" style="margin-top:14px"></div>
         </div>
         <div class="next-row">
           <button class="pri" onclick="next()">${S.i + 1 < S.list.length ? 'Next →' : 'Finish ✓'}</button>
@@ -820,66 +1348,131 @@
         <p class="hint">Press <kbd>Enter</kbd> or <kbd>→</kbd> to continue</p>
       `: `<p class="hint">Press <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd> <kbd>D</kbd> to answer</p>`}
     </div>`;
+
       if (done) explain(q);
     }
 
     function pick(k) {
       const q = S.list[S.i];
-      if (S.answers[q.n] == null) { S.answers[q.n] = k; show(); }
+      if (S.answers[q.n] == null) {
+        S.answers[q.n] = k;
+        saveCurrentExamProgress();
+        show();
+      }
     }
 
     function next() {
-      if (S.i + 1 < S.list.length) { S.i++; S.showPage = false; show(); } else { finish(); }
+      if (S.i + 1 < S.list.length) {
+        S.i++;
+        S.showPage = false;
+        saveCurrentExamProgress();
+        show();
+      } else {
+        finish();
+      }
     }
 
     async function callAI(q, mode) {
-      const r = await fetch('/api/explain', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ stem: q.stem, options: q.options, answer: q.answer, mode }) });
-      const raw = await r.text(); let data;
-      try { data = JSON.parse(raw); } catch { throw new Error(`HTTP ${r.status} from ${r.url} returned non-JSON: ${raw.slice(0, 80).replace(/\s+/g, ' ')}`); }
+      const r = await fetch('/api/explain', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          stem: q.stem,
+          options: q.options,
+          answer: q.answer,
+          mode,
+          examId: S.id,
+          qNum: q.n
+        })
+      });
+      const raw = await r.text();
+      let data;
+      try { data = JSON.parse(raw); } catch {
+        throw new Error(`HTTP ${r.status}: ${raw.slice(0, 80).replace(/\s+/g, ' ')}`);
+      }
       if (!r.ok) throw new Error(data.error || `HTTP ${r.status}`);
       return data.explanation;
     }
 
-    // Short explanation: runs automatically after you answer (small token use).
+    // ── Explanation Display & Reusability ─────────────────────────────────────
     async function explain(q) {
-      const dd = ex(S.id); dd.explS = dd.explS || {}; const cache = dd.explS, box = document.getElementById('exp');
+      const box = document.getElementById('exp');
+      const badge = document.getElementById('exp-badge');
       if (!box) return;
-      if (cache[q.n]) { renderExp(box, cache[q.n]); detArea(q); return; }
+
+      // 1. REUSABILITY: If short explanation exists, display immediately!
+      const cached = getCachedExpl(S.id, q.n, 'short');
+      if (cached) {
+        if (badge) badge.innerHTML = `<span class="badge ok" style="font-size:.72rem">⚡ Cached</span>`;
+        renderExp(box, cached);
+        detArea(q);
+        return;
+      }
+
+      // 2. Otherwise generate via AI and store permanently
       try {
+        if (badge) badge.innerHTML = `<span class="badge" style="font-size:.72rem">🤖 Generating AI…</span>`;
         const text = await callAI(q, 'short');
-        cache[q.n] = text; save();
+        setCachedExpl(S.id, q.n, 'short', text);
+
         const b = document.getElementById('exp');
-        if (b && S && S.list[S.i].n === q.n) { renderExp(b, text); detArea(q); }
+        const bd = document.getElementById('exp-badge');
+        if (b && S && S.list[S.i].n === q.n) {
+          if (bd) bd.innerHTML = `<span class="badge ok" style="font-size:.72rem">⚡ Saved</span>`;
+          renderExp(b, text);
+          detArea(q);
+        }
       } catch (err) {
         const b = document.getElementById('exp');
         if (!b) return;
         b.outerHTML = `
       <div class="api-notice">
         <span>ℹ️</span>
-        <span>AI explanation failed: <b>${esc(err.message)}</b> <button onclick="show()">Retry</button></span>
+        <span>AI explanation failed: <b>${esc(err.message)}</b> <button class="sm" onclick="show()">Retry</button></span>
       </div>
       <div class="exp" style="margin-top:10px">${esc(buildFallback(q))}</div>`;
       }
     }
 
-    // Detailed "explain like I'm 5": only runs when you click the button. Saved once loaded.
+    // Detailed explanation: if already generated, show it directly. If not, show button.
     function detArea(q) {
-      const el = document.getElementById('expd'); if (!el) return;
-      const dd = ex(S.id); dd.expl2 = dd.expl2 || {};
-      if (dd.expl2[q.n]) { const d = document.createElement('div'); renderExp(d, dd.expl2[q.n]); el.innerHTML = ''; el.appendChild(d); return; }
+      const el = document.getElementById('expd');
+      if (!el) return;
+
+      // REUSABILITY: If detailed explanation exists, render it immediately!
+      const cached = getCachedExpl(S.id, q.n, 'detailed');
+      if (cached) {
+        const wrap = document.createElement('div');
+        wrap.innerHTML = `
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
+            <span class="badge cached">✨ Detailed explanation (like I'm 5)</span>
+            <span class="badge ok" style="font-size:.72rem">⚡ Cached</span>
+          </div>`;
+        const d = document.createElement('div');
+        renderExp(d, cached);
+        wrap.appendChild(d);
+        el.innerHTML = '';
+        el.appendChild(wrap);
+        return;
+      }
+
+      // If not yet generated, provide button to generate once
       el.innerHTML = `<button class="ghost" onclick="detailed()">✨ Detailed explanation (like I'm 5)</button>`;
     }
 
     async function detailed() {
-      const q = S.list[S.i], el = document.getElementById('expd'); if (!el) return;
-      el.innerHTML = `<div class="exp-loading"><div class="spinner"></div><span>Writing a detailed explanation…</span></div>`;
+      const q = S.list[S.i], el = document.getElementById('expd');
+      if (!el) return;
+      el.innerHTML = `<div class="exp-loading"><div class="spinner"></div><span>Writing detailed explanation…</span></div>`;
       try {
         const text = await callAI(q, 'detailed');
-        const dd = ex(S.id); dd.expl2 = dd.expl2 || {}; dd.expl2[q.n] = text; save();
-        if (S && S.list[S.i].n === q.n) detArea(q);
+        setCachedExpl(S.id, q.n, 'detailed', text);
+        if (S && S.list[S.i].n === q.n) {
+          detArea(q);
+        }
       } catch (err) {
         const e2 = document.getElementById('expd');
-        if (e2) e2.innerHTML = `<div class="api-notice"><span>ℹ️</span><span>Detailed explanation failed: <b>${esc(err.message)}</b> <button onclick="detailed()">Retry</button></span></div>`;
+        if (e2) e2.innerHTML = `<div class="api-notice"><span>ℹ️</span><span>Detailed explanation failed: <b>${esc(err.message)}</b> <button class="sm" onclick="detailed()">Retry</button></span></div>`;
       }
     }
 
@@ -887,24 +1480,34 @@
       el.className = 'exp';
       el.innerHTML = esc(text).split(/\n{2,}|\n(?=## )/).map(p => p.trim()).filter(Boolean).map(p => {
         p = p.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/`([^`]+)`/g, '<code>$1</code>');
-        return p.startsWith('## ') ? '<h4>' + p.slice(3).split('\n')[0] + '</h4>' + (p.split('\n').slice(1).join('\n').trim() ? '<p>' + p.split('\n').slice(1).join('<br>') + '</p>' : '') : '<p>' + p.replace(/\n/g, '<br>') + '</p>';
+        return p.startsWith('## ')
+          ? '<h4>' + p.slice(3).split('\n')[0] + '</h4>' + (p.split('\n').slice(1).join('\n').trim() ? '<p>' + p.split('\n').slice(1).join('<br>') + '</p>' : '')
+          : '<p>' + p.replace(/\n/g, '<br>') + '</p>';
       }).join('');
     }
 
     function buildFallback(q) {
       const ans = q.answer, ansText = q.options[ans] || '';
       const wrongs = Object.entries(q.options).filter(([k]) => k !== ans).map(([k, v]) => `${k.toUpperCase()}) ${v}`).join('\n');
-      return `Correct: ${ans.toUpperCase()}) ${ansText}\n\nOther options:\n${wrongs}\n\n(Full AI explanation available after deploying with a Gemini API key.)`;
+      return `Correct: ${ans.toUpperCase()}) ${ansText}\n\nOther options:\n${wrongs}\n\n(Full AI explanation available when deployed with GEMINI_API_KEY.)`;
     }
 
+    // ── Finish Exam ────────────────────────────────────────────────────────────
     function finish() {
-      const d = ex(S.id);
+      const d = examData(S.id);
       const wrong = S.list.filter(q => S.answers[q.n] !== q.answer).map(q => q.n);
       const total = S.list.length, correct = total - wrong.length;
       const pct = Math.round(correct / total * 100), perfect = wrong.length === 0;
+
       d.attempts.push({ t: Date.now(), mode: S.mode, total, correct, wrong });
       d.missed = S.mode === 'full' ? wrong : d.missed.filter(n => wrong.includes(n));
-      save();
+
+      // Clear in-progress since completed
+      if (sessionData) {
+        sessionData.inProgress = null;
+      }
+      saveSessionData();
+
       const id = S.id; S = null;
       app.innerHTML = `
     <div class="card score-card" style="animation:fadeUp .4s ease both">
@@ -920,15 +1523,15 @@
     }
 
     function showHistory(id) {
-      const exam = EXAMS.find(x => x.id === id), d = ex(id);
+      const exam = EXAMS.find(x => x.id === id), d = examData(id);
       app.innerHTML = `
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
       <button class="ghost" onclick="home()">← Back</button>
       <h1 style="font-size:1.2rem;margin:0">History</h1>
     </div>
-    <p style="font-size:.85rem;color:var(--mut);margin-bottom:14px">${esc(exam?.title || '')}</p>
+    <p style="font-size:.85rem;color:var(--mut);margin-bottom:14px">${esc(exam?.title || '')} &middot; <span class="badge cached">🔑 ${esc(currentKey)}</span></p>
     ${d.attempts.length === 0
-          ? `<div class="card" style="color:var(--mut);text-align:center;padding:40px">No attempts yet</div>`
+          ? `<div class="card" style="color:var(--mut);text-align:center;padding:40px">No attempts yet in this session</div>`
           : d.attempts.slice().reverse().map(a => `
         <div class="card">
           <div class="hist-score">${a.correct}/${a.total} <span style="color:var(--mut);font-weight:400;font-size:.9rem">(${Math.round(a.correct / a.total * 100)}%)</span></div>
@@ -937,14 +1540,26 @@
         </div>`).join('')}`;
     }
 
+    // ── Backup & Restore ───────────────────────────────────────────────────────
     function backup() {
       const a = document.createElement('a');
-      a.href = URL.createObjectURL(new Blob([JSON.stringify(DB)], { type: 'application/json' }));
-      a.download = 'itpassport-progress.json'; a.click();
+      a.href = URL.createObjectURL(new Blob([JSON.stringify(sessionData || {})], { type: 'application/json' }));
+      a.download = `itpassport-session-${currentKey || 'backup'}.json`;
+      a.click();
     }
     function restore(el) {
       const f = el.files[0]; if (!f) return;
-      f.text().then(t => { try { DB = JSON.parse(t); save(); home(); } catch { alert('Invalid backup file'); } });
+      f.text().then(t => {
+        try {
+          const parsed = JSON.parse(t);
+          if (parsed && typeof parsed === 'object') {
+            sessionData = parsed;
+            if (parsed.key) currentKey = parsed.key;
+            saveSessionData();
+            home();
+          }
+        } catch { alert('Invalid backup file'); }
+      });
     }
   </script>
 </body>

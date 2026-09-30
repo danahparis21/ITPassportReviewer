@@ -1,9 +1,17 @@
 // Vercel serverless function: tries several OpenAI-compatible providers in order until one works.
 // Order: 1) AI_*  (e.g. Groq)  2) GEMINI_*  3) DEEPSEEK_*  -- any provider whose env vars are missing is skipped.
+// Also supports optional Supabase explanation caching so questions are only generated once across all users.
 export const config = { maxDuration: 60 };
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const TEMP = [429, 500, 502, 503, 504];
+
+function getSupabaseConfig() {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY;
+  if (url && key) return { url: url.replace(/\/+$/, ''), key };
+  return null;
+}
 
 function providers() {
   const list = [];
@@ -40,11 +48,39 @@ async function ask(p, system, user, maxTokens) {
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
-  const provs = providers();
-  if (!provs.length) return res.status(500).json({ error: 'No AI provider configured. Set AI_API_KEY, AI_BASE_URL, AI_MODEL in Vercel env vars.' });
-  const { stem, options, answer, mode } = req.body || {};
+  const { stem, options, answer, mode, examId, qNum } = req.body || {};
   const detailed = mode === 'detailed';
   if (!stem || !options || !answer) return res.status(400).json({ error: 'Missing fields' });
+
+  // 1. Optional Cloud Cache Check (Supabase)
+  const sb = getSupabaseConfig();
+  if (sb && examId && qNum != null) {
+    try {
+      const modeKey = detailed ? 'detailed' : 'short';
+      const ctl = new AbortController();
+      const ct = setTimeout(() => ctl.abort(), 3000);
+      const resp = await fetch(
+        `${sb.url}/rest/v1/explanations?exam_id=eq.${encodeURIComponent(examId)}&q_num=eq.${Number(qNum)}&mode=eq.${encodeURIComponent(modeKey)}&select=explanation`,
+        {
+          signal: ctl.signal,
+          headers: { apikey: sb.key, Authorization: `Bearer ${sb.key}` }
+        }
+      );
+      clearTimeout(ct);
+      if (resp.ok) {
+        const rows = await resp.json();
+        if (rows && rows.length > 0 && rows[0].explanation) {
+          return res.status(200).json({ explanation: rows[0].explanation, provider: 'cloud-cache' });
+        }
+      }
+    } catch (_) {
+      // Continue to AI providers on cache miss/error
+    }
+  }
+
+  // 2. AI Providers
+  const provs = providers();
+  if (!provs.length) return res.status(500).json({ error: 'No AI provider configured. Set GEMINI_API_KEY (or AI_API_KEY) in Vercel env vars.' });
 
   const opts = Object.entries(options).map(([k, v]) => `${k}) ${v}`).join('\n');
   const system = 'You are a warm, patient tutor helping a student fully master the IT Passport exam (ITPEC / IPA Japan). Explain like the student is 5 years old: very simple words, short sentences, everyday examples (food, toys, school, games). Never assume prior knowledge. Do not use tables.';
@@ -98,7 +134,29 @@ One line per wrong option, in this form: "a) Name – one or two simple sentence
   for (const p of provs) {
     for (let attempt = 0; attempt < 2; attempt++) {
       const r = await ask(p, system, user, maxTokens);
-      if (r.ok && r.text.trim()) return res.status(200).json({ explanation: r.text.trim(), provider: p.name });
+      if (r.ok && r.text.trim()) {
+        const text = r.text.trim();
+        // Asynchronously save to cloud cache if Supabase configured
+        if (sb && examId && qNum != null) {
+          fetch(`${sb.url}/rest/v1/explanations`, {
+            method: 'POST',
+            headers: {
+              apikey: sb.key,
+              Authorization: `Bearer ${sb.key}`,
+              'Content-Type': 'application/json',
+              Prefer: 'resolution=merge-duplicates'
+            },
+            body: JSON.stringify({
+              exam_id: examId,
+              q_num: Number(qNum),
+              mode: detailed ? 'detailed' : 'short',
+              explanation: text,
+              updated_at: new Date().toISOString()
+            })
+          }).catch(() => {});
+        }
+        return res.status(200).json({ explanation: text, provider: p.name });
+      }
       const msg = r.ok ? 'empty response' : r.error;
       if (attempt === 1 || !(TEMP.includes(r.status) || r.status === 0 || r.ok)) { errors.push(`${p.name}: ${msg}`); break; }
       await sleep(800); // temporary problem: one quick retry, then move on to the next provider
