@@ -165,7 +165,6 @@
     /* ── Layout ── */
     #app {
       position: relative;
-      z-index: 1;
       max-width: 720px;
       margin: 0 auto;
       padding: 68px 16px 80px;
@@ -458,19 +457,7 @@
 
     /* ── Mobile Drawer Backdrop ── */
     .sidebar-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, .5);
-      backdrop-filter: blur(2px);
-      z-index: 98;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity var(--t);
-    }
-
-    .sidebar-backdrop.active {
-      opacity: 1;
-      pointer-events: auto;
+      display: none;
     }
 
     /* ── Type ── */
@@ -1134,6 +1121,15 @@
       display: none;
     }
 
+    #session-label {
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
     @media(max-width: 959px) {
       .exam-container {
         display: block;
@@ -1147,20 +1143,40 @@
         display: block;
       }
 
+      .sidebar-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .5);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        z-index: 99;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--t);
+      }
+
+      .sidebar-backdrop.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
       .exam-sidebar {
         position: fixed;
         top: 0;
         right: 0;
         bottom: 0;
-        width: 330px;
-        max-width: 86vw;
-        max-height: 100vh;
-        background: var(--card);
-        z-index: 105;
+        width: 340px;
+        max-width: 88vw;
+        max-height: 100dvh;
+        background: var(--surface);
+        border-left: 1px solid var(--bd);
+        z-index: 100;
         padding: 20px 16px 40px;
-        box-shadow: -6px 0 28px rgba(0, 0, 0, .28);
+        box-shadow: -8px 0 32px rgba(0, 0, 0, .32);
         transform: translateX(105%);
         transition: transform .25s cubic-bezier(.4, 0, .2, 1);
+        overflow-y: auto;
       }
 
       .exam-sidebar.mobile-open {
@@ -1214,9 +1230,6 @@
       </button>
     </div>
   </header>
-
-  <!-- Mobile Sidebar Backdrop -->
-  <div id="sidebar-backdrop" class="sidebar-backdrop" onclick="toggleSidebar(false)"></div>
 
   <main id="app">
     <div class="exp-loading" style="justify-content:center;min-height:50vh">
@@ -1748,6 +1761,7 @@
       }
 
       return `
+    <div id="sidebar-backdrop" class="sidebar-backdrop" onclick="toggleSidebar(false)"></div>
     <aside id="exam-sidebar" class="exam-sidebar">
       <div class="sidebar-header">
         <div class="sidebar-title">📊 Live Progress Dashboard</div>
