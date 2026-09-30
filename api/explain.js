@@ -1,17 +1,50 @@
-// Vercel serverless function using DeepSeek (OpenAI-compatible API).
-// Env vars: DEEPSEEK_API_KEY (required), DEEPSEEK_MODEL (optional, default deepseek-chat)
+// Vercel serverless function: tries several OpenAI-compatible providers in order until one works.
+// Order: 1) AI_*  (e.g. Groq)  2) GEMINI_*  3) DEEPSEEK_*  -- any provider whose env vars are missing is skipped.
 export const config = { maxDuration: 60 };
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+const TEMP = [429, 500, 502, 503, 504];
+
+function providers() {
+  const list = [];
+  const e = process.env;
+  if (e.AI_API_KEY && e.AI_BASE_URL && e.AI_MODEL)
+    list.push({ name: 'primary', base: e.AI_BASE_URL, key: e.AI_API_KEY, model: e.AI_MODEL });
+  if (e.GEMINI_API_KEY)
+    list.push({ name: 'gemini', base: 'https://generativelanguage.googleapis.com/v1beta/openai', key: e.GEMINI_API_KEY, model: e.GEMINI_MODEL || 'gemini-3.8-flash' });
+  if (e.DEEPSEEK_API_KEY)
+    list.push({ name: 'deepseek', base: 'https://api.deepseek.com', key: e.DEEPSEEK_API_KEY, model: e.DEEPSEEK_MODEL || 'deepseek-chat' });
+  return list.map(p => ({ ...p, base: p.base.replace(/\/+$/, '') }));
+}
+
+async function ask(p, system, user) {
+  const ctl = new AbortController();
+  const t = setTimeout(() => ctl.abort(), 25000);
+  try {
+    const r = await fetch(`${p.base}/chat/completions`, {
+      method: 'POST',
+      signal: ctl.signal,
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${p.key}` },
+      body: JSON.stringify({
+        model: p.model, temperature: 0.4, max_tokens: 3500,
+        messages: [{ role: 'system', content: system }, { role: 'user', content: user }]
+      })
+    });
+    const data = await r.json().catch(() => ({}));
+    const err = Array.isArray(data) ? data[0]?.error?.message : data?.error?.message;
+    return { ok: r.ok, status: r.status, text: data?.choices?.[0]?.message?.content || '', error: err || `HTTP ${r.status}` };
+  } catch (e) {
+    return { ok: false, status: 0, text: '', error: e.name === 'AbortError' ? 'timed out' : String(e) };
+  } finally { clearTimeout(t); }
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
-  const key = process.env.DEEPSEEK_API_KEY;
-  if (!key) return res.status(500).json({ error: 'DEEPSEEK_API_KEY is not set' });
+  const provs = providers();
+  if (!provs.length) return res.status(500).json({ error: 'No AI provider configured. Set AI_API_KEY, AI_BASE_URL, AI_MODEL in Vercel env vars.' });
   const { stem, options, answer } = req.body || {};
   if (!stem || !options || !answer) return res.status(400).json({ error: 'Missing fields' });
 
-  const model = process.env.DEEPSEEK_MODEL || 'deepseek-chat';
   const opts = Object.entries(options).map(([k, v]) => `${k}) ${v}`).join('\n');
   const system = 'You are a warm, patient tutor helping a student fully master the IT Passport exam (ITPEC / IPA Japan). Explain like the student is 5 years old: very simple words, short sentences, everyday examples (food, toys, school, games). Never assume prior knowledge. Do not use tables.';
   const user =
@@ -40,32 +73,15 @@ One clear paragraph per wrong option: what that option actually is or means, and
 ## Remember it like this
 A short memorable trick, rhyme or mini-story, plus one similar exam-style tip.`;
 
-  let last = { error: 'AI request failed' };
-  for (let i = 0; i < 2; i++) {
-    try {
-      const r = await fetch('https://api.deepseek.com/chat/completions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
-        body: JSON.stringify({
-          model,
-          temperature: 0.4,
-          max_tokens: 1600,
-          messages: [{ role: 'system', content: system }, { role: 'user', content: user }]
-        })
-      });
-      const data = await r.json().catch(() => ({}));
-      if (r.ok) {
-        const text = data?.choices?.[0]?.message?.content || '';
-        if (text.trim()) return res.status(200).json({ explanation: text.trim() });
-        last = { error: 'Empty response from AI' };
-      } else {
-        last = { error: data?.error?.message || `AI error ${r.status}` };
-        if (![429, 500, 502, 503, 504].includes(r.status)) break; // not temporary
-      }
-    } catch (e) {
-      last = { error: String(e) };
+  const errors = [];
+  for (const p of provs) {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const r = await ask(p, system, user);
+      if (r.ok && r.text.trim()) return res.status(200).json({ explanation: r.text.trim(), provider: p.name });
+      const msg = r.ok ? 'empty response' : r.error;
+      if (attempt === 1 || !(TEMP.includes(r.status) || r.status === 0 || r.ok)) { errors.push(`${p.name}: ${msg}`); break; }
+      await sleep(800); // temporary problem: one quick retry, then move on to the next provider
     }
-    if (i < 1) await sleep(800 * (i + 1));
   }
-  return res.status(502).json(last);
+  return res.status(502).json({ error: errors.join(' | ') });
 }
