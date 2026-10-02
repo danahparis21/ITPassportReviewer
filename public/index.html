@@ -9,65 +9,71 @@
   <title>IT Passport Reviewer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
   <style>
     /* ── Tokens — Light mode (default) ── */
     :root {
-      --bg: #f4f5f9;
-      --surface: #fff;
-      --card: #fff;
-      --card-h: #f0f2f8;
-      --bd: #dde1ee;
-      --bd-b: #b8bfda;
-      --tx: #1a1d2e;
-      --mut: #555c7a;
-      --dim: #8890b0;
-      --pri: #4a60e8;
-      --pri-glow: rgba(74, 96, 232, .12);
-      --ok: #1d8a42;
-      --ok-bg: rgba(29, 138, 66, .09);
-      --ok-bd: rgba(29, 138, 66, .3);
-      --warn: #c27803;
-      --warn-bg: rgba(194, 120, 3, .1);
-      --warn-bd: rgba(194, 120, 3, .3);
-      --bad: #c0192d;
-      --bad-bg: rgba(192, 25, 45, .08);
-      --bad-bd: rgba(192, 25, 45, .28);
-      --accent: #6d3fc9;
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --card: #ffffff;
+      --card-h: #faf7f8;
+      --bd: #ede3e6;
+      --bd-b: #dfcfd4;
+      --tx: #32252a;
+      --mut: #6d5b63;
+      --dim: #99878e;
+      --pri: #a8667a;
+      --pri-glow: rgba(168, 102, 122, 0.16);
+      --accent: #c08a98;
+      --rose-soft: #fcf4f6;
+      --rose-deep: #965468;
+      --ok: #2a7d50;
+      --ok-bg: rgba(42, 125, 80, .09);
+      --ok-bd: rgba(42, 125, 80, .3);
+      --warn: #a06030;
+      --warn-bg: rgba(160, 96, 48, .1);
+      --warn-bd: rgba(160, 96, 48, .3);
+      --bad: #b03040;
+      --bad-bg: rgba(176, 48, 64, .08);
+      --bad-bd: rgba(176, 48, 64, .28);
       --r: 16px;
       --rs: 10px;
       --rp: 99px;
-      --shadow: 0 4px 24px rgba(0, 0, 0, .08);
-      --shadow-s: 0 1px 6px rgba(0, 0, 0, .07);
-      --font: 'Inter', system-ui, sans-serif;
+      --shadow: 0 4px 20px rgba(150, 84, 104, 0.06);
+      --shadow-s: 0 1px 6px rgba(150, 84, 104, 0.04);
+      --font: 'Outfit', 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
       --t: .18s cubic-bezier(.4, 0, .2, 1);
     }
 
     /* ── Dark mode ── */
     [data-dark] {
-      --bg: #0f1117;
-      --surface: #1a1d27;
-      --card: #1e2130;
-      --card-h: #252840;
-      --bd: #2d3148;
-      --bd-b: #3d4268;
-      --tx: #e8eaf4;
-      --mut: #9198bc;
-      --dim: #4a5080;
-      --pri: #6c7fff;
-      --pri-glow: rgba(108, 127, 255, .18);
+      --bg: #181315;
+      --surface: #221a1d;
+      --card: #251c20;
+      --card-h: #2f2328;
+      --bd: #423238;
+      --bd-b: #5e464f;
+      --tx: #f1e4e8;
+      --mut: #b79ca6;
+      --dim: #7d6670;
+      --pri: #b4687d;
+      --pri-glow: rgba(180, 104, 125, 0.24);
+      --accent: #c9919f;
+      --rose-soft: #3a2830;
+      --rose-deep: #e0aebb;
       --ok: #3ecf72;
       --ok-bg: rgba(62, 207, 114, .1);
       --ok-bd: rgba(62, 207, 114, .35);
       --warn: #f59e0b;
       --warn-bg: rgba(245, 158, 11, .12);
       --warn-bd: rgba(245, 158, 11, .35);
-      --bad: #ff6b8a;
-      --bad-bg: rgba(255, 107, 138, .1);
-      --bad-bd: rgba(255, 107, 138, .35);
-      --accent: #a78bfa;
-      --shadow: 0 8px 32px rgba(0, 0, 0, .4);
-      --shadow-s: 0 2px 8px rgba(0, 0, 0, .25);
+      --bad: #f08090;
+      --bad-bg: rgba(240, 128, 144, .1);
+      --bad-bd: rgba(240, 128, 144, .35);
+      --shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
+      --shadow-s: 0 3px 12px rgba(0, 0, 0, 0.3);
     }
 
     /* ── Reset ── */
@@ -90,16 +96,7 @@
     }
 
     body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 20% -10%, rgba(74, 96, 232, .06) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 80% 110%, rgba(109, 63, 201, .04) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0
-    }
-
-    [data-dark] body::before {
-      background: radial-gradient(ellipse 80% 60% at 20% -10%, rgba(108, 127, 255, .12) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 80% 110%, rgba(167, 139, 250, .08) 0%, transparent 60%)
+      display: none;
     }
 
     /* ── Top Nav ── */
@@ -554,9 +551,15 @@
     }
 
     .badge.cached {
-      background: rgba(74, 96, 232, .1);
+      background: var(--pri-glow);
       color: var(--pri);
-      border-color: rgba(74, 96, 232, .25);
+      border-color: var(--bd-b);
+    }
+
+    .icon {
+      display: inline-block;
+      vertical-align: -0.16em;
+      flex-shrink: 0;
     }
 
     /* ── Buttons ── */
@@ -601,12 +604,12 @@
     }
 
     button.pri:hover:not(:disabled) {
-      background: #394fd4;
+      background: var(--rose-deep);
       box-shadow: 0 4px 16px var(--pri-glow);
     }
 
     [data-dark] button.pri:hover:not(:disabled) {
-      background: #5b6fff;
+      background: var(--pri);
     }
 
     button.ghost {
@@ -1210,6 +1213,701 @@
         justify-content: center;
       }
     }
+
+    /* ── Home Page · Soft Blush (dusty rose) ───────────────────────────────── */
+    body.home-view {
+      --bg: #f8eff1;
+      --surface: #fdf8f9;
+      --card: #fffafb;
+      --card-h: #f6e9ec;
+      --bd: #ecd8dd;
+      --bd-b: #dbbcc5;
+      --tx: #4a3840;
+      --mut: #7e6870;
+      --dim: #a8939a;
+      --pri: #a8667a;
+      --pri-glow: rgba(168, 102, 122, 0.18);
+      --accent: #c08a98;
+      --rose-soft: #f3e1e6;
+      --rose-deep: #965468;
+      --shadow: 0 10px 30px rgba(150, 84, 104, 0.08);
+      --shadow-s: 0 3px 12px rgba(150, 84, 104, 0.06);
+      --font: 'Outfit', 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+      background-color: var(--bg);
+    }
+
+    body.home-view::before {
+      display: block;
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(232, 196, 206, 0.35) 0%, transparent 45%),
+        radial-gradient(circle at 90% 88%, rgba(232, 204, 212, 0.3) 0%, transparent 45%),
+        repeating-linear-gradient(90deg, rgba(200, 150, 166, 0.06) 0 14px, transparent 14px 28px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    [data-dark] body.home-view {
+      --bg: #1b1417;
+      --surface: #241a1e;
+      --card: #281d22;
+      --card-h: #33252b;
+      --bd: #46333a;
+      --bd-b: #634852;
+      --tx: #f1e4e8;
+      --mut: #b79ca6;
+      --dim: #7d6670;
+      --pri: #b4687d;
+      --pri-glow: rgba(180, 104, 125, 0.24);
+      --accent: #c9919f;
+      --rose-soft: #3a2830;
+      --rose-deep: #e0aebb;
+      --shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
+      --shadow-s: 0 3px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    [data-dark] body.home-view::before {
+      background:
+        radial-gradient(circle at 15% 12%, rgba(180, 104, 125, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 85% 85%, rgba(180, 104, 125, 0.09) 0%, transparent 50%);
+    }
+
+    body.home-view .nav-pill {
+      border: 1.5px solid var(--bd);
+      background: rgba(255, 250, 251, 0.88);
+      backdrop-filter: blur(12px);
+      color: var(--mut);
+      box-shadow: var(--shadow-s);
+    }
+
+    [data-dark] body.home-view .nav-pill {
+      background: rgba(36, 26, 30, 0.88);
+    }
+
+    body.home-view .nav-pill:hover {
+      border-color: var(--bd-b);
+      color: var(--tx);
+      transform: translateY(-1px);
+    }
+
+    body.home-view .nav-pill .dot-active {
+      background: var(--pri);
+      box-shadow: 0 0 6px var(--pri-glow);
+    }
+
+    /* Hero */
+    .pink-hero-wrap {
+      margin-bottom: 24px;
+      animation: fadeUp .4s ease both;
+    }
+
+    .pink-ribbon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--rose-soft);
+      color: var(--rose-deep);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 99px;
+      border: 1px solid var(--bd);
+      margin-bottom: 14px;
+    }
+
+    .pink-title {
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      font-style: italic;
+      font-size: 2.7rem;
+      font-weight: 600;
+      line-height: 1.12;
+      background: none;
+      -webkit-background-clip: border-box;
+      background-clip: border-box;
+      -webkit-text-fill-color: var(--rose-deep);
+      color: var(--rose-deep);
+      margin-bottom: 8px;
+      letter-spacing: 0;
+    }
+
+    .pink-subtitle {
+      font-size: .95rem;
+      color: var(--mut);
+      line-height: 1.55;
+      margin-bottom: 20px;
+    }
+
+    /* Companion card */
+    .mascot-bento-card {
+      background: var(--card);
+      border: 1.5px solid var(--bd);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 20px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+      transition: box-shadow var(--t), border-color var(--t);
+    }
+
+    .mascot-bento-card:hover {
+      border-color: var(--bd-b);
+    }
+
+    .mascot-avatar-col {
+      text-align: center;
+      position: relative;
+    }
+
+    .mascot-avatar-frame {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      padding: 4px;
+      background: linear-gradient(135deg, #d9b3bd, #f1dde2, #c99aa7);
+      box-shadow: 0 6px 18px rgba(150, 84, 104, 0.18);
+      position: relative;
+      animation: floatAvatar 5s ease-in-out infinite;
+    }
+
+    @keyframes floatAvatar {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .mascot-avatar-frame img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mascot-bow-tag {
+      position: absolute;
+      top: -4px;
+      right: 4px;
+      font-size: 1.3rem;
+      filter: saturate(.6) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
+    }
+
+    .mascot-status-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--rose-deep);
+      background: var(--rose-soft);
+      padding: 3px 10px;
+      border-radius: 99px;
+      border: 1px solid var(--bd);
+    }
+
+    .mascot-info-col {
+      min-width: 0;
+    }
+
+    .mascot-speech-bubble {
+      background: var(--surface);
+      border: 1.5px solid var(--bd);
+      border-radius: 16px;
+      padding: 14px 16px;
+      position: relative;
+      font-size: .93rem;
+      color: var(--tx);
+      line-height: 1.55;
+      margin-bottom: 12px;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+
+    .mascot-speech-bubble::before {
+      content: '';
+      position: absolute;
+      left: -9px;
+      top: 24px;
+      width: 16px;
+      height: 16px;
+      background: var(--surface);
+      border-left: 1.5px solid var(--bd);
+      border-bottom: 1.5px solid var(--bd);
+      transform: rotate(45deg);
+    }
+
+    .speech-highlight {
+      font-weight: 700;
+      color: var(--rose-deep);
+    }
+
+    .mascot-interactive-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .motivation-btn,
+    .guide-btn-pink {
+      font-size: .84rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 99px;
+      cursor: pointer;
+      transition: all .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: none;
+    }
+
+    .motivation-btn {
+      background: var(--rose-soft);
+      border: 1.5px solid var(--bd-b);
+      color: var(--rose-deep);
+    }
+
+    .motivation-btn:hover {
+      background: var(--card-h);
+      border-color: var(--pri);
+      transform: translateY(-1px);
+    }
+
+    .guide-btn-pink {
+      background: transparent;
+      border: 1.5px solid var(--bd-b);
+      color: var(--rose-deep);
+    }
+
+    .guide-btn-pink:hover {
+      background: var(--card-h);
+      border-color: var(--pri);
+      transform: translateY(-1px);
+    }
+
+    /* Study ambience widget */
+    .lofi-widget {
+      background: var(--surface);
+      border: 1.5px solid var(--bd);
+      border-radius: 14px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .lofi-track-info {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--mut);
+    }
+
+    .lofi-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 2.5px;
+      height: 14px;
+    }
+
+    .lofi-bar {
+      width: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      height: 4px;
+      transition: height .2s ease;
+    }
+
+    .lofi-bars.playing .lofi-bar:nth-child(1) {
+      animation: soundBar 0.8s ease-in-out infinite;
+    }
+
+    .lofi-bars.playing .lofi-bar:nth-child(2) {
+      animation: soundBar 1.1s ease-in-out 0.2s infinite;
+    }
+
+    .lofi-bars.playing .lofi-bar:nth-child(3) {
+      animation: soundBar 0.7s ease-in-out 0.4s infinite;
+    }
+
+    .lofi-bars.playing .lofi-bar:nth-child(4) {
+      animation: soundBar 0.9s ease-in-out 0.1s infinite;
+    }
+
+    @keyframes soundBar {
+
+      0%,
+      100% {
+        height: 4px;
+      }
+
+      50% {
+        height: 14px;
+      }
+    }
+
+    .lofi-btn {
+      background: var(--card);
+      border: 1.5px solid var(--bd-b);
+      color: var(--rose-deep);
+      border-radius: 99px;
+      padding: 5px 12px;
+      font-size: .76rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: none;
+      transition: all .18s ease;
+    }
+
+    .lofi-btn:hover {
+      background: var(--pri);
+      color: #fff;
+      border-color: var(--pri);
+    }
+
+    /* Exam cards */
+    .pink-exam-card {
+      background: var(--card);
+      border: 1.5px solid var(--bd);
+      border-radius: 20px;
+      padding: 22px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-s);
+      transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pink-exam-card:hover {
+      border-color: var(--bd-b);
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+
+    .pink-exam-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .pink-exam-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: .76rem;
+      font-weight: 600;
+      letter-spacing: .02em;
+      background: var(--rose-soft);
+      color: var(--rose-deep);
+      border: 1px solid var(--bd);
+    }
+
+    .pink-exam-badge.spring {
+      background: var(--rose-soft);
+      border-color: var(--bd-b);
+      color: var(--rose-deep);
+    }
+
+    .pink-exam-badge.autumn {
+      background: #f3e7e0;
+      border-color: #e4cfc3;
+      color: #8a5d49;
+    }
+
+    [data-dark] .pink-exam-badge.autumn {
+      background: #35271f;
+      border-color: #5a4132;
+      color: #d9ad96;
+    }
+
+    .pink-exam-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--tx);
+      margin-bottom: 6px;
+      letter-spacing: -.01em;
+    }
+
+    .pink-exam-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: .84rem;
+      color: var(--mut);
+      margin-bottom: 18px;
+    }
+
+    /* Buttons */
+    body.home-view button.pri,
+    .pink-btn-primary {
+      background: var(--pri) !important;
+      color: #ffffff !important;
+      border: none !important;
+      border-radius: 12px !important;
+      box-shadow: 0 4px 14px var(--pri-glow) !important;
+      font-weight: 600 !important;
+      transition: all .2s ease !important;
+    }
+
+    body.home-view button.pri:hover,
+    .pink-btn-primary:hover {
+      background: #96586b !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 6px 18px var(--pri-glow) !important;
+    }
+
+    body.home-view button:not(.pri):not(.ghost):not(.welcome-start-btn) {
+      border-radius: 12px;
+      border: 1.5px solid var(--bd);
+      background: var(--surface);
+      color: var(--tx);
+    }
+
+    body.home-view button:not(.pri):not(.ghost):not(.welcome-start-btn):hover {
+      border-color: var(--bd-b);
+      background: var(--card-h);
+    }
+
+    /* Resume card */
+    .pink-resume-card {
+      background: linear-gradient(145deg, var(--rose-soft), var(--card));
+      border: 1.5px solid var(--pri);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pink-resume-card .bar-fill {
+      background: linear-gradient(90deg, var(--accent), var(--pri));
+    }
+
+    /* Guide modal */
+    .welcome-backdrop {
+      background: rgba(60, 40, 48, 0.5) !important;
+      backdrop-filter: blur(8px) !important;
+    }
+
+    .welcome-modal-card {
+      background: var(--card) !important;
+      border: 1.5px solid var(--bd-b) !important;
+      border-radius: 24px !important;
+      box-shadow: 0 24px 60px rgba(90, 50, 66, 0.25) !important;
+      max-width: 480px !important;
+      max-height: 86vh !important;
+      overflow-y: auto !important;
+      padding: 24px 22px !important;
+      position: relative;
+      text-align: left;
+    }
+
+    .welcome-ribbon-tag {
+      display: inline-block;
+      background: var(--rose-soft);
+      color: var(--rose-deep);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      padding: 4px 14px;
+      border-radius: 99px;
+      border: 1px solid var(--bd);
+      margin-bottom: 14px;
+    }
+
+    .welcome-close-x {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: var(--rose-soft);
+      border: 1px solid var(--bd);
+      color: var(--rose-deep);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+      cursor: pointer;
+      transition: all .18s ease;
+      padding: 0;
+      box-shadow: none;
+    }
+
+    .welcome-close-x:hover {
+      background: var(--pri);
+      color: #fff;
+    }
+
+    .welcome-mascot-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .welcome-avatar-wrap {
+      position: relative;
+      flex-shrink: 0;
+      width: 76px;
+      height: 76px;
+    }
+
+    .welcome-avatar-img {
+      width: 76px !important;
+      height: 76px !important;
+      max-width: 76px !important;
+      max-height: 76px !important;
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      border: 3px solid #d9b3bd !important;
+      box-shadow: 0 6px 16px rgba(150, 84, 104, 0.18) !important;
+      display: block !important;
+    }
+
+    .welcome-avatar-bow {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      font-size: 1.2rem;
+      filter: saturate(.6);
+    }
+
+    .welcome-greeting-title {
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      font-style: italic;
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--rose-deep);
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+
+    .welcome-greeting-sub {
+      font-size: .86rem;
+      color: var(--mut);
+      line-height: 1.5;
+    }
+
+    .welcome-features-list {
+      background: var(--surface);
+      border: 1.5px solid var(--bd);
+      border-radius: 18px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .welcome-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .welcome-feature-item .feat-icon {
+      font-size: 1.1rem;
+      line-height: 1.2;
+    }
+
+    .welcome-feature-item b {
+      display: block;
+      font-size: .86rem;
+      color: var(--tx);
+      margin-bottom: 2px;
+    }
+
+    .welcome-feature-item p {
+      font-size: .78rem;
+      color: var(--mut);
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .welcome-start-btn {
+      width: 100%;
+      padding: 13px 20px;
+      background: var(--pri);
+      color: #ffffff;
+      border: none;
+      border-radius: 14px;
+      font-size: .98rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px var(--pri-glow);
+      transition: all .2s ease;
+    }
+
+    .welcome-start-btn:hover {
+      background: #96586b;
+      transform: translateY(-1px);
+    }
+
+    .welcome-foot-tip {
+      font-size: .75rem;
+      color: var(--dim);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .mascot-bento-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 14px;
+        padding: 16px;
+      }
+
+      .mascot-speech-bubble::before {
+        display: none;
+      }
+
+      .mascot-interactive-row {
+        justify-content: center;
+      }
+
+      .lofi-widget {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+      }
+
+      .pink-title {
+        font-size: 2.2rem;
+      }
+    }
   </style>
 </head>
 
@@ -1218,15 +1916,18 @@
     <div class="nav-actions">
       <button id="session-btn" class="nav-pill" onclick="openSessionModal()" title="Manage Study Session">
         <span class="dot-active"></span>
-        <span id="session-label">🔑 Session</span>
+        <span id="session-label">Session</span>
+      </button>
+      <button id="guide-nav-btn" class="nav-pill" onclick="openWelcomeModal()" title="Meet Study Mascot & Guide">
+        Guide
       </button>
       <button id="mobile-stats-btn" class="nav-pill" onclick="toggleSidebar(true)" title="View Progress Dashboard">
-        📊 Stats
+        Stats
       </button>
     </div>
     <div class="nav-actions">
       <button id="theme-btn" class="nav-pill" onclick="toggleTheme()" title="Toggle light/dark mode">
-        🌙 Dark
+        Theme
       </button>
     </div>
   </header>
@@ -1241,7 +1942,9 @@
   <!-- Session Key Modal Dialog -->
   <div id="session-modal" class="modal-backdrop" style="display:none">
     <div class="modal-card">
-      <div style="font-size:1.8rem;margin-bottom:6px">🔑</div>
+      <div style="margin-bottom:8px;color:var(--pri)">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><circle cx="7.5" cy="15.5" r="3"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3"/></svg>
+      </div>
       <h2 style="font-size:1.25rem;font-weight:800;margin-bottom:6px">Study Session Key</h2>
       <p style="font-size:.86rem;color:var(--mut);line-height:1.5">
         Enter a memorable key (e.g. <b>danah-review</b> or your nickname). Whenever you return or restart, your exam
@@ -1252,22 +1955,168 @@
         onkeydown="if(event.key==='Enter') saveSessionModal()">
 
       <div id="recent-sessions-wrap" style="display:none">
-        <div style="font-size:.76rem;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:.04em">Recent on this device:</div>
+        <div style="font-size:.76rem;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:.04em">
+          Recent on this device:</div>
         <div id="recent-sessions" class="recent-chips"></div>
       </div>
 
       <div class="btn-row" style="margin-top:14px">
         <button class="pri" style="flex:1" onclick="saveSessionModal()">Start / Load Session</button>
-        <button class="ghost" onclick="suggestRandomKey()" title="Generate a memorable random key">🎲 Suggest</button>
+        <button class="ghost" onclick="suggestRandomKey()" title="Generate a memorable random key">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M16 8h.01"/><path d="M8 8h.01"/><path d="M8 16h.01"/><path d="M16 16h.01"/><path d="M12 12h.01"/></svg>
+          Suggest
+        </button>
       </div>
 
       <div style="margin-top:12px;text-align:center">
-        <button id="session-close-btn" class="ghost sm" onclick="closeSessionModal()" style="display:none">Cancel</button>
+        <button id="session-close-btn" class="ghost sm" onclick="closeSessionModal()"
+          style="display:none">Cancel</button>
       </div>
     </div>
   </div>
 
+  <!-- Welcome Mascot Modal Dialog -->
+  <div id="welcome-modal" class="modal-backdrop welcome-backdrop" style="display:none"
+    onclick="if(event.target===this) closeWelcomeModal()">
+    <div class="modal-card welcome-modal-card">
+      <div class="welcome-ribbon-tag">DANAH'S IT REVIEWER</div>
+      <button class="welcome-close-x" onclick="closeWelcomeModal()" title="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+
+      <div class="welcome-mascot-row">
+        <div class="welcome-avatar-wrap">
+          <img src="mascot.jpg" alt="Study companion" class="welcome-avatar-img"
+            style="width:76px;height:76px;max-width:76px;max-height:76px;border-radius:50%;object-fit:cover;display:block;">
+          <div class="welcome-avatar-bow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/></svg>
+          </div>
+        </div>
+        <div class="welcome-speech-box">
+          <div class="welcome-greeting-title">Welcome back</div>
+          <div class="welcome-greeting-sub">Pick an exam, answer one question at a time, and read the explanation after
+            each one. Your progress saves automatically.</div>
+        </div>
+      </div>
+
+      <div class="welcome-features-list">
+        <div class="welcome-feature-item">
+          <span class="feat-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+          </span>
+          <div>
+            <b>100-Question Exam Banks</b>
+            <p>Select between <b>Spring 2026</b> and <b>Autumn 2025</b> with official questions and figures.</p>
+          </div>
+        </div>
+        <div class="welcome-feature-item">
+          <span class="feat-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04Z"/></svg>
+          </span>
+          <div>
+            <b>Focus Mode</b>
+            <p>Once an exam starts, the screen switches to a clean white layout so you can concentrate on the questions.
+            </p>
+          </div>
+        </div>
+        <div class="welcome-feature-item">
+          <span class="feat-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+          </span>
+          <div>
+            <b>Instant AI Explanations</b>
+            <p>Choose an answer to see why it is right or wrong. Explanations are saved so they load instantly next
+              time.</p>
+          </div>
+        </div>
+        <div class="welcome-feature-item">
+          <span class="feat-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><circle cx="7.5" cy="15.5" r="3"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3"/></svg>
+          </span>
+          <div>
+            <b>Synced Progress</b>
+            <p>Your session key keeps your answers and position across your phone, tablet, and computer.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="welcome-btn-row">
+        <button class="welcome-start-btn" onclick="closeWelcomeModal()">
+          <span>Start reviewing</span>
+        </button>
+      </div>
+      <div class="welcome-foot-tip">You can re-open this guide anytime by clicking <b>Guide</b> on the top bar.</div>
+    </div>
+  </div>
+
   <script>
+    // ── Icon Helper ────────────────────────────────────────────────────────────
+    function icon(name, size = 16, cls = '') {
+      const s = size;
+      const c = cls ? ` class="icon ${cls}"` : ' class="icon"';
+      const base = `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"${c}>`;
+      switch (name) {
+        case 'key':
+          return `${base}<circle cx="7.5" cy="15.5" r="3"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3"/></svg>`;
+        case 'chart':
+          return `${base}<path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>`;
+        case 'moon':
+          return `${base}<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`;
+        case 'sun':
+          return `${base}<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`;
+        case 'dice':
+          return `${base}<rect width="18" height="18" x="3" y="3" rx="2"/><path d="M16 8h.01"/><path d="M8 8h.01"/><path d="M8 16h.01"/><path d="M16 16h.01"/><path d="M12 12h.01"/></svg>`;
+        case 'x':
+          return `${base}<path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`;
+        case 'check':
+          return `${base}<path d="M20 6 9 17l-5-5"/></svg>`;
+        case 'edit':
+          return `${base}<path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>`;
+        case 'brain':
+          return `${base}<path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04Z"/></svg>`;
+        case 'lightbulb':
+          return `${base}<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>`;
+        case 'book':
+          return `${base}<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>`;
+        case 'image':
+          return `${base}<rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>`;
+        case 'trophy':
+          return `${base}<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H8c-.55 0-1 .45-1 1v1h10v-1c0-.55-.45-1-1-1h-1c-.55 0-1-.45-1-1v-2.34"/><path d="M6 4h12v5a6 6 0 0 1-12 0V4Z"/></svg>`;
+        case 'zap':
+          return `${base}<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`;
+        case 'sparkles':
+          return `${base}<path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>`;
+        case 'clock':
+          return `${base}<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
+        case 'headphones':
+          return `${base}<path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>`;
+        case 'arrow-right':
+          return `${base}<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>`;
+        case 'arrow-left':
+          return `${base}<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>`;
+        case 'chevron-up':
+          return `${base}<path d="m18 15-6-6-6 6"/></svg>`;
+        case 'chevron-down':
+          return `${base}<path d="m6 9 6 6 6-6"/></svg>`;
+        case 'alert':
+          return `${base}<circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>`;
+        case 'target':
+          return `${base}<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>`;
+        case 'bot':
+          return `${base}<rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1"/></svg>`;
+        case 'play':
+          return `${base}<polygon points="5 3 19 12 5 21 5 3"/></svg>`;
+        case 'pause':
+          return `${base}<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`;
+        case 'info':
+          return `${base}<circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>`;
+        case 'award':
+          return `${base}<circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>`;
+        default:
+          return `${base}<circle cx="12" cy="12" r="10"/></svg>`;
+      }
+    }
+
     // ── Global State ───────────────────────────────────────────────────────────
     const ACTIVE_KEY_STORE = 'itp_active_key';
     const RECENT_KEYS_STORE = 'itp_recent_keys';
@@ -1363,7 +2212,7 @@
     function updateSessionNav() {
       const label = document.getElementById('session-label');
       if (label) {
-        label.textContent = currentKey ? `🔑 ${currentKey}` : '🔑 Set Key';
+        label.innerHTML = currentKey ? `${icon('key', 13)} <span>${esc(currentKey)}</span>` : `${icon('key', 13)} <span>Set Key</span>`;
       }
     }
 
@@ -1431,7 +2280,7 @@
       const dark = localStorage.getItem(THEME_KEY) === 'dark';
       document.documentElement.toggleAttribute('data-dark', dark);
       const btn = document.getElementById('theme-btn');
-      if (btn) btn.textContent = dark ? '☀ Light' : '🌙 Dark';
+      if (btn) btn.innerHTML = dark ? `${icon('sun', 14)} Light` : `${icon('moon', 14)} Dark`;
     }
     function toggleTheme() {
       const isDark = document.documentElement.hasAttribute('data-dark');
@@ -1502,12 +2351,109 @@
     function saveSessionModal() {
       const val = document.getElementById('session-input').value.trim();
       if (!val) {
-        alert('Please enter a session key, or click "🎲 Suggest" to generate one.');
+        alert('Please enter a session key, or click "Suggest" to generate one.');
         return;
       }
       initSession(val);
       document.getElementById('session-modal').style.display = 'none';
       home();
+    }
+
+    // ── Welcome & Interactive Mascot Helpers ───────────────────────────────────
+    function openWelcomeModal() {
+      const modal = document.getElementById('welcome-modal');
+      if (modal) modal.style.display = 'flex';
+    }
+
+    function closeWelcomeModal() {
+      const modal = document.getElementById('welcome-modal');
+      if (modal) modal.style.display = 'none';
+      sessionStorage.setItem('itp_welcomed', '1');
+    }
+
+    const MOTIVATIONS = [
+      "Pick an exam below whenever you're ready. One question at a time is plenty.",
+      "A wrong answer is useful. Read the explanation, and it will stick next time.",
+      "Short, regular sessions beat one long cram. Even ten questions counts.",
+      "Strategy, Management, and Technology. Work through each area and the exam gets much less scary.",
+      "Use Retry Missed to go back over only the questions you got wrong."
+    ];
+    let currentMotivIdx = 0;
+    function cycleMotivation() {
+      currentMotivIdx = (currentMotivIdx + 1) % MOTIVATIONS.length;
+      const el = document.getElementById('mascot-speech-text');
+      if (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(4px)';
+        setTimeout(() => {
+          el.textContent = MOTIVATIONS[currentMotivIdx];
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, 150);
+      }
+    }
+
+    // Mini synthesized lofi ambient chord player for study vibes
+    let audioCtx = null;
+    let isLofiPlaying = false;
+    let lofiTimer = null;
+
+    function toggleLofiMusic() {
+      const btn = document.getElementById('lofi-play-btn');
+      const bars = document.getElementById('lofi-bars');
+      if (!isLofiPlaying) {
+        try {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (!audioCtx) audioCtx = new AudioContext();
+          if (audioCtx.state === 'suspended') audioCtx.resume();
+
+          isLofiPlaying = true;
+          if (btn) btn.innerHTML = `${icon('pause', 13)} Pause`;
+          if (bars) bars.classList.add('playing');
+
+          const chords = [
+            [174.61, 220.00, 261.63, 329.63], // Fmaj7
+            [196.00, 246.94, 293.66, 392.00], // G
+            [164.81, 196.00, 246.94, 293.66], // Em7
+            [220.00, 261.63, 329.63, 392.00]  // Am7
+          ];
+          let chordIndex = 0;
+
+          function playLofiChord() {
+            if (!isLofiPlaying || !audioCtx) return;
+            const now = audioCtx.currentTime;
+            const chord = chords[chordIndex];
+            chordIndex = (chordIndex + 1) % chords.length;
+
+            chord.forEach((freq, i) => {
+              const osc = audioCtx.createOscillator();
+              const gain = audioCtx.createGain();
+              osc.type = 'sine';
+              osc.frequency.setValueAtTime(freq, now + i * 0.04);
+
+              gain.gain.setValueAtTime(0.001, now);
+              gain.gain.exponentialRampToValueAtTime(0.02, now + 0.15 + i * 0.04);
+              gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.4);
+
+              osc.connect(gain);
+              gain.connect(audioCtx.destination);
+
+              osc.start(now + i * 0.04);
+              osc.stop(now + 2.5);
+            });
+
+            lofiTimer = setTimeout(playLofiChord, 2600);
+          }
+          playLofiChord();
+        } catch (e) {
+          console.warn('Audio not available:', e);
+        }
+      } else {
+        isLofiPlaying = false;
+        clearTimeout(lofiTimer);
+        if (btn) btn.innerHTML = `${icon('play', 13)} Play`;
+        if (bars) bars.classList.remove('playing');
+      }
     }
 
     // ── Load Questions ────────────────────────────────────────────────────────
@@ -1516,19 +2462,23 @@
       .then(d => {
         EXAMS = d.exams;
         if (!currentKey) {
-          openSessionModal();
-        } else {
-          initSession(currentKey);
-          home();
+          currentKey = 'danah-reviewer';
+          localStorage.setItem(ACTIVE_KEY_STORE, currentKey);
+        }
+        initSession(currentKey);
+        home();
+        if (!sessionStorage.getItem('itp_welcomed')) {
+          setTimeout(openWelcomeModal, 400);
         }
       })
       .catch(() => {
-        app.innerHTML = `<div class="card"><b>⚠ Could not load questions.json</b></div>`;
+        app.innerHTML = `<div class="card"><b>${icon('alert', 16)} Could not load questions.json</b></div>`;
       });
 
     // ── Keyboard Shortcuts ─────────────────────────────────────────────────────
     document.addEventListener('keydown', e => {
       if (document.getElementById('session-modal').style.display === 'flex') return;
+      if (document.getElementById('welcome-modal').style.display === 'flex') return;
       if (!S) return;
       const q = S.list[S.i], picked = S.answers[q.n], keys = Object.keys(q.options);
       if (picked == null) {
@@ -1542,9 +2492,12 @@
     // ── Home View ──────────────────────────────────────────────────────────────
     function home() {
       S = null;
+      document.body.classList.add('home-view');
       app.classList.remove('exam-mode');
       topNav.classList.remove('exam-nav');
       document.getElementById('mobile-stats-btn').style.display = 'none';
+      const guideBtn = document.getElementById('guide-nav-btn');
+      if (guideBtn) guideBtn.style.display = 'inline-flex';
       toggleSidebar(false);
 
       if (!currentKey) {
@@ -1564,72 +2517,131 @@
         const pct = Math.round((currentQNum / totalQ) * 100);
 
         inProgressHtml = `
-      <div class="card resume-card">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+      <div class="pink-resume-card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
           <div>
-            <span class="resume-badge">⚡ In-Progress Exam</span>
-            <div class="exam-title" style="margin-top:6px;font-size:1.05rem">${esc(inProgExam.title)}</div>
-            <div class="exam-meta">
+            <span class="pink-exam-badge" style="background:var(--rose-soft);color:var(--rose-deep);border:1px solid var(--bd)">${icon('zap', 12)} In-Progress Exam</span>
+            <div class="pink-exam-title" style="margin-top:6px;font-size:1.15rem">${esc(inProgExam.title)}</div>
+            <div class="pink-exam-meta" style="margin-bottom:8px">
               <span>Question ${currentQNum} of ${totalQ}</span>
               <span class="dot">·</span>
               <span>${answeredCount} answered</span>
               <span class="dot">·</span>
-              <span style="color:var(--ok);font-weight:600">Auto-saved to "${esc(currentKey)}"</span>
+              <span style="color:var(--rose-deep);font-weight:600">Auto-saved to "${esc(currentKey)}"</span>
             </div>
           </div>
         </div>
         <div class="bar" style="margin:10px 0 16px"><div class="bar-fill" style="width:${pct}%"></div></div>
         <div class="btn-row">
-          <button class="pri" onclick="resumeExam()">▶ Resume Question ${currentQNum}</button>
+          <button class="pri pink-btn-primary" onclick="resumeExam()">${icon('play', 13)} Resume Question ${currentQNum}</button>
           <button class="ghost sm" onclick="discardInProgress()">Start over</button>
         </div>
       </div>`;
       }
 
-      app.innerHTML = `
-    <div style="margin-bottom:24px">
-      <div class="home-logo">📘</div>
-      <h1>IT Passport Reviewer</h1>
-      <p class="subtitle">ITPEC / IPA Japan &middot; Click answers, learn instantly</p>
-    </div>
-
-    ${inProgressHtml}
-
-    ${EXAMS.map(e => {
+      const examCardsHtml = EXAMS.map(e => {
         const d = examData(e.id);
         const full = d.attempts.filter(a => a.mode === 'full');
         const best = full.length ? Math.max(...full.map(a => a.correct)) : null;
         const last = d.attempts.at(-1);
         const pct = best != null ? Math.round(best / e.questions.length * 100) : null;
         const statusBadge = d.missed.length
-          ? `<span class="badge bad">⚠ ${d.missed.length} to master</span>`
-          : full.length ? `<span class="badge ok">✓ All mastered</span>` : `<span class="badge">Not started</span>`;
+          ? `<span class="badge bad">${icon('alert', 12)} ${d.missed.length} to master</span>`
+          : full.length ? `<span class="badge ok">${icon('check', 12)} All mastered</span>` : `<span class="badge">Not started</span>`;
+
+        const is2026 = e.id.includes('2026');
+        const badgeClass = is2026 ? 'spring' : 'autumn';
+        const badgeLabel = is2026 ? 'Spring 2026 · Latest Edition' : 'Autumn 2025 · Core Edition';
+        const examDisplayTitle = is2026 ? 'IT Passport Exam (Apr 2026)' : 'IT Passport Exam (Oct 2025)';
+        const examDesc = is2026
+          ? 'Comprehensive 100 questions covering modern IT strategy, management, and technology principles with official diagrams.'
+          : 'Official 100 questions covering foundational ITPEC and IPA Japan syllabus standards with official diagrams.';
+
         return `
-      <div class="card">
-        <div class="exam-title">${esc(e.title)}</div>
-        <div class="exam-meta">
-          <span>${e.questions.length} questions</span>
-          ${best != null ? `<span class="dot">·</span><span>${pct}% best</span>` : ''}
-          ${last ? `<span class="dot">·</span><span>Last: ${last.correct}/${last.total}</span>` : ''}
+      <div class="pink-exam-card">
+        <div class="pink-exam-header">
+          <span class="pink-exam-badge ${badgeClass}">${badgeLabel}</span>
           ${statusBadge}
         </div>
+        <div class="pink-exam-title">${examDisplayTitle}</div>
+        <div style="font-size:.84rem;color:var(--mut);margin-bottom:12px">${examDesc}</div>
+        <div class="pink-exam-meta">
+          <span>${icon('book', 13)} ${e.questions.length} questions</span>
+          <span class="dot">·</span>
+          <span>${icon('image', 13)} Page view diagrams</span>
+          ${best != null ? `<span class="dot">·</span><span style="color:var(--rose-deep);font-weight:700">${icon('trophy', 13)} ${pct}% best (${best}/${e.questions.length})</span>` : ''}
+          ${last ? `<span class="dot">·</span><span>Last: ${last.correct}/${last.total}</span>` : ''}
+        </div>
         <div class="btn-row">
-          <button class="pri" onclick="start('${e.id}','full')">▶ Start full exam</button>
+          <button class="pri pink-btn-primary" onclick="start('${e.id}','full')">${icon('play', 13)} Start full exam (100 Qs)</button>
           <button ${d.missed.length ? '' : 'disabled'} onclick="start('${e.id}','retry')">Retry missed (${d.missed.length})</button>
-          <button ${d.attempts.length ? '' : 'disabled'} onclick="showHistory('${e.id}')">History</button>
+          <button ${d.attempts.length ? '' : 'disabled'} onclick="showHistory('${e.id}')">${icon('clock', 13)} History</button>
         </div>
       </div>`;
-      }).join('')}
+      }).join('');
 
-    <hr class="div">
-    <div class="data-row" style="justify-content:space-between">
-      <div style="font-size:.82rem;color:var(--mut)">
-        Active Key: <b>${esc(currentKey)}</b> &middot; <a href="javascript:void(0)" onclick="openSessionModal()" style="color:var(--pri);font-weight:600">Switch session</a>
+      app.innerHTML = `
+    <div class="pink-hero-wrap">
+      <div class="pink-ribbon-badge">IT Passport Exam Reviewer</div>
+      <h1 class="pink-title">Danah's Reviewer</h1>
+      <p class="pink-subtitle">Practice real ITPEC / IPA Japan exam questions and get a clear explanation after every answer.</p>
+    </div>
+
+    <!-- Bento Mascot Companion & Study Corner -->
+    <div class="mascot-bento-card">
+      <div class="mascot-avatar-col">
+        <div class="mascot-avatar-frame">
+          <img src="mascot.jpg" alt="Study companion" style="width:112px;height:112px;max-width:112px;max-height:112px;border-radius:50%;object-fit:cover;display:block;">
+          <div class="mascot-bow-tag">${icon('sparkles', 13)}</div>
+        </div>
+        <div class="mascot-status-tag">● Study Companion</div>
       </div>
-      <div class="btn-row">
-        <button class="ghost sm" onclick="backup()">Export file</button>
-        <label class="file-label sm" for="restore-file">Import file</label>
-        <input type="file" id="restore-file" accept=".json" onchange="restore(this)">
+      <div class="mascot-info-col">
+        <div class="mascot-speech-bubble">
+          <div id="mascot-speech-text">Pick an exam below whenever you're ready. One question at a time is plenty.</div>
+        </div>
+        <div class="mascot-interactive-row">
+          <button class="motivation-btn" onclick="cycleMotivation()" title="Show a short study reminder">
+            <span>Need a nudge?</span>
+          </button>
+          <button class="guide-btn-pink" onclick="openWelcomeModal()" title="View quick tips and reviewer guide">
+            <span>Guide</span>
+          </button>
+        </div>
+        <!-- Mini Lofi Vibe Player from inspo -->
+        <div class="lofi-widget">
+          <div class="lofi-track-info">
+            <span>${icon('headphones', 15)}</span>
+            <span>study ambience</span>
+            <div id="lofi-bars" class="lofi-bars ${isLofiPlaying ? 'playing' : ''}">
+              <div class="lofi-bar"></div>
+              <div class="lofi-bar"></div>
+              <div class="lofi-bar"></div>
+              <div class="lofi-bar"></div>
+            </div>
+          </div>
+          <button id="lofi-play-btn" class="lofi-btn" onclick="toggleLofiMusic()">${isLofiPlaying ? icon('pause', 13) + ' Pause' : icon('play', 13) + ' Play'}</button>
+        </div>
+      </div>
+    </div>
+
+    ${inProgressHtml}
+
+    ${examCardsHtml}
+
+    <div class="card" style="border-radius:22px;margin-top:20px;padding:16px 20px;background:var(--surface);border:1.5px solid var(--bd)">
+      <div class="data-row" style="justify-content:space-between;flex-wrap:wrap;gap:12px">
+        <div style="font-size:.85rem;color:var(--mut);display:flex;align-items:center;gap:6px">
+          <span>Active Key:</span>
+          <span style="background:var(--rose-soft);color:var(--rose-deep);padding:2px 10px;border-radius:99px;font-weight:700;border:1px solid var(--bd)">${esc(currentKey)}</span>
+          <span>&middot;</span>
+          <a href="javascript:void(0)" onclick="openSessionModal()" style="color:var(--rose-deep);font-weight:700;text-decoration:none">Switch key ${icon('key', 12)}</a>
+        </div>
+        <div class="btn-row">
+          <button class="ghost sm" onclick="backup()">Export file</button>
+          <label class="file-label sm" for="restore-file">Import file</label>
+          <input type="file" id="restore-file" accept=".json" onchange="restore(this)">
+        </div>
       </div>
     </div>`;
     }
@@ -1728,26 +2740,26 @@
       const projectedScore = Math.round((accuracy / 100) * 1000);
 
       // Pass / Fail Prediction
-      let predClass = 'passing', predStatus = 'ok', predTitle = '🎉 ON TRACK TO PASS', predDesc = '';
+      let predClass = 'passing', predStatus = 'ok', predTitle = `${icon('trophy', 15)} ON TRACK TO PASS`, predDesc = '';
       if (answeredCount < 3) {
         predClass = '';
         predStatus = 'warn';
-        predTitle = '🎯 IN PROGRESS';
+        predTitle = `${icon('target', 15)} IN PROGRESS`;
         predDesc = 'Answer at least 3 questions to unlock your pass/fail projection.';
       } else if (accuracy >= 70) {
         predClass = 'passing';
         predStatus = 'ok';
-        predTitle = '🎉 ON TRACK TO PASS!';
+        predTitle = `${icon('trophy', 15)} ON TRACK TO PASS!`;
         predDesc = `Current accuracy: <b>${accuracy}%</b>. Projected score: <b>${projectedScore} / 1000</b> (Passing cutoff: 600 pts / 60%). You're in great shape!`;
       } else if (accuracy >= 60) {
         predClass = 'warning';
         predStatus = 'warn';
-        predTitle = '⚖️ PASSING (NEAR CUTOFF)';
+        predTitle = `${icon('alert', 15)} PASSING (NEAR CUTOFF)`;
         predDesc = `Current accuracy: <b>${accuracy}%</b>. Projected: <b>${projectedScore} / 1000</b>. You are right at the 600-point cutoff—keep focus on wrong items!`;
       } else {
         predClass = 'failing';
         predStatus = 'bad';
-        predTitle = '⚠️ CURRENTLY BELOW PASSING';
+        predTitle = `${icon('alert', 15)} CURRENTLY BELOW PASSING`;
         predDesc = `Current accuracy: <b>${accuracy}%</b>. Projected: <b>${projectedScore} / 1000</b>. You need <b>600 points (60%)</b> to pass. Review explanations for missed questions!`;
       }
 
@@ -1756,16 +2768,16 @@
       if (mobileStatsBtn) {
         mobileStatsBtn.style.display = 'inline-flex';
         mobileStatsBtn.innerHTML = answeredCount > 0
-          ? `📊 ${correctCount}/${answeredCount} (${accuracy}% · ${accuracy >= 60 ? 'Pass' : 'Review'})`
-          : '📊 Stats';
+          ? `${icon('chart', 13)} ${correctCount}/${answeredCount} (${accuracy}% · ${accuracy >= 60 ? 'Pass' : 'Review'})`
+          : `${icon('chart', 13)} Stats`;
       }
 
       return `
     <div id="sidebar-backdrop" class="sidebar-backdrop" onclick="toggleSidebar(false)"></div>
     <aside id="exam-sidebar" class="exam-sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-title">📊 Live Progress Dashboard</div>
-        <button class="mobile-close-btn" onclick="toggleSidebar(false)" title="Close dashboard">✕</button>
+        <div class="sidebar-title">${icon('chart', 16)} Live Progress Dashboard</div>
+        <button class="mobile-close-btn" onclick="toggleSidebar(false)" title="Close dashboard">${icon('x', 14)}</button>
       </div>
 
       <!-- Pass/Fail Status -->
@@ -1802,13 +2814,13 @@
       <!-- Wrong Questions Tracker -->
       <div class="dash-card">
         <div style="display:flex;justify-content:space-between;align-items:center">
-          <span style="font-size:.82rem;font-weight:700;color:var(--tx)">❌ Missed Questions (${wrongCount})</span>
+          <span style="font-size:.82rem;font-weight:700;color:var(--tx)">${icon('alert', 14)} Missed Questions (${wrongCount})</span>
           <span style="font-size:.7rem;color:var(--dim)">Click to review</span>
         </div>
         ${wrongList.length === 0
-          ? `<div style="font-size:.82rem;color:var(--ok);margin-top:8px;font-weight:600">✓ No mistakes yet! Clean sheet.</div>`
+          ? `<div style="font-size:.82rem;color:var(--ok);margin-top:8px;font-weight:600">${icon('check', 13)} No mistakes yet! Clean sheet.</div>`
           : `<div class="wrong-list-wrap">
-              ${wrongList.map(w => `<span class="chip bad clickable" onclick="jumpTo(${w.idx})" title="Review Question ${w.qNum}">Q${w.qNum} ✗</span>`).join('')}
+              ${wrongList.map(w => `<span class="chip bad clickable" onclick="jumpTo(${w.idx})" title="Review Question ${w.qNum}">Q${w.qNum}</span>`).join('')}
              </div>`
         }
       </div>
@@ -1821,14 +2833,14 @@
         </div>
         <div class="q-grid-wrap">
           ${S.list.map((q, idx) => {
-            const picked = S.answers[q.n];
-            const isCur = idx === S.i;
-            let cls = isCur ? 'current ' : '';
-            if (picked != null) {
-              cls += (picked === q.answer ? 'ok' : 'bad');
-            }
-            return `<div class="q-tile ${cls}" onclick="jumpTo(${idx})" title="Go to Question ${q.n}">${q.n}</div>`;
-          }).join('')}
+          const picked = S.answers[q.n];
+          const isCur = idx === S.i;
+          let cls = isCur ? 'current ' : '';
+          if (picked != null) {
+            cls += (picked === q.answer ? 'ok' : 'bad');
+          }
+          return `<div class="q-tile ${cls}" onclick="jumpTo(${idx})" title="Go to Question ${q.n}">${q.n}</div>`;
+        }).join('')}
         </div>
         <div class="q-legend">
           <span><span class="dot-legend ok"></span> Correct</span>
@@ -1841,6 +2853,9 @@
 
     // ── Show Question & Exam Layout ────────────────────────────────────────────
     function show() {
+      document.body.classList.remove('home-view');
+      const guideBtn = document.getElementById('guide-nav-btn');
+      if (guideBtn) guideBtn.style.display = 'none';
       app.classList.add('exam-mode');
       topNav.classList.add('exam-nav');
 
@@ -1855,8 +2870,8 @@
       <!-- Main Question Column -->
       <div class="exam-main">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-          <button class="ghost sm" onclick="home()" title="Return to home menu (progress is automatically saved)">← Menu (Saved)</button>
-          <span class="badge cached">🔑 ${esc(currentKey)}</span>
+          <button class="ghost sm" onclick="home()" title="Return to home menu (progress is automatically saved)">${icon('arrow-left', 13)} Menu (Saved)</button>
+          <span class="badge cached">${icon('key', 12)} ${esc(currentKey)}</span>
         </div>
 
         <div class="prog-hdr">
@@ -1869,19 +2884,19 @@
           <div class="q-num">Question ${q.n}</div>
           <div class="stem">${esc(q.stem)}</div>
           ${keys.map(k => {
-            let cls = done ? (k === q.answer ? 'ok' : (k === picked ? 'bad' : 'neutral')) : '';
-            return `<button class="opt ${cls}" ${done ? 'disabled' : ''} onclick="pick('${k}')"><span class="key">${k}</span><span>${esc(q.options[k])}</span></button>`;
-          }).join('')}
+        let cls = done ? (k === q.answer ? 'ok' : (k === picked ? 'bad' : 'neutral')) : '';
+        return `<button class="opt ${cls}" ${done ? 'disabled' : ''} onclick="pick('${k}')"><span class="key">${k}</span><span>${esc(q.options[k])}</span></button>`;
+      }).join('')}
 
           <button class="ghost sm" style="margin-top:10px" onclick="S.showPage=!S.showPage;saveCurrentExamProgress();show()">
-            ${fig ? '🔼 Hide' : '📄 View'} original exam page
+            ${fig ? icon('chevron-up', 13) + ' Hide' : icon('image', 13) + ' View'} original exam page
           </button>
           ${fig ? `<img class="pg" src="pages/${S.id}/p-${String(q.page).padStart(2, '0')}.jpg" alt="Exam page ${q.page}">` : ''}
 
           ${done ? `
             <div class="exp-wrap">
               <div class="result-tag ${picked === q.answer ? 'ok' : 'bad'}">
-                ${picked === q.answer ? '✓ Correct!' : '✗ Wrong — Answer is ' + q.answer.toUpperCase()}
+                ${picked === q.answer ? icon('check', 15) + ' Correct!' : icon('x', 15) + ' Incorrect — Answer is ' + q.answer.toUpperCase()}
               </div>
               <div class="exp-header-row">
                 <span style="font-size:.78rem;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.05em">Tutor Explanation</span>
@@ -1891,7 +2906,7 @@
               <div id="expd" style="margin-top:14px"></div>
             </div>
             <div class="next-row">
-              <button class="pri" onclick="next()">${S.i + 1 < S.list.length ? 'Next →' : 'Finish ✓'}</button>
+              <button class="pri" onclick="next()">${S.i + 1 < S.list.length ? 'Next ' + icon('arrow-right', 13) : 'Finish ' + icon('check', 13)}</button>
             </div>
             <p class="hint">Press <kbd>Enter</kbd> or <kbd>→</kbd> to continue</p>
           `: `<p class="hint">Press <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd> <kbd>D</kbd> to answer</p>`}
@@ -1956,7 +2971,7 @@
       // 1. REUSABILITY: If short explanation exists, display immediately!
       const cached = getCachedExpl(S.id, q.n, 'short');
       if (cached) {
-        if (badge) badge.innerHTML = `<span class="badge ok" style="font-size:.72rem">⚡ Cached</span>`;
+        if (badge) badge.innerHTML = `<span class="badge ok" style="font-size:.72rem">${icon('zap', 12)} Cached</span>`;
         renderExp(box, cached);
         detArea(q);
         return;
@@ -1964,14 +2979,14 @@
 
       // 2. Otherwise generate via AI and store permanently
       try {
-        if (badge) badge.innerHTML = `<span class="badge" style="font-size:.72rem">🤖 Generating AI…</span>`;
+        if (badge) badge.innerHTML = `<span class="badge" style="font-size:.72rem">${icon('bot', 12)} Generating AI…</span>`;
         const text = await callAI(q, 'short');
         setCachedExpl(S.id, q.n, 'short', text);
 
         const b = document.getElementById('exp');
         const bd = document.getElementById('exp-badge');
         if (b && S && S.list[S.i].n === q.n) {
-          if (bd) bd.innerHTML = `<span class="badge ok" style="font-size:.72rem">⚡ Saved</span>`;
+          if (bd) bd.innerHTML = `<span class="badge ok" style="font-size:.72rem">${icon('zap', 12)} Saved</span>`;
           renderExp(b, text);
           detArea(q);
         }
@@ -1980,7 +2995,7 @@
         if (!b) return;
         b.outerHTML = `
       <div class="api-notice">
-        <span>ℹ️</span>
+        <span>${icon('info', 16)}</span>
         <span>AI explanation failed: <b>${esc(err.message)}</b> <button class="sm" onclick="show()">Retry</button></span>
       </div>
       <div class="exp" style="margin-top:10px">${esc(buildFallback(q))}</div>`;
@@ -1997,8 +3012,8 @@
         const wrap = document.createElement('div');
         wrap.innerHTML = `
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
-            <span class="badge cached">✨ Detailed explanation (like I'm 5)</span>
-            <span class="badge ok" style="font-size:.72rem">⚡ Cached</span>
+            <span class="badge cached">${icon('sparkles', 12)} Detailed explanation (like I'm 5)</span>
+            <span class="badge ok" style="font-size:.72rem">${icon('zap', 12)} Cached</span>
           </div>`;
         const d = document.createElement('div');
         renderExp(d, cached);
@@ -2008,7 +3023,7 @@
         return;
       }
 
-      el.innerHTML = `<button class="ghost" onclick="detailed()">✨ Detailed explanation (like I'm 5)</button>`;
+      el.innerHTML = `<button class="ghost" onclick="detailed()">${icon('sparkles', 13)} Detailed explanation (like I'm 5)</button>`;
     }
 
     async function detailed() {
@@ -2023,7 +3038,7 @@
         }
       } catch (err) {
         const e2 = document.getElementById('expd');
-        if (e2) e2.innerHTML = `<div class="api-notice"><span>ℹ️</span><span>Detailed explanation failed: <b>${esc(err.message)}</b> <button class="sm" onclick="detailed()">Retry</button></span></div>`;
+        if (e2) e2.innerHTML = `<div class="api-notice"><span>${icon('info', 16)}</span><span>Detailed explanation failed: <b>${esc(err.message)}</b> <button class="sm" onclick="detailed()">Retry</button></span></div>`;
       }
     }
 
@@ -2045,6 +3060,9 @@
 
     // ── Finish Exam ────────────────────────────────────────────────────────────
     function finish() {
+      document.body.classList.remove('home-view');
+      const guideBtn = document.getElementById('guide-nav-btn');
+      if (guideBtn) guideBtn.style.display = 'none';
       app.classList.remove('exam-mode');
       topNav.classList.remove('exam-nav');
       document.getElementById('mobile-stats-btn').style.display = 'none';
@@ -2066,18 +3084,21 @@
       const id = S.id; S = null;
       app.innerHTML = `
     <div class="card score-card" style="animation:fadeUp .4s ease both">
-      <div class="score-emoji">${perfect ? '🎉' : pct >= 70 ? '💪' : '📖'}</div>
+      <div class="score-emoji" style="display:flex;justify-content:center;color:var(--pri)">${perfect ? icon('trophy', 46) : pct >= 70 ? icon('award', 46) : icon('book', 46)}</div>
       <div class="score-num">${correct}<span class="slash">/${total}</span></div>
       <div class="score-pct">${pct}% &middot; ${perfect ? 'Perfect score!' : pct >= 70 ? 'Good job!' : 'Keep studying!'}</div>
       ${wrong.length ? `<p style="font-size:.88rem;color:var(--mut);margin-bottom:8px">Missed questions:</p><div class="chips">${wrong.map(n => `<span class="chip bad">Q${n}</span>`).join('')}</div>` : ''}
       <div class="btn-row" style="justify-content:center">
-        ${wrong.length ? `<button class="pri" onclick="start('${id}','retry')">Retry ${wrong.length} missed</button>` : ''}
-        <button onclick="home()">← Home</button>
+        ${wrong.length ? `<button class="pri" onclick="start('${id}','retry')">${icon('arrow-right', 13)} Retry ${wrong.length} missed</button>` : ''}
+        <button onclick="home()">${icon('arrow-left', 13)} Home</button>
       </div>
     </div>`;
     }
 
     function showHistory(id) {
+      document.body.classList.remove('home-view');
+      const guideBtn = document.getElementById('guide-nav-btn');
+      if (guideBtn) guideBtn.style.display = 'none';
       app.classList.remove('exam-mode');
       topNav.classList.remove('exam-nav');
       document.getElementById('mobile-stats-btn').style.display = 'none';
@@ -2085,17 +3106,17 @@
       const exam = EXAMS.find(x => x.id === id), d = examData(id);
       app.innerHTML = `
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-      <button class="ghost" onclick="home()">← Back</button>
+      <button class="ghost" onclick="home()">${icon('arrow-left', 13)} Back</button>
       <h1 style="font-size:1.2rem;margin:0">History</h1>
     </div>
-    <p style="font-size:.85rem;color:var(--mut);margin-bottom:14px">${esc(exam?.title || '')} &middot; <span class="badge cached">🔑 ${esc(currentKey)}</span></p>
+    <p style="font-size:.85rem;color:var(--mut);margin-bottom:14px">${esc(exam?.title || '')} &middot; <span class="badge cached">${icon('key', 12)} ${esc(currentKey)}</span></p>
     ${d.attempts.length === 0
           ? `<div class="card" style="color:var(--mut);text-align:center;padding:40px">No attempts yet in this session</div>`
           : d.attempts.slice().reverse().map(a => `
         <div class="card">
           <div class="hist-score">${a.correct}/${a.total} <span style="color:var(--mut);font-weight:400;font-size:.9rem">(${Math.round(a.correct / a.total * 100)}%)</span></div>
           <div class="hist-meta">${fmt(a.t)} &middot; <span class="badge">${a.mode}</span></div>
-          ${a.wrong?.length ? `<div class="hist-missed">Missed: ${a.wrong.map(n => 'Q' + n).join(', ')}</div>` : `<div style="font-size:.8rem;color:var(--ok)">Perfect ✓</div>`}
+          ${a.wrong?.length ? `<div class="hist-missed">Missed: ${a.wrong.map(n => 'Q' + n).join(', ')}</div>` : `<div style="font-size:.8rem;color:var(--ok)">${icon('check', 13)} Perfect score</div>`}
         </div>`).join('')}`;
     }
 
