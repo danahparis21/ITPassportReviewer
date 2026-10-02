@@ -1876,7 +1876,7 @@
           <button class="ghost sm" style="margin-top:10px" onclick="S.showPage=!S.showPage;saveCurrentExamProgress();show()">
             ${fig ? '🔼 Hide' : '📄 View'} original exam page
           </button>
-          ${fig ? `<img class="pg" src="pages/p-${String(q.page).padStart(2, '0')}.jpg" alt="Exam page ${q.page}">` : ''}
+          ${fig ? `<img class="pg" src="pages/${S.id}/p-${String(q.page).padStart(2, '0')}.jpg" alt="Exam page ${q.page}">` : ''}
 
           ${done ? `
             <div class="exp-wrap">

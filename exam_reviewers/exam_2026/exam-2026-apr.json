@@ -1,0 +1,1406 @@
+{
+ "id": "2026-apr",
+ "title": "ITPEC IT Passport (IP) — April 2026",
+ "questions": [
+  {
+   "n": 1,
+   "page": 3,
+   "stem": "When the reward for an improvement proposal concerning business operations is determined based on the decision table below, how much is the reward for an improvement proposal for an improvement of $20,000 and a turnaround time reduction of three days? Here, “Y” in the table means that the condition holds, and “N” means that the condition does not hold. In addition, “√” indicates the reward that applies to a specific combination of these conditions.\n\n[Decision table]\nRule 1: Improvement of less than $10,000 = Y; Turnaround time reduction of less than one (1) week = Y → Reward $50\nRule 2: Improvement of less than $10,000 = Y; Turnaround time reduction of less than one (1) week = N → Reward $150\nRule 3: Improvement of less than $10,000 = N; Turnaround time reduction of less than one (1) week = Y → Reward $100\nRule 4: Improvement of less than $10,000 = N; Turnaround time reduction of less than one (1) week = N → Reward $300",
+   "options": {
+    "a": "$50",
+    "b": "$100",
+    "c": "$150",
+    "d": "$300"
+   },
+   "answer": "b",
+   "figure": true,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 2,
+   "page": 3,
+   "stem": "Which of the following is the logical operation that is equivalent to the truth table below?\nInput A Input B Output 0 0 0 0 1 0 1 0 0 1 1 1",
+   "options": {
+    "a": "AND",
+    "b": "NOT",
+    "c": "OR",
+    "d": "XOR"
+   },
+   "answer": "a",
+   "figure": true,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 3,
+   "page": 3,
+   "stem": "When a chairperson and a secretary are selected from three (3) candidates with a method that allows dual roles, there are three (3) ways for the selection of a chairperson and three\n(3) ways for the selection of a secretary, so in total, there are nine (9) combinations for the selection of a chairperson and a secretary. When a chairperson and a secretary are selected from five (5) candidates with a method that allows dual roles, how many combinations for the selection are there?",
+   "options": {
+    "a": "5",
+    "b": "10",
+    "c": "20",
+    "d": "25"
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 4,
+   "page": 4,
+   "stem": "Which of the following represents the decimal number 155 in binary?",
+   "options": {
+    "a": "10011011",
+    "b": "10110011",
+    "c": "11001101",
+    "d": "11011001"
+   },
+   "answer": "a",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 5,
+   "page": 4,
+   "stem": "There is a series of numbered boxes stacked as shown in the figure below. The operations described in the table below are performed in the sequence of operations 1 through 4. When the operation 4 is completed, which of the following shows the status of the stacked boxes?\nTable\nOperation Description\nOperation 1 Take two boxes from the top, add the numbers written on the taken boxes, write the sum on a new box, and then put it on the top.\nOperation 2 Write the number 3 on a new box, and then put it on the top.\nOperation 3 Take three boxes from the top, calculate the average of the numbers written on the taken boxes, write the average value on a new box, and then put it on the top.\nOperation 4 Take two boxes from the top, calculate the absolute value of the difference between the numbers written on the taken boxes, write the absolute value on a new box, and then put it on the top.\n\n[Fig.] Initial stack of boxes, from top to bottom: 4, 3, 2, 2, 1",
+   "options": {
+    "a": "One box: 0",
+    "b": "Two boxes, from top to bottom: 2, 1",
+    "c": "Three boxes, from top to bottom: 4, 2, 1",
+    "d": "Four boxes, from top to bottom: 1, 2, 2, 1"
+   },
+   "answer": "b",
+   "figure": true,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 6,
+   "page": 4,
+   "stem": "The data is exchanged between variable A and variable B. When variable TMP is used to temporarily store data, which of the following is the procedure for exchanging data correctly? Here, “x ← y” represents that the data of “x” is replaced with the data of “y”.\n\n[Each option is a flowchart of three steps, performed in the order shown.]",
+   "options": {
+    "a": "TMP ← A, then A ← B, then B ← A",
+    "b": "TMP ← A, then A ← B, then B ← TMP",
+    "c": "TMP ← B, then A ← B, then B ← TMP",
+    "d": "TMP ← B, then A ← B, then B ← A"
+   },
+   "answer": "b",
+   "figure": true,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 7,
+   "page": 5,
+   "stem": "There exist four (4) states numbered 1 through 4. The four (4) states are connected as shown in the figure below, and the state transition occurs in a clockwise or counter-clockwise direction. [Figure: the four states are placed in a circle, 1 at the top, 2 on the right, 3 at the bottom and 4 on the left. Each state is connected to its two neighbors, so clockwise is 1 → 2 → 3 → 4 → 1.]\n\nIf the current state is 1, which of the following is the state that is reached after the procedure below is performed twice?\n[Procedure] The number of the current state is multiplied by 11, and the result is divided by 3. The process below is performed based on the remainder of the division.\n• When the remainder is 0, a transition to the next state occurs in the clockwise direction.\n• When the remainder is 1, a transition to the next state occurs in the counter-clockwise direction.\n• When the remainder is 2, a transition to the second state occurs in the clockwise direction.",
+   "options": {
+    "a": "1",
+    "b": "2",
+    "c": "3",
+    "d": "4"
+   },
+   "answer": "d",
+   "figure": true,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 8,
+   "page": 6,
+   "stem": "The procedure findBanknotes outputs the number of 10,000 and 1,000 banknotes required to represent a specified amount of money, in that order, ensuring the minimum number of banknotes is used. The argument amount passed to the procedure must be a non- negative multiple of 1,000. If it is not, the procedure outputs an error message. Which of the following is the correct combination of answers to be inserted into ____A____ and ____B____ in the program?\n\n[Program]\n   ○ findBanknotes(integer: amount)\n     integer: tenThousandNote\n     integer: oneThousandNote\n\n      if (amount < 0 or ___A___ )\n        output \"Invalid amount\"\n        return\n      endif\n\n      tenThousandNote ← integer part of (amount ÷ 10000)\n      oneThousandNote ← integer part of ( ___B___ )\n\n      output tenThousandNote, oneThousandNote",
+   "options": {
+    "a": "A: amount mod 1000 = 0; B: (amount mod 10000) ÷ 1000",
+    "b": "A: amount mod 1000 = 0; B: amount ÷ 1000",
+    "c": "A: amount mod 1000 ≠ 0; B: (amount mod 10000) ÷ 1000",
+    "d": "A: amount mod 1000 ≠ 0; B: amount ÷ 1000"
+   },
+   "answer": "c",
+   "figure": true,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 9,
+   "page": 7,
+   "stem": "A hollow square is an n × n matrix whose first and last rows along with the first and last columns are filled with stars (“*”), where n denotes an integer. All other positions inside the matrix other than the borders are filled with spaces. If n is 5, the hollow square is shown as below.\n\n   *****\n   *   *\n   *   *\n   *   *\n   *****\n\nThe procedure printHollowSquare prints a hollow square based on the value of n. Which of the following is the correct answer to be inserted into _______ in the program? Here, the value n is at least 3 and is passed as an argument to the procedure.\n\n[Program]\n   ○ printHollowSquare(integer: n)\n     integer: i, j\n\n       for (increase i from 1 to n by 1)\n         for (increase j from 1 to n by 1)\n           if ( _______ )\n             output \"*\"\n           else\n             output \" \"\n           endif\n         endfor\n         output a newline\n       endfor",
+   "options": {
+    "a": "(i = 1 or i = n) and (j = 1 or j = n)",
+    "b": "(i > 1 and i < n) or (j > 1 and j < n)",
+    "c": "i = 1 or i = n or j = 1 or j = n",
+    "d": "i > 1 and i < n and j > 1 and j < n"
+   },
+   "answer": "c",
+   "figure": true,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 10,
+   "page": 8,
+   "stem": "Which of the following is software that mediates between a device connected to a PC and an OS or an application software, and that controls and operates the device?",
+   "options": {
+    "a": "Archiver",
+    "b": "Installer",
+    "c": "Device driver",
+    "d": "Middleware"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 11,
+   "page": 8,
+   "stem": "Which of the following is an appropriate description concerning the cache memory of a CPU?",
+   "options": {
+    "a": "The size of cache memory is greater than or equal to the size of main memory.",
+    "b": "Cache memory is used to reduce the effective access time of main memory.",
+    "c": "On computers with a large main memory, there is no effect of cache memory.",
+    "d": "In order to increase the hit rate, the user specifies the frequently used programs to be resident in cache memory."
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 12,
+   "page": 8,
+   "stem": "Concerning a processor, which of the following is the appropriate combination of terms or phrases to be inserted into blanks A and B in the description below?\n\nA [A] is a processor that was developed for [B]. It is often embedded in a CPU, but in the case of more advanced [B] processing, an extension board equipped with a high-performance [A] is sometimes used.",
+   "options": {
+    "a": "A: GPU; B: encryption",
+    "b": "A: GPU; B: graphics",
+    "c": "A: VGA; B: encryption",
+    "d": "A: VGA; B: graphics"
+   },
+   "answer": "b",
+   "figure": true,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 13,
+   "page": 8,
+   "stem": "Which of the following is the most appropriate technology that is used in deep learning, an AI-related technology?",
+   "options": {
+    "a": "Social network",
+    "b": "Neural network",
+    "c": "Feasibility study",
+    "d": "Fault tolerant"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 14,
+   "page": 9,
+   "stem": "Which of the following is an appropriate explanation of parallel processing?",
+   "options": {
+    "a": "It is the division of a series of processing into processing units that can be executed simultaneously, and the execution of these on multiple CPUs.",
+    "b": "It is the execution of multiple related processes that are grouped together as a single process.",
+    "c": "It is the performing of business logic and database processes on the server side, and the performing of user interface processes on the client side.",
+    "d": "It is the division of processing time for a single CPU into short units, and the sequential allocation of these to multiple applications for execution."
+   },
+   "answer": "a",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 15,
+   "page": 9,
+   "stem": "Which of the following includes all the appropriate measures to enable the normal execution of processing even in the event of a failure in part of a system?\n(1) Configuring HDDs with mirroring\n(2) Minimizing the frequency of maintenance and inspections after stable operation of the system starts\n(3) Grouping multiple redundant network lines into a single high-speed line\n(4) Making power supply redundant with the use of an uninterruptible power supply (UPS), etc.",
+   "options": {
+    "a": "(1), (3)",
+    "b": "(1), (4)",
+    "c": "(2), (3)",
+    "d": "(2), (4)"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 16,
+   "page": 9,
+   "stem": "In the specification of the capacity of a battery that is embedded in a device such as an IoT device or a smartphone, which of the following is the appropriate meaning of “100mAh”?",
+   "options": {
+    "a": "It can discharge a current of 100mA for one (1) hour.",
+    "b": "After it is charged for 100 minutes, it can discharge a current for one (1) hour.",
+    "c": "It can discharge a current of 1A for 100 minutes.",
+    "d": "After it is charged for one (1) hour, it can discharge a current for 100 minutes."
+   },
+   "answer": "a",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 17,
+   "page": 10,
+   "stem": "When a record in a file is modified, which of the following is an appropriate way of identifying the modified contents?",
+   "options": {
+    "a": "Keeping a record of the size and the modified date of a file",
+    "b": "Keeping a copy of a file and comparing it to the modified one later",
+    "c": "Keeping a record of the number of records into the file",
+    "d": "Keeping records sorted in ascending order of the key field"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 18,
+   "page": 10,
+   "stem": "Which of the following is an OS function that executes multiple application programs concurrently on a single PC by alternating between them, such as data is processed with spreadsheet software while a file is being downloaded from a website ?",
+   "options": {
+    "a": "Virtual reality",
+    "b": "Dual core",
+    "c": "Dual system",
+    "d": "Multitasking"
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 19,
+   "page": 10,
+   "stem": "Which of the following is an appropriate description about the function keys of a PC?",
+   "options": {
+    "a": "They are the keys where specific functions are assigned for each application and OS.",
+    "b": "They display a keyboard shape on a screen and enable input processing with software.",
+    "c": "They have a security role and are keys for performing encryption and decryption.",
+    "d": "They are information to uniquely identify a specific row in a database."
+   },
+   "answer": "a",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 20,
+   "page": 11,
+   "stem": "When directories d1 and d2 are placed on a web server as shown in the figure, which of the following descriptions specifies the reference of the web page file f2.html on directory d2 from the web page file f1.html on directory d1 (current directory)? Here, the reference method of files is shown as below.\n\n[Reference method]\n(1) A file is referenced as “directory name /.../ directory name / file name”, where the directory names on the path are listed and separated with “ / ” in sequence, followed by a “ / ” and the file name.\n(2) The current directory is represented by “.”.\n(3) The directory one (1) level above is represented by “..”.\n(4) When a reference begins with a “ / ”, it is assumed that the root directory is omitted from the beginning of the reference.\n\n[Figure] root contains two directories, d1 and d2. d1 contains f1.html. d2 contains f2.html.",
+   "options": {
+    "a": "./d2/f2.html",
+    "b": "./f2.html",
+    "c": "../d2/f2.html",
+    "d": "d2/../f2.html"
+   },
+   "answer": "c",
+   "figure": true,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 21,
+   "page": 11,
+   "stem": "Which of the following is a technology that is also used in measures against tampering of software in IoT devices and verifies the digital signature of the OS, firmware, or other such software when it is started, and only executes the software if the verification is successful?",
+   "options": {
+    "a": "GPU",
+    "b": "RAID",
+    "c": "Secure boot",
+    "d": "Reboot root d1 f1.html d2 f2.html"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 22,
+   "page": 12,
+   "stem": "Among the descriptions below concerning Open Source Software (OSS), which of the following lists all and only the appropriate descriptions?\nA Software that is created by using OSS can be sold.\nB All software with publicly available source code is OSS.\nC It is software the copyright of which has been waived.",
+   "options": {
+    "a": "A",
+    "b": "A, B",
+    "c": "B, C",
+    "d": "C"
+   },
+   "answer": "a",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 23,
+   "page": 12,
+   "stem": "Which of the following is the description of a 3D printer?",
+   "options": {
+    "a": "It prints an image with a 3D effect on a flat surface.",
+    "b": "It uses three-dimensional data to form a stereoscopic (three-dimensional) object.",
+    "c": "It prints an image on a curved surface, etc. of a stereoscopic object.",
+    "d": "It uses a laser to display a stereoscopic image in space."
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 24,
+   "page": 12,
+   "stem": "Which of the following is an appropriate description of AR (Augmented Reality)?",
+   "options": {
+    "a": "A technology that creates memory space beyond the amount of memory actually installed and makes this available as main memory",
+    "b": "A technology that overlays and displays computer-generated information on live video or other content that captures real environments",
+    "c": "A technology that analyzes and digitizes the human voice by using a computer in order to utilize it for commanding a computer, entering characters, and so on",
+    "d": "A science or a technology for emulating human intellectual activity such as inference, learning, and ability to understand language, by using a computer"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 25,
+   "page": 13,
+   "stem": "On a display screen, various colors are created through additive color mixing with three colors, namely red, green, and blue. When the red, green, and blue are mixed evenly, which of the following colors is formed?",
+   "options": {
+    "a": "Red-violet",
+    "b": "Yellow",
+    "c": "White",
+    "d": "Green rust"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 26,
+   "page": 13,
+   "stem": "Which of the following is an appropriate effect obtained through the normalization of data in a relational database?",
+   "options": {
+    "a": "Securing of data compatibility between different types of computers",
+    "b": "Improvement of storage efficiency through data compression",
+    "c": "Elimination of redundancy and inconsistency of data",
+    "d": "Elimination of the need for backups that are necessary in preparation for the failure of devices storing data"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 27,
+   "page": 13,
+   "stem": "Which of the following is an appropriate description concerning foreign keys in a relational database?",
+   "options": {
+    "a": "A property held by the foreign key is called a unique constraint.",
+    "b": "Duplicate values cannot be set in the fields that are set as foreign keys.",
+    "c": "Multiple foreign keys can be defined in a single table.",
+    "d": "Multiple fields cannot be collectively set as a single foreign key."
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 28,
+   "page": 14,
+   "stem": "When conditions (i) through (iv) are all fulfilled, which of the following is the E-R diagram that indicates the relationship between publishing companies, authors, and books? Here, the notation for the E-R diagram is as below.\n\n[Notation]\nA → B : This indicates that A and B have a one-to-many relationship.\n\n[Conditions]\n(i) A publishing company has contracts with multiple authors.\n(ii) An author has a contract with only one (1) publishing company.\n(iii) An author writes multiple books.\n(iv) One (1) book is written by one (1) author.",
+   "options": {
+    "a": "Publishing Company → Author → Book",
+    "b": "Publishing Company → Author ← Book",
+    "c": "Publishing Company ← Author → Book",
+    "d": "Publishing Company ← Author ← Book"
+   },
+   "answer": "a",
+   "figure": true,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 29,
+   "page": 14,
+   "stem": "Which of the following is the appropriate explanation of commit in transaction processing?",
+   "options": {
+    "a": "When a transaction attempts to update shared data, other transactions are blocked from updating this data.",
+    "b": "The update is confirmed in the database. It is used when a transaction is processed normally.",
+    "c": "The database is returned to the status prior to the start of a transaction. It is used when the transaction is not processed normally for some reason.",
+    "d": "Multiple tables are made into one (1) table by using the columns as keys that relate the tables to each other."
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 30,
+   "page": 15,
+   "stem": "Which of the following is an appropriate explanation of the routing function of a router, which is a device constituting a network?",
+   "options": {
+    "a": "It performs centralized monitoring of the status and the system settings for mobile devices provided by a company.",
+    "b": "It connects different networks to each other and chooses the optimal path to relay packets.",
+    "c": "It connects optical fiber with copper wire cable, and physically performs two-way conversion of signals.",
+    "d": "It manages host name and IP address correspondence and responds to inquiries from devices."
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 31,
+   "page": 15,
+   "stem": "Which of the following is not an appropriate description of online storage?",
+   "options": {
+    "a": "It can be used not only from a computer, but also from a smartphone or a tablet, if the device is connected to the Internet.",
+    "b": "There is a free service that can be used with limited capacity and functionalities.",
+    "c": "There is a service that allows multiple registered users to share and edit the same file.",
+    "d": "If the capacity of the auxiliary storage unit built into the user’s computer or tablet is increased, the capacity of online storage will also increase automatically."
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 32,
+   "page": 15,
+   "stem": "Which of the following is used for communication in activities such as the gathering of data from IoT devices, and has wide range and power saving characteristics that enable wireless communication over a distance of tens of kilometers?",
+   "options": {
+    "a": "BLE",
+    "b": "LPWA",
+    "c": "MDM",
+    "d": "MVNO"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 33,
+   "page": 16,
+   "stem": "On computers on the Internet, a range of application programs such as web and e-mail run, and a communications protocol in the application layer that corresponds to each application program is used. Which of the following is a communications protocol that is in a lower layer than these communications protocols, and is commonly used to implement basic communications functions?",
+   "options": {
+    "a": "FTP",
+    "b": "POP",
+    "c": "SMTP",
+    "d": "TCP/IP"
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 34,
+   "page": 16,
+   "stem": "Mr. A specified destination addresses as below and sent an e-mail. Among the descriptions concerning recipients of the e-mail, which of the following lists all and only the appropriate descriptions?\n[Destination addresses] To: Mr. B’s e-mail address Cc: Mr. C’s e-mail address Bcc: Mr. D’s e-mail address, Mr. E’s e-mail address\n(1) Mr. C can find out Mr. D’s e-mail address.\n(2) Mr. D can find out Mr. C’s e-mail address.\n(3) Mr. E can find out Mr. D’s e-mail address.",
+   "options": {
+    "a": "(1)",
+    "b": "(1), (3)",
+    "c": "(2)",
+    "d": "(2), (3)"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 35,
+   "page": 16,
+   "stem": "Among the descriptions A through C concerning PKI, which of the following is the list that contains all and only the appropriate descriptions concerning a digital signature in e-mail?\nA The recipient can check whether the sender is the intended person.\nB It is possible to prevent e-mail from being read before it reaches the recipient.\nC The recipient can confirm that the e-mail has not been tampered with.",
+   "options": {
+    "a": "A, B",
+    "b": "A, C",
+    "c": "B, C",
+    "d": "A, B, C"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 36,
+   "page": 17,
+   "stem": "In the description below concerning risk management in information security, which of the following is an appropriate combination of words or phrases to be inserted into the blanks A through C?\n\nIn information security, a [A] in an information asset of an organization can be exploited by a [B]. The potential for damage is called a [C].",
+   "options": {
+    "a": "A: Threat; B: Risk; C: Vulnerability",
+    "b": "A: Vulnerability; B: Threat; C: Risk",
+    "c": "A: Risk; B: Threat; C: Vulnerability",
+    "d": "A: Risk; B: Vulnerability; C: Threat"
+   },
+   "answer": "b",
+   "figure": true,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 37,
+   "page": 17,
+   "stem": "Among the following attacks against an information system, which attack can be prevented by stopping the use of a given ID when mistakes are made during the entry of a password for the ID more than the preset number of times, ?",
+   "options": {
+    "a": "DoS (Denial of Service) attack",
+    "b": "SQL injection",
+    "c": "Brute force attack",
+    "d": "Phishing"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 38,
+   "page": 17,
+   "stem": "Which of the following is an authentication method where a user uses information that differs each time and is generated with a device called a token or other such devices?",
+   "options": {
+    "a": "Digital signature",
+    "b": "Password cracking",
+    "c": "Password policy",
+    "d": "One time password"
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 39,
+   "page": 18,
+   "stem": "Which of the following is an explanation of spyware?",
+   "options": {
+    "a": "It is a scam where money is demanded just by viewing a web site or clicking an image on it.",
+    "b": "It is a mechanism where an attacker packages attack tools such as log removal or a back door and hides them in a PC so that the attacker can use them after intrusion.",
+    "c": "It is a program that infects a large number of PCs and performs actions such as simultaneous attacks by illegitimately operating the PCs as instructed over a network.",
+    "d": "It is a program that is installed without the user knowing and collects information such as the user’s personal information and access history."
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 40,
+   "page": 18,
+   "stem": "When a PC is connected directly to the Internet during a business trip, which of the following is appropriate to use in order to prevent unauthorized access from the Internet?",
+   "options": {
+    "a": "IC card authentication",
+    "b": "Personal firewall",
+    "c": "Hard disk password",
+    "d": "File encryption software"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 41,
+   "page": 18,
+   "stem": "Which of the following is appropriate as the characteristic of single sign-on?",
+   "options": {
+    "a": "It is an effective countermeasure for information leakage because data is processed and stored on a server side, and data does not remain on devices.",
+    "b": "It implements high availability because when the data is saved, it is automatically distributed and stored on multiple disks.",
+    "c": "It implements high confidentiality because it employs authentication that uses fingerprint and iris in addition to a password.",
+    "d": "It implements high convenience because once a user is authenticated, he or she is allowed to use multiple services without any more authentication."
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 42,
+   "page": 19,
+   "stem": "Which of the following is an appropriate description concerning the characteristics of the authentication method below?\n\n• Users memorize only the positions and their order on the matrix table used for authentication.\n• Numbers are randomly allocated on the matrix table every time authentication is performed.\n• A user enters numbers that are shown in memorized positions, in order, as a password.\n• Authentication succeeds when input of numbers displayed in the correct positions has been confirmed.\n\n[Example of authentication by using a matrix]\n[Figure: four 4×4 number matrices are shown. The memorized positions are shaded, and arrows show the memorized order. In the first authentication, the numbers in those positions give the password 5025. In the next authentication, the numbers in the matrices are different, and the same positions give the password 3059.]\nNote: The shaded portions indicate memorized positions, and the arrows indicate the memorized order.",
+   "options": {
+    "a": "Positions and their order do not have to be changed regularly.",
+    "b": "It is safe to tell positions and their order to other people.",
+    "c": "The method is effective in preventing spoofing through the use of tapped passwords.",
+    "d": "The method is a type of biometric authentication."
+   },
+   "answer": "c",
+   "figure": true,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 43,
+   "page": 19,
+   "stem": "Which of the following is a security standard that is used in a wireless LAN?",
+   "options": {
+    "a": "Cookie",
+    "b": "ESSID",
+    "c": "MIME",
+    "d": "WPA2 Next authentication Password is 5025 Password is 3059 5 1 0 3 9 6 6 7 1 8 9 4 0 7 5 8 6 5 0 5 8 8 3 4 0 9 2 8 4 5 4 2 3 2 5 0 3 3 7 9 0 3 3 7 0 3 6 8 6 0 8 9 2 6 8 1 1 8 7 3 1 0 6 5"
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 44,
+   "page": 20,
+   "stem": "Among the descriptions from A through C, which of the following is the list that contains all and only appropriate features of VPN?\nA Devices can communicate with each other by using a VPN wirelessly without passing through any access point.\nB A VPN uses a public network, etc., but it can be used like a private network of one’s own company.\nC The security status of computers can be checked by connecting them to a VPN.",
+   "options": {
+    "a": "A",
+    "b": "A, C",
+    "c": "B",
+    "d": "C"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 45,
+   "page": 20,
+   "stem": "A user who specifies a correct URL and attempts to access the website on the Internet is connected to a fake website. When the cause was investigated, it was found that there was a vulnerability on the server that matches a domain name with an IP address, and the information on the server was overwritten by an attacker. Which of the following is the attack against this server?",
+   "options": {
+    "a": "DDoS attack",
+    "b": "DNS cache poisoning",
+    "c": "Social engineering",
+    "d": "Drive by download"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 46,
+   "page": 20,
+   "stem": "Among the requirements for the design of screens A through D below, which of the following is the list that contains all the items that are to be considered for easy-to-use for system users?\nA: The time to repair from a failure\nB: The ease of learning of operation\nC: The layout of pushbuttons\nD: The size and color of text",
+   "options": {
+    "a": "A, B, C",
+    "b": "A, B, D",
+    "c": "A, C, D",
+    "d": "B, C, D"
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 47,
+   "page": 20,
+   "stem": "Among a series of tests of software, which of the following is conducted mainly by the user who orders the development of the software?",
+   "options": {
+    "a": "Acceptance test",
+    "b": "Integration test",
+    "c": "System test",
+    "d": "Unit test"
+   },
+   "answer": "a",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 48,
+   "page": 21,
+   "stem": "A system migration plan was created for the migration from an existing system to a new system. Which of the following is an appropriate item to be described in the system migration plan?",
+   "options": {
+    "a": "System selection policy",
+    "b": "Schedule for parallel operation of the existing and new systems",
+    "c": "Evaluation criteria for the quality of the deliverables of the new system",
+    "d": "The work history of project members"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 49,
+   "page": 21,
+   "stem": "Which of the following is an activity that is performed in software maintenance?",
+   "options": {
+    "a": "Issuing an initial password for a system user",
+    "b": "Investigating how to implement system requirements including the ease of maintenance during development of a new system",
+    "c": "Conducting an acceptance test for a new system for which development was outsourced to a vendor",
+    "d": "Modifying the program of a system that is in operation in order to make the system conform to law revisions"
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 50,
+   "page": 21,
+   "stem": "Which of the following is the most appropriate activity of improving the internal structure of an existing program without changing the external behavior of the software?",
+   "options": {
+    "a": "Test driven development",
+    "b": "Pair programming",
+    "c": "Reverse engineering",
+    "d": "Refactoring"
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 51,
+   "page": 22,
+   "stem": "Which of the following is an appropriate characteristic of a project?",
+   "options": {
+    "a": "It achieves a specific goal for a limited period of time.",
+    "b": "It consists of a team of fixed members, and the team is in charge of all the processes.",
+    "c": "It starts without defining the end of the project, and the end of the project is determined according to the progress status.",
+    "d": "It is repeatedly performed as a routine task."
+   },
+   "answer": "a",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 52,
+   "page": 22,
+   "stem": "There are negative and positive risks in a project. Among the treatment of risks in scheduling, which of the following corresponds to a treatment of a positive risk?",
+   "options": {
+    "a": "Having all members receive vaccination before influenza spreads to prevent the members from not being able to work",
+    "b": "Reducing the entire project duration by carrying out tasks for creating software programs in parallel when the overall cost can be reduced by advancing the schedule",
+    "c": "Securing replacement staff in advance in preparation for delay due to unexpected withdrawal of staff",
+    "d": "Purchasing insurance in preparation for payment of a penalty due to delivery delay"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 53,
+   "page": 22,
+   "stem": "In a development project for a system, there is a plan to create 36 programs with the same size. It was first planned to assign only Mr. A who can create six (6) programs per week, but the plan was changed and it was decided to assign two (2) people: Mr. A, and Mr.\nB who has half the productivity of Mr. A. When the cost per week for Mr. A and Mr. B is 300 thousand yen and 200 thousand yen respectively, how much is the change in the cost as compared to the original plan? Here, Mr. A and Mr. B perform activities in parallel, and the efficiency of Mr. A and Mr. B are always fixed.",
+   "options": {
+    "a": "A decrease of 800 thousand yen",
+    "b": "A decrease of 300 thousand yen",
+    "c": "An increase of 200 thousand yen",
+    "d": "An increase of 1,200 thousand yen"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 54,
+   "page": 23,
+   "stem": "When the management of a project is divided into progress management, quality management, and cost management, which of the following is most appropriate to be checked in progress management?",
+   "options": {
+    "a": "Whether an integration test is conducted exhaustively from a variety of viewpoints",
+    "b": "The degree of an increase in cost in the future",
+    "c": "The degree of the impact on the entire schedule by a delay in an activity",
+    "d": "Whether a procedure has been established for a design review for finding defects in the design"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 55,
+   "page": 23,
+   "stem": "Which of the following is the appropriate explanation of a master schedule in a system development project where processes from requirements definition to implementation are performed?",
+   "options": {
+    "a": "A schedule that describes in detail the activities of one (1) week",
+    "b": "A schedule that describes the activities of one (1) day, the start and end time of the activities, and the persons in charge",
+    "c": "A schedule that describes in detail the activities of the main processes",
+    "d": "A schedule that aggregates the main deliverables and activities of the entire project"
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 56,
+   "page": 23,
+   "stem": "Which of the following is the appropriate description concerning WBS created in a project?",
+   "options": {
+    "a": "A WBS defines the details of activities to be implemented in a project and the deliverables, and can therefore be used as a basis for estimating the number of person- days.",
+    "b": "Activities outside the scope of the project are also examined and included in the WBS.",
+    "c": "The WBS breaks down the deliverables and the details of activities up to the same hierarchy in all projects.",
+    "d": "When a project member performs similar activities within the scope, the activities need not be described in the WBS."
+   },
+   "answer": "a",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 57,
+   "page": 24,
+   "stem": "Company A orders the development of a system to Company B and starts a system development project. Among (i) through (iv) below who are concerned with the project, which of the following lists all and only the stakeholders of the project?\n(i) Company A’s management executives\n(ii) Company A’s user department\n(iii) Company B’s project manager\n(iv) Company B’s business partner that provides technical support",
+   "options": {
+    "a": "(i), (ii), (iv)",
+    "b": "(i), (ii), (iii), (iv)",
+    "c": "(ii), (iii), (iv)",
+    "d": "(ii), (iv)"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 58,
+   "page": 24,
+   "stem": "When the operation of an information system is outsourced, which of the following is created in order to agree on the quality level for the service to be provided between the outsourcing party and the contractor?",
+   "options": {
+    "a": "ASP",
+    "b": "ISP",
+    "c": "RFP",
+    "d": "SLA"
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 59,
+   "page": 24,
+   "stem": "In order to automatically respond to queries from users of an IT service, it was decided to install a chatbot. Which of the following is the most appropriate management process where such automation by a chatbot is effective?",
+   "options": {
+    "a": "Incident management",
+    "b": "Configuration management",
+    "c": "Change management",
+    "d": "Problem management"
+   },
+   "answer": "a",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 60,
+   "page": 24,
+   "stem": "A satellite office is constructed in a company that promotes telework. Measures to prevent overcurrent caused by lightning strikes were examined for network devices and PCs used in the satellite office. Which of the following is the most appropriate effective measure?",
+   "options": {
+    "a": "Installation of devices supporting green IT",
+    "b": "Installation of devices supporting surge protection",
+    "c": "Installation of a wireless LAN router",
+    "d": "Installation of an uninterruptible power supply"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 61,
+   "page": 25,
+   "stem": "In IT service management, which of the following is the case where a person in charge of the service desk entrusts the resolution of a high-difficulty incident reported to the service desk to secondary support with specialized skills?",
+   "options": {
+    "a": "FAQ",
+    "b": "SLA",
+    "c": "Escalation",
+    "d": "Workaround"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 62,
+   "page": 25,
+   "stem": "Which of the following is the most appropriate description concerning business improvement for a service desk?",
+   "options": {
+    "a": "Regarding the inquiries that the service desk receives, information such as their content, responses, and time consumed for response, is recorded and analyzed.",
+    "b": "A team is formed that does not present a temporary workaround for inquiries regarding system failures but focuses on investigation of their root cause and solution.",
+    "c": "In order to enable users to make inquiries quickly, the contact point for inquiries is separated as much as possible into a different contact point for each type of inquiry.",
+    "d": "In order to maintain fairness for users, thorough efforts are made to provide a response to inquiries in the order they are received, regardless of the importance of the content."
+   },
+   "answer": "a",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 63,
+   "page": 25,
+   "stem": "Which of the following is the most appropriate explanation of IT governance?",
+   "options": {
+    "a": "It is the organizational abilities of a company to control the creation and execution of its IT strategy with the purpose of building competitive superiority, and to lead it in the ideal direction.",
+    "b": "It is the implementation and management of a good quality IT service that meets business needs.",
+    "c": "It is an activity that a third party that is not an involved party nor its management verifies that design and operation of risk control concerning information systems are appropriate.",
+    "d": "It is the application of the knowledge, skills, tools, and techniques to project activities in order to meet the requirements of the project."
+   },
+   "answer": "a",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 64,
+   "page": 26,
+   "stem": "It was decided to conduct a system audit and an audit team was formed accordingly. Which of the following is a common requirement for all auditors who participate in the team?",
+   "options": {
+    "a": "Independence from the subject of the audit",
+    "b": "Detailed technical knowledge about the system to be audited",
+    "c": "Hands-on experience with the business to be audited",
+    "d": "Capability to remedy problems of the department to be audited"
+   },
+   "answer": "a",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 65,
+   "page": 26,
+   "stem": "Among the descriptions A through D concerning the concept of internal control, which of the following is the list that contains all appropriate descriptions?\nA Complying with the laws, etc. concerning business activities to promote the business activities conforming to social norms is one of the objectives of internal control.\nB While complying with the laws, etc. concerning business activities is one of the objectives of internal control, promotion of business activities conforming to social norms is not required.\nC The concept of internal control is effective in non-listed companies too, and it is necessary to work on it.\nD The concept of internal control is necessary only in listed companies.",
+   "options": {
+    "a": "A, C",
+    "b": "A, D",
+    "c": "B, C",
+    "d": "B, D"
+   },
+   "answer": "a",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 66,
+   "page": 26,
+   "stem": "Among the phases of the PDCA cycle in corporate business operations, which of the following measures and evaluates the status of operations on the basis of KPI?",
+   "options": {
+    "a": "P",
+    "b": "D",
+    "c": "C",
+    "d": "A"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 67,
+   "page": 27,
+   "stem": "There are activities A, B, and C that use machines X and Y, and it is required in each activity that the machines are used in the sequence of machine X, machine Y. When the use times of machines X and Y in each activity are as shown in the table below, which of the following is the sequence of the activities where the total time required to complete the three (3) activities becomes minimum? Here, machines X and Y can be used in parallel as shown in the figure below, but two (2) or more tasks cannot be performed simultaneously with any machine.\n\n[Table: Use times of machines X and Y in each activity]\nActivity A: machine X 8 minutes; machine Y 10 minutes\nActivity B: machine X 10 minutes; machine Y 5 minutes\nActivity C: machine X 6 minutes; machine Y 8 minutes\n\n[Figure: Schedule of using the machines (example of when activities are performed in the sequence A → B → C)]\nMachine X: Activity A (8 minutes), then Activity B (10 minutes), then Activity C (6 minutes).\nMachine Y: Activity A (10 minutes), then Activity B (5 minutes), then Activity C (8 minutes). Each activity starts on machine Y only after it has finished on machine X.",
+   "options": {
+    "a": "A → B → C",
+    "b": "A → C → B",
+    "c": "C → A → B",
+    "d": "C → B → A"
+   },
+   "answer": "c",
+   "figure": true,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 68,
+   "page": 27,
+   "stem": "Which of the following represents the “E” in ROE that is an index for the measurement of a company’s profitability?",
+   "options": {
+    "a": "Earnings",
+    "b": "Employee",
+    "c": "Enterprise",
+    "d": "Equity Machine X Machine Y Activity A (8 minutes) Activity B (10 minutes) Activity A (10 minutes) ActivityC(6minutes) ActivityB(5minutes) Activity C (8 minutes)"
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 69,
+   "page": 28,
+   "stem": "Company A is a large company with multiple offices nationwide, and it created BCP that envisaged the total destruction of the head office building in a large natural disaster. In consideration of the purpose of the BCP, which of the following is Company A’s most appropriate BCP?",
+   "options": {
+    "a": "In order to prevent damage by a fire that occurs after a disaster, replacing curtains and other such flammable things with flame-resistant products and planning regular checks of fire prevention equipment",
+    "b": "In order to swiftly respond to instructions from the head office when a disaster occurs, establishing a procedure to completely halting work at all offices and have all employees standby until an instruction is received from the head office",
+    "c": "In order to continue business after a disaster, specifying an office to take over the functions of the head office, narrowing down to the important work that needs to be dealt with under limited circumstances, and establishing an implementation procedure for this work",
+    "d": "Incorporating insurance premiums for the head office building into the annual budget, and preparing for a relocation to a building with the same scale as the current head office"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 70,
+   "page": 28,
+   "stem": "Which of the following is the most appropriate terminology for referring to a method that uses AI, IoT, and other such IT for personnel-related work such as personnel evaluations and recruitment with aims including the improvement of a company’s personnel functions and the achievement of work style reforms?",
+   "options": {
+    "a": "e-Learning",
+    "b": "Fintech",
+    "c": "HR Tech",
+    "d": "Competency"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 71,
+   "page": 28,
+   "stem": "Which of the following is an appropriate example of ABC analysis?",
+   "options": {
+    "a": "The consumption behavior of customers is analyzed from the three (3) perspectives of the period, the age, and the generation.",
+    "b": "The analysis of a company’s products is performed by categorization into three (3) groups in descending order of total sales.",
+    "c": "The analysis of the marketing environment is performed from the three (3) perspectives of the customers, the competitors, and the company.",
+    "d": "The analysis of repeat customers is performed from the three (3) perspectives of the last purchase date, the purchase frequency, and the purchase amount."
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 72,
+   "page": 29,
+   "stem": "The table is an excerpt from an income statement at the end of a year for Company A. When the net income for the year is 800 million yen, how much are the selling, general, and administrative expenses in millions of yen?\n\n[Table] Unit: Million yen\nNet sales: 8,000\nCost of goods sold: 6,000\nSelling, general, and administrative expenses: [blank]\nNon-operating income: 150\nNon-operating expenses: 50\nExtraordinary income: 60\nExtraordinary loss: 10\nIncome taxes: 350",
+   "options": {
+    "a": "850",
+    "b": "900",
+    "c": "1,000",
+    "d": "1,200"
+   },
+   "answer": "c",
+   "figure": true,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 73,
+   "page": 29,
+   "stem": "Which of the following is an appropriate example of an initiative based on the Green IT concept?",
+   "options": {
+    "a": "Use of displays that reduce eye fatigue from blue LED light",
+    "b": "Installation of air shower at the server room entrance and exit",
+    "c": "Construction of backup systems in preparation for disasters",
+    "d": "Setting a policy of viewing materials on PC screens, limiting their printing on paper"
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 74,
+   "page": 30,
+   "stem": "Which of the following is an example of a Non-Disclosure Agreement (NDA)?",
+   "options": {
+    "a": "A contract specifying the service content to be provided, which is agreed between the service provider and the customer before the provision of the IT service",
+    "b": "A contract specifying that the vendor of computer equipment bears the responsibility of transferring the property right, and that the buyer bears the responsibility of paying the charges",
+    "c": "A contract specifying the obligation of the outsourcer and outsourcee to maintain confidentiality of the secret information of a party that becomes known to the other party during system development, etc.",
+    "d": "A contract specifying that an outsourcee to whom the installation of a general-purpose software package has been outsourced performs the task at the outsourcee’s own discretion and responsibility, and receives payment upon the completion of the task"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 75,
+   "page": 30,
+   "stem": "From the viewpoint of corporate governance, which of the following is the most appropriate method of strengthening the functions of monitoring and supervising the decision-making process of the management?",
+   "options": {
+    "a": "Installing a camera for monitoring the entry and exit of the president’s office",
+    "b": "Periodically requesting a private detective to investigate the conduct of the management",
+    "c": "Appointing some outside directors",
+    "d": "Employing law school graduates as members of the internal audit department"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 76,
+   "page": 30,
+   "stem": "Which of the following is appropriate as an expected advantage of the adoption of ISO 9001 by companies?",
+   "options": {
+    "a": "The companies’ trade procedures will be standardized, leading to improved efficiency and the avoidance of non-tariff barriers.",
+    "b": "Technical specifications will be standardized in the industry, and improvement in product quality and expansion of markets will move forward.",
+    "c": "Methods for handling information assets will be standardized and the quality of information security will improve.",
+    "d": "Business operations concerning quality management will be standardized, and the quality and efficiency of management will improve."
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 77,
+   "page": 31,
+   "stem": "Which of the following is the most appropriate as an example of an enhancement activity for compliance?",
+   "options": {
+    "a": "Expansion of a program to support the community service activities of employees",
+    "b": "Education for employees concerning laws and rules that must be followed",
+    "c": "Acquisition of another company’s business for swift business deployment",
+    "d": "Withdrawal from businesses where it is difficult to make profit"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 78,
+   "page": 31,
+   "stem": "Which of the following is standardized by ISO (International Organization for Standardization)?",
+   "options": {
+    "a": "Content management system",
+    "b": "Information security management system",
+    "c": "Talent management system",
+    "d": "Knowledge management system"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 79,
+   "page": 31,
+   "stem": "Which of the following is a technique that analyzes the value of a product or service through the relationship between functionality and cost, and enhances that value through reduction in cost and improvement in functionality and quality?",
+   "options": {
+    "a": "Supply chain management",
+    "b": "Knowledge management",
+    "c": "Value engineering",
+    "d": "Reverse engineering"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 80,
+   "page": 32,
+   "stem": "Company A performs analysis of its positioning against competitors. In order for Company A to obtain the best evaluation of all three (3) companies, what is the minimum number of points required in the brand evaluation item?\n\nThe minimum value of each evaluation item is one (1) point and the maximum value is ten points, and each company is evaluated by using the total value of each weighted evaluation item.\n\n[Table]\nSelling power (weight 1): Company A 10; Company B 9; Company C 6\nPrice (weight 4): Company A 10; Company B 7; Company C 9\nQuality (weight 3): Company A 6; Company B 10; Company C 7\nBrand (weight 2): Company A [not shown]; Company B 6; Company C 10\nNote: The shaded part is not shown.",
+   "options": {
+    "a": "6",
+    "b": "7",
+    "c": "8",
+    "d": "9"
+   },
+   "answer": "c",
+   "figure": true,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 81,
+   "page": 32,
+   "stem": "Which of the following techniques is used to set specific targets and evaluate the results from the four (4) viewpoints of “finance,” “customer,” “internal business processes,” and “learning and growth” in order to realize the vision and strategy of a company?",
+   "options": {
+    "a": "PPM",
+    "b": "SWOT analysis",
+    "c": "Balanced scorecard",
+    "d": "Marketing mix"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 82,
+   "page": 32,
+   "stem": "Which of the following is the appropriate explanation of benchmarking used for corporate management?",
+   "options": {
+    "a": "It refers to the promotion of continual improvement of business processes by applying the PDCA cycle.",
+    "b": "It refers to the best case study for comparison and analysis when improvements are to be made.",
+    "c": "It refers to the unique skills and technologies for securing superiority over competitors.",
+    "d": "It refers to the measurement of the products and services of one’s company, and their comparison with other superior competitors."
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 83,
+   "page": 33,
+   "stem": "Which of the following is the most appropriate explanation of user experience (UX)?",
+   "options": {
+    "a": "The design of a software product with consideration that it is easy to use for as many people as possible, including mainly elderly people and disabled people",
+    "b": "A method of identifying customers on the basis of analysis of customer data, and deepening relationships with customers by using channels such as call centers and the Internet",
+    "c": "A software product’s capability that enables efficient use by a user under specified conditions",
+    "d": "People’s feelings and responses that are gained through the anticipated or actual use of a product, system, service, etc."
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 84,
+   "page": 33,
+   "stem": "Which of the following is the purpose of constructing an SCM system?",
+   "options": {
+    "a": "To evaluate the current strengths and weaknesses of a company, and decide the companies to partner with to complement the weaknesses",
+    "b": "To reduce the product distribution inventory and improve customer satisfaction by mutually sharing and managing information such as production, inventory, and sales of products between departments or between companies related to processes from production to consumption of products",
+    "c": "To clarify where the value provided to customers is generated in the series of corporate activities such as procurement, development, manufacturing, sales, and service",
+    "d": "To enable a company that produces and sells many types of products to determine the most efficient and effective combination of manufacturing and selling products in order to maximize profits"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 85,
+   "page": 33,
+   "stem": "Which of the following is the most appropriate term that is sometimes used to mean the creation of an epoch-making business model or a reform in technology?",
+   "options": {
+    "a": "Innovation",
+    "b": "Migration",
+    "c": "Real option",
+    "d": "Revolution"
+   },
+   "answer": "a",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 86,
+   "page": 34,
+   "stem": "Which of the following is an appropriate case example that corresponds to traceability?",
+   "options": {
+    "a": "Taking advantage of the Internet and web technology for the use of computers in education",
+    "b": "Outsourcing all development to an external specialized company without placing any development department within one’s own company",
+    "c": "Sharing knowledge and information among employees across the entire organization, and utilizing it effectively to improve business performance",
+    "d": "Being able to check the history from production up to sales on the basis of the labels pasted on meat and fish products"
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 87,
+   "page": 34,
+   "stem": "Which of the following is a business objective that becomes possible to achieve with “the introduction of a POS system”?",
+   "options": {
+    "a": "Improvement in the work productivity of salespersons and organizational strength of the sales department",
+    "b": "Reduction in inventory volume of component parts and work in process",
+    "c": "Optimization of the series of processes from procurement to manufacturing, shipment, and sales",
+    "d": "Improvement in the selection of goods at each store and streamlining of ordering and inventory control"
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 88,
+   "page": 34,
+   "stem": "Which of the following is an appropriate explanation of CAD?",
+   "options": {
+    "a": "Education with the use of computers",
+    "b": "Manufacturing with the use of computers",
+    "c": "Design and drafting with the use of computers",
+    "d": "Software design, development, and maintenance with the use of computers"
+   },
+   "answer": "c",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 89,
+   "page": 35,
+   "stem": "Which of the following is an appropriate description of concurrent engineering?",
+   "options": {
+    "a": "A technique for acquiring technology by disassembling an existing product and analyzing its structure",
+    "b": "A technique for fundamentally rethinking the flow and methods of work to reform operations into a desired form",
+    "c": "A technique for efficiently conducting experiments with the fewest possible number of trials through the appropriate setting of conditions",
+    "d": "A technique that shortens the overall time required for product processes – planning, design, production, etc. – by conducting these in parallel to the degree possible"
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 90,
+   "page": 35,
+   "stem": "Which of the following corresponds to the lean production system of efficiently performing high-mix, high-volume production by incorporating production activities such as “just in time” and “kanban.”?",
+   "options": {
+    "a": "Not having a production line in one’s own company, and outsourcing production to another company",
+    "b": "Ordering the components required in the production line such that they can be obtained at the time of their requirement, and thus maintaining an appropriate quantity of the work in process",
+    "c": "Producing the components for the delivery in excess of their predicted demand, and thus eliminating the unnecessary waiting time until delivery",
+    "d": "Having one (1) person in charge of all processes from the start to the completion of manufacturing of a single product, and thus eliminating the transfer of work in process during manufacturing"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 91,
+   "page": 36,
+   "stem": "The fields of utilization of AI include voice recognition, image recognition, and natural language processing. Which of the following is the most appropriate example of a system that uses both voice recognition and natural language processing?",
+   "options": {
+    "a": "Detecting the sound of a knock on a door, recognizing the face of a person standing in front of a camera, and unlocking the door",
+    "b": "Interpreting the verbal questions from a person about subjects such as the weather and traffic information, and responding with appropriate content",
+    "c": "Detecting the figure and talking voices of people at an outdoors concert, and recording the number of people who go through the entrance to the venue",
+    "d": "Reading English text in foreign publications through a camera, and editing it into a summarized text in the local language"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 92,
+   "page": 36,
+   "stem": "Conventional financial information systems were highly robust, but they lacked flexibility and it was difficult to swiftly provide services that keep up with mobile technology and other such innovations in information. Based on this, which of the following is the most appropriate term for the trend of providing new value and innovative services through the incorporation of Internet-related technologies, the collaboration with venture companies that utilize them, and other such actions?",
+   "options": {
+    "a": "Omnichannel",
+    "b": "Fintech",
+    "c": "Blockchain",
+    "d": "One-to-one marketing"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 93,
+   "page": 36,
+   "stem": "Which of the following is an item that must be considered when information systems strategy is drafted?",
+   "options": {
+    "a": "Methods for shortening the development period",
+    "b": "Consistency with the business strategies",
+    "c": "Methods for reducing costs",
+    "d": "Introduction of the latest technologies"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 94,
+   "page": 37,
+   "stem": "Which of the following is an appropriate example part of DFD?",
+   "options": {
+    "a": "A state transition diagram: State 1 and State 2 are linked by Event B and Event C, with Event A entering and Event D leaving",
+    "b": "A data flow diagram: Data A enters Process 1, Data B goes from Process 1 to Process 2, Data C leaves Process 2, and Process 1 reads Data file 1",
+    "c": "An E-R diagram: Entity 1 and Entity 2 are connected through a Relation (1 to N)",
+    "d": "A flowchart: a Decision branches to Process 1 and Process 2"
+   },
+   "answer": "b",
+   "figure": true,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 95,
+   "page": 37,
+   "stem": "Which of the following is the most appropriate purpose of implementing gamification that takes full advantage of the game elements such as points and badges?",
+   "options": {
+    "a": "Deciding one’s own strategy in a game according to the strategy of the opponent",
+    "b": "Providing motivation to help achieve the goals of the customers and employees",
+    "c": "Collecting user evaluation concerning new network games",
+    "d": "Analyzing large volume of data to detect useful facts and relationships"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 96,
+   "page": 37,
+   "stem": "Which of the following analysis techniques is used in Enterprise Architecture (EA) to clarify the issues by comparing the ideal situation with the current situation?",
+   "options": {
+    "a": "Gap analysis",
+    "b": "Core competence analysis",
+    "c": "Value chain analysis",
+    "d": "Pareto analysis"
+   },
+   "answer": "a",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 97,
+   "page": 38,
+   "stem": "Which of the following is a document that is presented by a user to vendors upon procurement of an information system for requesting their proposals and that describes the overview and procurement conditions for the information system?",
+   "options": {
+    "a": "RFC",
+    "b": "RFI",
+    "c": "RFID",
+    "d": "RFP"
+   },
+   "answer": "d",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 98,
+   "page": 38,
+   "stem": "Which of the following is the most appropriate description of IoT?",
+   "options": {
+    "a": "It is a learning mechanism in artificial intelligence.",
+    "b": "It is a mechanism where devices or control units equipped with a sensor connect directly to the Internet and exchange a variety of information via the Internet.",
+    "c": "It is a group of functions and procedures that are made public in order to enable some features of software to be used by other programs.",
+    "d": "It is a tool that uses a software robot to streamline routine work."
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 99,
+   "page": 38,
+   "stem": "Which of the following are international development objectives that are composed of 17 goals set by the United Nations in order to achieve a sustainable world?",
+   "options": {
+    "a": "COP28",
+    "b": "SDGs",
+    "c": "UNESCO",
+    "d": "WHO"
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  },
+  {
+   "n": 100,
+   "page": 38,
+   "stem": "Company A is investigating the investment of 10 million yen in the rebuilding of a sales support system. When the current operation costs for the system are 5 million yen per year, the operation costs for the system after the rebuilding are 4 million per year, and new profit from the reconstruction is 2 million yen per year, how many years is the payback period for investment? Here, no other effects or costs are considered, and the result of calculation is rounded off to one (1) decimal place.",
+   "options": {
+    "a": "2.5",
+    "b": "3.3",
+    "c": "5.0",
+    "d": "10.0 Pseudo programming language notations In algorithm and programming questions that use pseudo programming language, the following notations are used unless otherwise stated: [Pseudo programming language notations] Notation Description ○ procedure(type: arg1, ...) Declares a procedure and its argument(s) arg1, ... . ○ ret-type: function(type: arg1, ...) Declares a function, its argument(s) arg1, ... , and type of return value ret-type. type: var1, ... type []: array1, ... Declares variables var1, ... and arrays array1, ... by data type such as integer, real, and string. /* comment */ Describes a comment between /* and */. // comment Describes a comment after // till end of line. variable ← expression Assigns the value of the expression to the variable. procedure(arg1, ...) Calls a procedure by passing arguments arg1, ... . function(arg1, ...) Calls a function by passing arguments arg1, ... , and receiving the return value. output arg1, ... Outputs values of arg1, ... to a printing device. return ret-val Finishes a function by passing back a return value ret-val. if (condition-i) process-i *1 elseif (condition-ei) process-ei *2 else process-e *3 endif Indicates the selection process. *1 If condition-i is true, then execute process-i. Otherwise, proceed to the next elseif or else. *2 If condition-ei is true, then execute process-ei. Otherwise, proceed to the next elseif or else. *3 If all conditions are false, execute process-e. Note: *2 and *3 can be omitted. Note: *2 may exist twice or more. for (sequence) process endfor Indicates the “for” iteration process. In the order specified in the sequence, execute the process repeatedly. while (condition) process endwhile Indicates the “while” iteration process. While the condition is true, execute the process repeatedly. do process while (condition) Indicates the “do - while” iteration process. Execute the process once, and then while the condition is true, execute the process repeatedly. Pseudo programming language notations (continued) [Operators and their precedence] Type of operator Operators Precedence Note Expression ( ) (1) High (1) accessing member or method Unary operator +, −, not (2) (2) logical negation Binary operator ×, ÷, mod (3) (3) remainder +, − >, <, ≥, ≤, =, ≠ and (4) (4) logical product or (5) Low (5) logical sum [Boolean-type constants] true, false [Array reference] 1-dimensional array 2-dimensional array Array declaration type []: name ... type [,]: name ... Example integer []: a1 integer [,]: a2 1 2 3 4 5 1 2 3 1 3 5 7 9 1 11 12 13 2 14 15 16 3 17 18 19 Data reference Data 7 is referred to by a1[4] Data 16 is referred to by a2[2,3] Notation of array contents {1, 3, 5, 7, 9} {{11, 12, 13}, {14, 15, 16}, {17, 18, 19}} Notes: The indexes of arrays start at 1, unless otherwise noted. Areas outside of the arrays must not be referenced in the program. Spreadsheet Software Functions and Terminology The following shows the basic functions and terminology of spreadsheet software. If functions other than those shown here are used, such as worksheet saving, reading, printing, border drawing, and chart creation, these are shown in the question. 1. Worksheets (1) A work area in the form of grids comprising rows and columns is called a worksheet. The size of a worksheet is 256 columns and 10,000 rows. (2) Respective positions of columns and rows on a worksheet are represented by row and column numbers. For the column numbers, the leftmost number is A, and they are represented as A, B, ..., Z, AA, AB, ..., AZ, BA, BB, ..., BZ, ..., IU, ...IV. For the row numbers, the topmost number is 1 , and they are represented as 1, 2, ..., 10000 . (3) Multiple worksheets can be used. In this case, a unique name is to be given to each worksheet so that they can be distinguished from the other worksheets. 2. Cells and cell ranges (1) Each grid that makes up a worksheet is called a cell. Its position is represented by the column and row numbers, and this is called a cell address. [Example] The cell address of the cell at column A row 1 is represented as A1 . (2) When a group of all cells in a rectangular area in a worksheet are to be handled together, the group is represented by using the cell addresses of the cells at top left and bottom right in the rectangle and “:” as “top left cell address:bottom right cell address”. This is called a cell range. [Example] A cell range whose addresses at top left is A1 and bottom right is B3 is represented as “A1:B3” . (3) If a cell address or a cell range in another worksheet is to be specified, the address is represented by using the worksheet name and “ ! ” as “worksheet name!cell address” and the range is represented as “worksheet name!cell range”. [Example] If cells B5 to G10 in worksheet “Sheet1” are to be specified from another worksheet, it is represented as “Sheet1!B5:G10” . 3. Values and expressions (1) A cell has a value, and the value can be referenced by the cell address. A cell value is a numerical value, character string, logical value, or null value. (2) A character string is enclosed in single quotation marks “ ’ ”. [Example] The character strings “ A ” and “ BC ” are expressed as ’A’ and ’BC’, respectively. (3) A logical value is represented as true or false. (4) A null value is represented as null, and a cell with a null value is called a blank cell. The initial state of a cell is blank. (5) An expression can be entered into a cell. The cell has the value of evaluated result of the expression. (6) An expression is composed of constants, cell addresses, operators, parentheses, and functions. A constant is represented as a numerical value, character string, logical value, or null value. A cell address in an expression references a value of the cell at that address. (7) An expression is an arithmetic expression, literal expression, or logical expression. An expression that obtains a numerical value as its evaluation result is called an arithmetic expression; the one that obtains a character string is called a character expression; and the one that obtains a logical value is called a logical expression. (8) When an expression is entered into a cell, it is evaluated immediately. When a cell value which an expression references changes, the expression is immediately and appropriately reevaluated. 4. Operators (1) The unary operators are the plus sign “+” and the minus sign“-”. (2) The arithmetic operators are add “+”, subtract “-”, multiply “*”, divide “/”, and exponentiation “^”. (3) The comparison operators are greater than “>”, less than “<”, equal to or greater than “≥”, equal to or less than “≤”, equal to “=”, and not equal to “≠”. (4) For parentheses, “ ( ” and “ ) ” are used. (5) If an expression contains multiple operations and parentheses, the order of operations follows the precedence in the table below. Type of operation Operator Precedence Parentheses ( ) High Exponentiation ^ Unary operations +, - Multiplication/division *, / Addition/subtraction +, - Comparison operations >, <, ≥, ≤, =, ≠ Low 5. Copying of cells (1) A value or expression in a cell can be copied into the other cells. (2) In case of copying a cell, when an expression including a cell address has been entered into a source cell and the cell is copied to a destination cell so that the difference in addresses between the source and destination cells can be maintained by making the cell address change in the expression, this way of reference is called relative reference. In this case, an expression, in which the differences in column and row numbers between the source and destination cells are added to the cell address in the expression in the source cell, is entered into the destination cell. [Example] When expression “A1+5” has been entered into cell A6 and this cell is copied to cell B8 , expression “B3+5” is entered into cell B8. (3) In case of copying a cell, when an expression including a cell address has been entered into a source cell and the cell is copied to a destination cell so that either or both of the column and row numbers of the cell address in the expression in the source cell can be maintained, this way of reference is called absolute reference. A “$” is placed immediately before either or both of the column and row numbers to which absolute reference is applied. [Example] When expression “$A$1+$A2+A$5” has been entered into cell B1 and this cell is copied to cell C4, expression “$A$1+$A5+B$5” is entered into cell C4 . (4) In case of copying a cell, when an expression referencing to another worksheet has been entered into a source cell and the cell is copied to a destination cell, the name of referencing worksheet is not changed in the destination cell. [Example] When expression “Sheet1!A1” has been entered into cell A6 in worksheet “Sheet2” and the cell is copied to cell B8 in worksheet “Sheet3”, expression “Sheet1!B3” is entered into cell B8 . 6. Functions The functions defined in the table below are available for use in an expression. Format Description SUM(cell range1) ) Returns the sum of the numerical values within the cell range. [Example] SUM(A1:B5) returns the sum of the numerical values in range A1 to B5. AVERAGE(cell range1) ) Returns the average of the numerical values within the cell range. STDEV.S (cell range1) ) Returns the standard deviation calculated with the numerical values within the cell range as the sample. STDEV.P (cell range1) ) Returns the standard deviation calculated with the numerical values within the cell range as the population. MAX(cell range1) ) Returns the maximum value of the numerical values within the cell range. MIN(cell range1) ) Returns the minimum value of the numerical values within the cell range. IF(logical expression, expression 1, expression 2) Returns the value of expression 1 when the logical expression is true, and returns the value of expression 2 when the logical expression is false. [Example] IF(B3>A4, ’Tokyo’,C4 ) returns “Tokyo” when the value of cell B3 is greater than that of cell A4; otherwise, returns the value of C4. COUNT(cell range) Returns the number of cells within the cell range, which are not blank. COUNTIF(cell range, search condition ) Returns the number of cells within the cell range, which satisfy the specified search condition. The search condition is described as a pair of comparison operator and expression, and the value of each cell within the range is compared against the value of the specified expression using the specified operator. [Example 1] COUNTIF(H5:L9,>A1) returns the number of cells in range H5 to L9, each of which has a value greater than the value of A1. [Example 2] COUNTIF(H5:L9,=’A4’) returns the number of cells in range H5 to L9, each of which has character string “A4”. INT(arithmetic expression) Returns the largest integer that is equal to or less than the value of the arithmetic expression. [Example 1] INT(3.9) returns 3. [Example 2] INT(-3.9) returns -4. MOD(arithmetic expression 1, arithmetic expression 2) Takes the value of arithmetic expression 1 as the dividend and that of arithmetic expression 2 as the divisor, and returns the remainder of the division. Functions “MOD” and “INT” satisfy MOD(x,y)=x-y*INT(x/y). [Example 1] MOD(10,3) returns 1. [Example 2] MOD(-10,3) returns 2. SQRT(arithmetic expression) Returns the non-negative square root of the value of the arithmetic expression. The value of the arithmetic expression must be a non-negative numerical value. AND(Logical expression 1, Logical expression 2, … ) 2) Returns true when the values of logical expression 1, logical expression 2, ... are all true. Otherwise, returns false. OR(Logical expression 1, Logical expression 2 , … ) 2) Returns true when at least one of the values of logical expression 1, logical expression 2, ... is true. Otherwise, returns false. NOT(Logical expression ) Returns false when the value of the logical expression is true, and returns true when the value is false. ROUNDUP(arithm etic expression, digit position) By rounding at the specified digit position of the arithmetic expression, function “ROUNDUP” returns the rounded up value, function “ROUND” returns the rounded value, and function “ROUNDDOWN” returns the rounded down value. [Example 1] ROUNDUP(-314.059,2) returns -314.06. [Example 2] ROUNDUP(314.059,-2) returns 400. [Example 3] ROUNDUP(314.059,0) returns 315. ROUND(arithmetic expression, digit position) ROUNDDOWN(ar ithmetic expression, digit position) CONCATENATE(ex pression1, expression2, … ) 2) Treats each of the values of expression 1, expression 2, … as a character string, and returns one character string that is formed by concatenating them in the order of the expressions. [Example] CONCATENATE(’Tokyo’,’Osaka’,123,456) returns character string “TokyoOsaka123456”. RANK(arithmetic expression, cell range 1 ) , order condition) Returns the rank by counting the rank of the value of the arithmetic expression in the cell range in ascending order when 0 is specified as the order condition, or in descending order when 1 is specified. Here, if there are same values in the cell range, they are treated as the same rank, and the next item’s rank is determined by adding the number of items of the same rank. RAND ( ) Returns a uniform random number (real number) greater than or equal to 0 and less than 1. INDEX(cell range, row position, column position ) Counts the rows and columns from the top left within the cell range respectively as 1, 2, …, and returns the value of the cell at the specified row and column positions within the range. [Example] INDEX(A3:H11,2,5) returns the value of cell E4. VLOOKUP(express ion, cell range, column position, search condition) Scans the leftmost column within the cell range from the top downward, and searches for the first row that satisfies the specified search condition. For this row, it counts the columns from the left within the range as 1, 2, …, and returns the value of the cell at the specified column position. • When the search condition is set to 0 : Searches for a value that matches the value of the expression. • When the search condition is set to 1 : Searches for the largest value that is equal to or less than the value of the expression. At this time, the cell values in the leftmost column must be sorted in ascending order from the top. [Example] VLOOKUP(15,A2:E10,5,0) searches in the leftmost column within the cell range, A2, A3, …A10. In this case, if it first finds 15 at cell A6, it returns the value in cell E6 in the same row as cell A6 within column E, the fifth column from column A at the left end in the range. HLOOKUP(expres sion, cell range, row position, search condition) Scans the topmost row within the cell range from left to right, and searches for the first column that satisfies the specified search condition. For this column, counts the rows from the top within the range as 1, 2, … and returns the value of the cell at the specified row position. • When the search condition is set to 0 : Searches for a value that matches the value of the expression. • When the search condition is set to 1 : Searches for the largest value that is equal to or less than the value of the expression. At this time, the cell values in the topmost row must be sorted in ascending order from the left. [Example] HLOOKUP(15,A2:G6,5,1) searches in the topmost row within the cell range, A2, B2, …G2. In this case, if it first finds the largest value equal to 15 or less at cell D2, it returns the value of cell D6 in the same column as cell D2 within row 6, the fifth row from row 2 at the top in the range. Note1) Within the cell range that is passed as the argument, values other than numerical values are out of scope for processing. 2) The number of expressions that can be passed as arguments is 1 or more."
+   },
+   "answer": "b",
+   "figure": false,
+   "dir": "pages/2026-apr"
+  }
+ ]
+}
