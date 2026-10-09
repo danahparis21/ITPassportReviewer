@@ -13,7 +13,6 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Built%20with-Gemini%20AI-8A6F7E?style=flat-square&logo=google&logoColor=white"/>
   <img src="https://img.shields.io/badge/Deployed%20on-Vercel-black?style=flat-square&logo=vercel"/>
   <img src="https://img.shields.io/badge/Exams-3%20available-c08a98?style=flat-square"/>
   <img src="https://img.shields.io/badge/Made%20by-Danah%20Paris-f4d0d8?style=flat-square"/>
@@ -70,18 +69,18 @@ Paired with a **cute pink UI** that matches my aesthetic, lofi music ambience to
 
 ## ✨ Features
 
-### 🤖 AI-Powered Explanations (Powered by Google Gemini)
-After answering every question, Gemini AI generates:
+### AI-Powered Explanations
+After answering every question:
 - **Why your chosen answer is correct or wrong** — not just a verdict, but a real breakdown
 - **Why each of the other choices is incorrect** — so you understand the logic, not just memorize the letter
 - **"Explain Like I'm 5" mode** — a second, deeper explanation using simple analogies, key vocabulary definitions, and step-by-step reasoning so concepts actually stick
 
 No more copy-pasting to Google. No more flipping through PDFs. Just click and learn. 🌸
 
-### 📖 Original Exam Page Viewer
+### Original Exam Page Viewer
 Every question links back to its **original scanned exam page** (the actual PDF page as a JPG). This is crucial for questions with tables, graphs, and diagrams that don't convert cleanly to plain text — you always have the source to fall back on.
 
-### 📊 Live Progress Dashboard
+### Live Progress Dashboard
 While answering, a sidebar shows:
 - ✅ Correct / ❌ Wrong / 📋 Left counts
 - Live **accuracy percentage**
@@ -89,19 +88,19 @@ While answering, a sidebar shows:
 - A **question map** (100 tiles) showing your status on each question at a glance — tap any to jump directly to it
 - **Missed Questions** tracker — see which ones you got wrong so you can retry them
 
-### 🔁 Retry Mode
+### Retry Mode
 After finishing an exam, you can retry **only the questions you missed** — no need to redo the whole 100-question set every time.
 
-### 💾 Session Keys & Progress Sync
+### Session Keys & Progress Sync
 Progress is saved under a named **session key** in `localStorage`. You can:
 - Create multiple keys (e.g., one per device or study session)
 - **Export** your progress as a JSON file
 - **Import** it on another device — study seamlessly across phone and laptop
 
-### 🎵 Lo-fi Study Ambience
+### Lo-fi Study Ambience
 A built-in lofi music player lives in the homepage companion card. Press play to set the study mood — animated bars show it's vibing. 🎧
 
-### 🌙 Dark Mode
+### Dark Mode
 Full dark mode toggle — because studying at midnight requires it.
 
 ### ⌨️ Keyboard Shortcuts
@@ -110,7 +109,7 @@ Full dark mode toggle — because studying at midnight requires it.
 
 ---
 
-## 📚 Available Exams
+## Available Exams
 
 | Exam | Questions | Season |
 |------|-----------|--------|
@@ -122,7 +121,7 @@ All exams are sourced from official **ITPEC exam form PDFs** and answer keys, th
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
@@ -136,7 +135,7 @@ All exams are sourced from official **ITPEC exam form PDFs** and answer keys, th
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 itpassport/
@@ -173,15 +172,6 @@ itpassport/
 
 ---
 
-## 🔐 Environment Variables
-
-| Variable | Required | Default | Notes |
-|----------|----------|---------|-------|
-| `GEMINI_API_KEY` | ✅ Yes | — | Get one free at [Google AI Studio](https://aistudio.google.com/) |
-| `GEMINI_MODEL` | ❌ No | `gemini-2.5-flash` | Any Gemini model name |
-
----
-
 ## 💌 Made with love by
 
 **Danah Paris** 🎀
@@ -191,5 +181,5 @@ itpassport/
 ---
 
 <p align="center">
-  <sub>🌸 Built for the ITPEC IT Passport exam · Powered by Google Gemini · Deployed on Vercel 🌸</sub>
+  <sub>🌸 Built for the ITPEC IT Passport exam · Powered by AI · Deployed on Vercel 🌸</sub>
 </p>
