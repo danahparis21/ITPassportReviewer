@@ -2549,12 +2549,15 @@
           ? `<span class="badge bad">${icon('alert', 12)} ${d.missed.length} to master</span>`
           : full.length ? `<span class="badge ok">${icon('check', 12)} All mastered</span>` : `<span class="badge">Not started</span>`;
 
-        const is2026 = e.id.includes('2026');
-        const badgeClass = is2026 ? 'spring' : 'autumn';
-        const badgeLabel = is2026 ? 'Spring 2026 · Latest Edition' : 'Autumn 2025 · Core Edition';
-        const examDisplayTitle = is2026 ? 'IT Passport Exam (Apr 2026)' : 'IT Passport Exam (Oct 2025)';
-        const examDesc = is2026
+        const is2026Apr = e.id === '2026-apr';
+        const is2025Apr = e.id === '2025-apr';
+        const badgeClass = is2026Apr ? 'spring' : is2025Apr ? 'spring' : 'autumn';
+        const badgeLabel = is2026Apr ? 'Spring 2026 · Latest Edition' : is2025Apr ? 'Spring 2025 · Core Edition' : 'Autumn 2025 · Core Edition';
+        const examDisplayTitle = is2026Apr ? 'IT Passport Exam (Apr 2026)' : is2025Apr ? 'IT Passport Exam (Apr 2025)' : 'IT Passport Exam (Oct 2025)';
+        const examDesc = is2026Apr
           ? 'Comprehensive 100 questions covering modern IT strategy, management, and technology principles with official diagrams.'
+          : is2025Apr
+          ? 'Official 100 questions covering foundational ITPEC and IPA Japan syllabus standards with official diagrams.'
           : 'Official 100 questions covering foundational ITPEC and IPA Japan syllabus standards with official diagrams.';
 
         return `
