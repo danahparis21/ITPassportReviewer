@@ -2549,16 +2549,18 @@
           ? `<span class="badge bad">${icon('alert', 12)} ${d.missed.length} to master</span>`
           : full.length ? `<span class="badge ok">${icon('check', 12)} All mastered</span>` : `<span class="badge">Not started</span>`;
 
-        const is2026Apr = e.id === '2026-apr';
-        const is2025Apr = e.id === '2025-apr';
-        const badgeClass = is2026Apr ? 'spring' : is2025Apr ? 'spring' : 'autumn';
-        const badgeLabel = is2026Apr ? 'Spring 2026 · Latest Edition' : is2025Apr ? 'Spring 2025 · Core Edition' : 'Autumn 2025 · Core Edition';
-        const examDisplayTitle = is2026Apr ? 'IT Passport Exam (Apr 2026)' : is2025Apr ? 'IT Passport Exam (Apr 2025)' : 'IT Passport Exam (Oct 2025)';
-        const examDesc = is2026Apr
-          ? 'Comprehensive 100 questions covering modern IT strategy, management, and technology principles with official diagrams.'
-          : is2025Apr
-          ? 'Official 100 questions covering foundational ITPEC and IPA Japan syllabus standards with official diagrams.'
-          : 'Official 100 questions covering foundational ITPEC and IPA Japan syllabus standards with official diagrams.';
+        const examMeta = {
+          '2026-apr': { badgeClass: 'spring', badgeLabel: 'Spring 2026 · Latest Edition', displayTitle: 'IT Passport Exam (Apr 2026)', desc: 'Comprehensive 100 questions covering modern IT strategy, management, and technology principles with official diagrams.' },
+          '2025-oct': { badgeClass: 'autumn', badgeLabel: 'Autumn 2025 · Core Edition', displayTitle: 'IT Passport Exam (Oct 2025)', desc: 'Official 100 questions covering foundational ITPEC and IPA Japan syllabus standards with official diagrams.' },
+          '2025-apr': { badgeClass: 'spring', badgeLabel: 'Spring 2025 · Core Edition', displayTitle: 'IT Passport Exam (Apr 2025)', desc: 'Official 100 questions covering foundational ITPEC and IPA Japan syllabus standards with official diagrams.' },
+          '2024-oct': { badgeClass: 'autumn', badgeLabel: 'Autumn 2024', displayTitle: 'IT Passport Exam (Oct 2024)', desc: 'Official 100 questions from the October 2024 ITPEC IT Passport exam with official diagrams.' },
+          '2024-apr': { badgeClass: 'spring', badgeLabel: 'Spring 2024', displayTitle: 'IT Passport Exam (Apr 2024)', desc: 'Official 100 questions from the April 2024 ITPEC IT Passport exam with official diagrams.' },
+        };
+        const meta = examMeta[e.id] || { badgeClass: 'autumn', badgeLabel: e.id, displayTitle: e.title, desc: 'Official 100 questions from the ITPEC IT Passport exam with official diagrams.' };
+        const badgeClass = meta.badgeClass;
+        const badgeLabel = meta.badgeLabel;
+        const examDisplayTitle = meta.displayTitle;
+        const examDesc = meta.desc;
 
         return `
       <div class="pink-exam-card">
