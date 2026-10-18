@@ -2555,6 +2555,8 @@
           '2025-apr': { badgeClass: 'spring', badgeLabel: 'Spring 2025 · Core Edition', displayTitle: 'IT Passport Exam (Apr 2025)', desc: 'Official 100 questions covering foundational ITPEC and IPA Japan syllabus standards with official diagrams.' },
           '2024-oct': { badgeClass: 'autumn', badgeLabel: 'Autumn 2024', displayTitle: 'IT Passport Exam (Oct 2024)', desc: 'Official 100 questions from the October 2024 ITPEC IT Passport exam with official diagrams.' },
           '2024-apr': { badgeClass: 'spring', badgeLabel: 'Spring 2024', displayTitle: 'IT Passport Exam (Apr 2024)', desc: 'Official 100 questions from the April 2024 ITPEC IT Passport exam with official diagrams.' },
+          '2023-oct': { badgeClass: 'autumn', badgeLabel: 'Autumn 2023', displayTitle: 'IT Passport Exam (Oct 2023)', desc: 'Official 100 questions from the October 2023 ITPEC IT Passport exam with official diagrams.' },
+          '2023-apr': { badgeClass: 'spring', badgeLabel: 'Spring 2023', displayTitle: 'IT Passport Exam (Apr 2023)', desc: 'Official 100 questions from the April 2023 ITPEC IT Passport exam with official diagrams.' },
         };
         const meta = examMeta[e.id] || { badgeClass: 'autumn', badgeLabel: e.id, displayTitle: e.title, desc: 'Official 100 questions from the ITPEC IT Passport exam with official diagrams.' };
         const badgeClass = meta.badgeClass;
@@ -2896,7 +2898,7 @@
           <button class="ghost sm" style="margin-top:10px" onclick="S.showPage=!S.showPage;saveCurrentExamProgress();show()">
             ${fig ? icon('chevron-up', 13) + ' Hide' : icon('image', 13) + ' View'} original exam page
           </button>
-          ${fig ? `<img class="pg" src="pages/${S.id}/p-${String(q.page).padStart(2, '0')}.jpg" alt="Exam page ${q.page}">` : ''}
+          ${fig ? `<img class="pg" src="${q.dir ? q.dir : 'pages/' + S.id}/p-${String(q.page).padStart(2, '0')}.jpg" alt="Exam page ${q.page}">` : ''}
 
           ${done ? `
             <div class="exp-wrap">
